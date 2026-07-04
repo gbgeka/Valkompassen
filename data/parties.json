@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "election": "Riksdagsvalet 2026-09-13",
+    "updated": "2026-07-04",
+    "note": "Positioner är redaktionella utgångsvärden (skala -2..+2) som MÅSTE verifieras mot valmanifest 2026, riksdagsvoteringar och partisvar före lansering. Se docs/01-partikartlaggning.md.",
+    "positionStatus": "UNVERIFIED_DRAFT"
+  },
+  "parties": [
+    {
+      "id": "V",
+      "name": "Vänsterpartiet",
+      "leader": "Nooshi Dadgostar",
+      "ideology": ["socialism", "feminism"],
+      "bloc": "rödgröna",
+      "color": "#B00000",
+      "website": "https://www.vansterpartiet.se",
+      "positions": {
+        "economy": -2,
+        "migration": -1,
+        "climate": -1,
+        "security": -2,
+        "welfare": -2,
+        "eu": 1,
+        "values": -2,
+        "energy": -1
+      }
+    },
+    {
+      "id": "MP",
+      "name": "Miljöpartiet de gröna",
+      "leader": "Amanda Lind & Daniel Helldén (språkrör)",
+      "ideology": ["grön ideologi"],
+      "bloc": "rödgröna",
+      "color": "#53A045",
+      "website": "https://www.mp.se",
+      "positions": {
+        "economy": -1,
+        "migration": -2,
+        "climate": -2,
+        "security": -1,
+        "welfare": -1,
+        "eu": -1,
+        "values": -2,
+        "energy": -2
+      }
+    },
+    {
+      "id": "S",
+      "name": "Socialdemokraterna",
+      "leader": "Magdalena Andersson",
+      "ideology": ["socialdemokrati"],
+      "bloc": "rödgröna",
+      "color": "#E8112D",
+      "website": "https://www.socialdemokraterna.se",
+      "positions": {
+        "economy": -1,
+        "migration": 1,
+        "climate": -1,
+        "security": 0,
+        "welfare": -1,
+        "eu": 0,
+        "values": -1,
+        "energy": 0
+      }
+    },
+    {
+      "id": "C",
+      "name": "Centerpartiet",
+      "leader": "Elisabeth Thand Ringqvist",
+      "ideology": ["grön socialliberalism", "agrar tradition"],
+      "bloc": "rödgröna",
+      "color": "#009933",
+      "website": "https://www.centerpartiet.se",
+      "positions": {
+        "economy": 1,
+        "migration": -1,
+        "climate": -1,
+        "security": 0,
+        "welfare": 1,
+        "eu": -1,
+        "values": -1,
+        "energy": 0
+      }
+    },
+    {
+      "id": "L",
+      "name": "Liberalerna",
+      "leader": "Simona Mohamsson",
+      "ideology": ["socialliberalism"],
+      "bloc": "tidöpartierna",
+      "color": "#006AB3",
+      "website": "https://www.liberalerna.se",
+      "positions": {
+        "economy": 1,
+        "migration": 0,
+        "climate": 0,
+        "security": 1,
+        "welfare": 1,
+        "eu": -2,
+        "values": -1,
+        "energy": 1
+      }
+    },
+    {
+      "id": "KD",
+      "name": "Kristdemokraterna",
+      "leader": "Ebba Busch",
+      "ideology": ["kristdemokrati", "socialkonservatism"],
+      "bloc": "tidöpartierna",
+      "color": "#000077",
+      "website": "https://www.kristdemokraterna.se",
+      "positions": {
+        "economy": 1,
+        "migration": 1,
+        "climate": 1,
+        "security": 1,
+        "welfare": 1,
+        "eu": 0,
+        "values": 1,
+        "energy": 2
+      }
+    },
+    {
+      "id": "M",
+      "name": "Moderaterna",
+      "leader": "Ulf Kristersson",
+      "ideology": ["liberalkonservatism"],
+      "bloc": "tidöpartierna",
+      "color": "#52BDEC",
+      "website": "https://www.moderaterna.se",
+      "positions": {
+        "economy": 2,
+        "migration": 1,
+        "climate": 1,
+        "security": 2,
+        "welfare": 2,
+        "eu": 0,
+        "values": 1,
+        "energy": 2
+      }
+    },
+    {
+      "id": "SD",
+      "name": "Sverigedemokraterna",
+      "leader": "Jimmie Åkesson",
+      "ideology": ["socialkonservatism", "nationalism"],
+      "bloc": "tidöpartierna",
+      "color": "#DDDD00",
+      "website": "https://sd.se",
+      "positions": {
+        "economy": 1,
+        "migration": 2,
+        "climate": 2,
+        "security": 2,
+        "welfare": 0,
+        "eu": 2,
+        "values": 2,
+        "energy": 2
+      }
+    }
+  ]
+}

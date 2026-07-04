@@ -1,0 +1,265 @@
+{
+  "meta": {
+    "status": "DRAFT",
+    "note": "Utkast till frågebank. partyPositions anger partiets förväntade svar på Likert-skalan -2 (tar helt avstånd) .. +2 (instämmer helt). Alla positioner är okodade gissningar tills source ersatts med riktig källa (manifest, votering eller partisvar). reversed=true betyder att instämmande pekar mot dimensionens positiva pol (höger/restriktiv/TAN).",
+    "answerScale": { "-2": "Tar helt avstånd", "-1": "Tar delvis avstånd", "0": "Neutral/vet ej", "1": "Instämmer delvis", "2": "Instämmer helt" }
+  },
+  "questions": [
+    {
+      "id": "eco-01",
+      "dimension": "economy",
+      "text": "Skatten på höga inkomster bör höjas.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 1, "S": 1, "C": -1, "L": -1, "KD": -2, "M": -2, "SD": -1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eco-02",
+      "dimension": "economy",
+      "text": "Skattesänkningar på arbete är viktigare än höjda bidrag och ersättningar.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eco-03",
+      "dimension": "economy",
+      "text": "Ett tak för hur mycket ett hushåll sammanlagt kan få i bidrag bör finnas.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 0, "L": 1, "KD": 2, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eco-04",
+      "dimension": "economy",
+      "text": "Staten bör låna mer till stora offentliga investeringar även om statsskulden ökar.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "mig-01",
+      "dimension": "migration",
+      "text": "Sverige bör ta emot fler flyktingar än i dag.",
+      "reversed": false,
+      "partyPositions": { "V": 1, "MP": 2, "S": -1, "C": 1, "L": 0, "KD": -1, "M": -2, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "mig-02",
+      "dimension": "migration",
+      "text": "Staten bör aktivt arbeta för att fler invandrare som inte etablerat sig i Sverige återvänder till sina hemländer.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "mig-03",
+      "dimension": "migration",
+      "text": "Arbetskraftsinvandring till lågkvalificerade yrken bör begränsas med ett högt lönekrav.",
+      "reversed": true,
+      "partyPositions": { "V": 1, "MP": -2, "S": 1, "C": -2, "L": 0, "KD": 1, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "mig-04",
+      "dimension": "migration",
+      "text": "Offentliganställda ska vara skyldiga att anmäla personer som vistas i Sverige utan tillstånd.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 1, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "cli-01",
+      "dimension": "climate",
+      "text": "Sverige bör hålla fast vid målet om nettonollutsläpp till 2045 även om det kräver kostsamma åtgärder.",
+      "reversed": false,
+      "partyPositions": { "V": 1, "MP": 2, "S": 1, "C": 1, "L": 1, "KD": 0, "M": 0, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "cli-02",
+      "dimension": "climate",
+      "text": "Skatten på bensin och diesel bör sänkas.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "cli-03",
+      "dimension": "climate",
+      "text": "Det bör bli dyrare att flyga för att minska utsläppen.",
+      "reversed": false,
+      "partyPositions": { "V": 1, "MP": 2, "S": 0, "C": 0, "L": -1, "KD": -1, "M": -2, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "cli-04",
+      "dimension": "climate",
+      "text": "Skyddet av skog och naturområden bör utökas även om det begränsar skogsbruket.",
+      "reversed": false,
+      "partyPositions": { "V": 1, "MP": 2, "S": 0, "C": -2, "L": 0, "KD": -1, "M": -1, "SD": -1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "sec-01",
+      "dimension": "security",
+      "text": "Straffen för gängrelaterad brottslighet bör skärpas ytterligare.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -1, "S": 1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "sec-02",
+      "dimension": "security",
+      "text": "Polisen ska kunna använda visitationszoner i områden med hög brottslighet.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": 1, "KD": 2, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "sec-03",
+      "dimension": "security",
+      "text": "Förebyggande sociala insatser är viktigare för att minska brottsligheten än fler poliser och hårdare straff.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": -1, "KD": -1, "M": -2, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "sec-04",
+      "dimension": "security",
+      "text": "Kameraövervakningen på offentliga platser bör byggas ut kraftigt.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -1, "S": 1, "C": -1, "L": 0, "KD": 1, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "wel-01",
+      "dimension": "welfare",
+      "text": "Vinstuttag ur skattefinansierade friskolor bör förbjudas.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 1, "S": 2, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "wel-02",
+      "dimension": "welfare",
+      "text": "Rätten att välja privata utförare i vård och omsorg bör värnas.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 2, "L": 2, "KD": 2, "M": 2, "SD": 1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "wel-03",
+      "dimension": "welfare",
+      "text": "Staten bör ta över huvudansvaret för sjukvården från regionerna.",
+      "reversed": false,
+      "partyPositions": { "V": 0, "MP": 0, "S": -1, "C": -2, "L": 1, "KD": 2, "M": 0, "SD": 1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "wel-04",
+      "dimension": "welfare",
+      "text": "Fler välfärdstjänster bör drivas i offentlig regi även om utbudet av privata alternativ minskar.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 1, "S": 1, "C": -2, "L": -2, "KD": -1, "M": -2, "SD": -1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eu-01",
+      "dimension": "eu",
+      "text": "Sverige bör införa euron som valuta.",
+      "reversed": false,
+      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 0, "L": 2, "KD": -1, "M": 0, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eu-02",
+      "dimension": "eu",
+      "text": "EU bör få mer beslutsmakt i gränsöverskridande frågor som klimat och migration, även om Sveriges självbestämmande minskar.",
+      "reversed": false,
+      "partyPositions": { "V": -1, "MP": 1, "S": 0, "C": 1, "L": 2, "KD": -1, "M": -1, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eu-03",
+      "dimension": "eu",
+      "text": "Sverige bör verka för att flytta tillbaka makt från EU till nationell nivå.",
+      "reversed": true,
+      "partyPositions": { "V": 1, "MP": -1, "S": 0, "C": -1, "L": -2, "KD": 1, "M": 0, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "eu-04",
+      "dimension": "eu",
+      "text": "Sveriges bistånd till fattiga länder bör minskas.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 0, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "val-01",
+      "dimension": "values",
+      "text": "Svenskt kulturarv och svenska traditioner bör få en större plats i skolan och det offentliga rummet.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -1, "S": 0, "C": 0, "L": 0, "KD": 2, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "val-02",
+      "dimension": "values",
+      "text": "Hbtqi-personers rättigheter bör stärkas ytterligare.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": 2, "KD": -1, "M": 0, "SD": -1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "val-03",
+      "dimension": "values",
+      "text": "Ett nationellt förbud mot tiggeri bör införas.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": -1, "KD": 1, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "val-04",
+      "dimension": "values",
+      "text": "Public service (SVT och SR) bör få smalare uppdrag och minskade anslag.",
+      "reversed": true,
+      "partyPositions": { "V": -2, "MP": -2, "S": -2, "C": -1, "L": -1, "KD": 1, "M": 1, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "ene-01",
+      "dimension": "energy",
+      "text": "Staten bör subventionera byggandet av ny kärnkraft.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": -1, "L": 2, "KD": 2, "M": 2, "SD": 2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "ene-02",
+      "dimension": "energy",
+      "text": "Utbyggnaden av havsbaserad vindkraft bör påskyndas.",
+      "reversed": false,
+      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": 0, "KD": -1, "M": -1, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "ene-03",
+      "dimension": "energy",
+      "text": "Strandskyddet bör lättas för att göra det enklare att bygga på landsbygden.",
+      "reversed": true,
+      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": 2, "L": 1, "KD": 1, "M": 1, "SD": 1 },
+      "source": "ATT_VERIFIERA"
+    },
+    {
+      "id": "ene-04",
+      "dimension": "energy",
+      "text": "Kärnkraften bör avvecklas på sikt.",
+      "reversed": false,
+      "partyPositions": { "V": 0, "MP": 2, "S": -1, "C": -1, "L": -2, "KD": -2, "M": -2, "SD": -2 },
+      "source": "ATT_VERIFIERA"
+    }
+  ]
+}

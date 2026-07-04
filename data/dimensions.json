@@ -1,0 +1,54 @@
+{
+  "$schema": "./schema/dimensions.schema.json",
+  "scale": { "min": -2, "max": 2 },
+  "dimensions": [
+    {
+      "id": "economy",
+      "name": "Ekonomi & skatter",
+      "poleNegative": "Mer omfördelning och högre skatt på höga inkomster",
+      "polePositive": "Lägre skatter och mer marknadslösningar"
+    },
+    {
+      "id": "migration",
+      "name": "Migration & integration",
+      "poleNegative": "Generösare asyl- och anhörigpolitik",
+      "polePositive": "Restriktiv migrationspolitik och återvandring"
+    },
+    {
+      "id": "climate",
+      "name": "Klimat & miljö",
+      "poleNegative": "Skarpa klimatmål och styrmedel nu",
+      "polePositive": "Lägre tempo, teknikutveckling före styrmedel"
+    },
+    {
+      "id": "security",
+      "name": "Lag & ordning",
+      "poleNegative": "Förebyggande och sociala insatser",
+      "polePositive": "Straffskärpningar och utökad övervakning"
+    },
+    {
+      "id": "welfare",
+      "name": "Välfärdens organisation",
+      "poleNegative": "Offentlig drift och vinstbegränsning",
+      "polePositive": "Privat drift och valfrihet"
+    },
+    {
+      "id": "eu",
+      "name": "EU & internationellt",
+      "poleNegative": "Fördjupat EU-samarbete",
+      "polePositive": "Mindre överstatlighet och mer nationellt självbestämmande"
+    },
+    {
+      "id": "values",
+      "name": "Värderingar (GAL–TAN)",
+      "poleNegative": "Progressiv och individcentrerad",
+      "polePositive": "Traditionell och nationellt orienterad"
+    },
+    {
+      "id": "energy",
+      "name": "Energi & landsbygd",
+      "poleNegative": "Förnybar utbyggnad i första hand",
+      "polePositive": "Kärnkraftssatsning i första hand"
+    }
+  ]
+}
