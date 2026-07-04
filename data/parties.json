@@ -27,7 +27,11 @@
         "values": -2,
         "energy": -1
       },
-      "summary": "Vill öka skatteintäkterna med 65–70 miljarder/år för välfärd utan vinstjakt, nå nollutsläpp 2035 och pressa priser för vanliga hushåll."
+      "summary": "Vill öka skatteintäkterna med 65–70 miljarder/år för välfärd utan vinstjakt, nå nollutsläpp 2035 och pressa priser för vanliga hushåll.",
+      "logo": "assets/logos/v.svg",
+      "leaderImages": [
+        "assets/leaders/nooshi-dadgostar.svg"
+      ]
     },
     {
       "id": "MP",
@@ -49,7 +53,12 @@
         "values": -2,
         "energy": -2
       },
-      "summary": "Går till val på 'Sverige vinner på grön politik': snabbare klimatomställning, naturskydd, förnybart före kärnkraft och humanare migrationspolitik."
+      "summary": "Går till val på 'Sverige vinner på grön politik': snabbare klimatomställning, naturskydd, förnybart före kärnkraft och humanare migrationspolitik.",
+      "logo": "assets/logos/mp.svg",
+      "leaderImages": [
+        "assets/leaders/amanda-lind.svg",
+        "assets/leaders/daniel-hellden.svg"
+      ]
     },
     {
       "id": "S",
@@ -71,7 +80,11 @@
         "values": -1,
         "energy": 0
       },
-      "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete."
+      "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete.",
+      "logo": "assets/logos/s.svg",
+      "leaderImages": [
+        "assets/leaders/magdalena-andersson.svg"
+      ]
     },
     {
       "id": "C",
@@ -94,7 +107,11 @@
         "values": -1,
         "energy": 0
       },
-      "summary": "Tre prioriteringar: fler jobb, lägre utsläpp och ett Sverige som fungerar i hela landet — genom företagande och marknadslösningar, aldrig med SD."
+      "summary": "Tre prioriteringar: fler jobb, lägre utsläpp och ett Sverige som fungerar i hela landet — genom företagande och marknadslösningar, aldrig med SD.",
+      "logo": "assets/logos/c.svg",
+      "leaderImages": [
+        "assets/leaders/elisabeth-thand-ringqvist.svg"
+      ]
     },
     {
       "id": "L",
@@ -116,7 +133,11 @@
         "values": -1,
         "energy": 1
       },
-      "summary": "Skol- och Europapartiet: kunskapsfokus, kärnkraft och via Sverigelöftet med SD en folkomröstning om euron 2030 och fördjupat EU/Nato-samarbete."
+      "summary": "Skol- och Europapartiet: kunskapsfokus, kärnkraft och via Sverigelöftet med SD en folkomröstning om euron 2030 och fördjupat EU/Nato-samarbete.",
+      "logo": "assets/logos/l.svg",
+      "leaderImages": [
+        "assets/leaders/simona-mohamsson.svg"
+      ]
     },
     {
       "id": "KD",
@@ -139,7 +160,11 @@
         "values": 1,
         "energy": 2
       },
-      "summary": "Familj och vård främst: kvotfri föräldraförsäkring, avskaffad pensionärsskatt, statligt huvudansvar för sjukvården och utbyggd kärnkraft."
+      "summary": "Familj och vård främst: kvotfri föräldraförsäkring, avskaffad pensionärsskatt, statligt huvudansvar för sjukvården och utbyggd kärnkraft.",
+      "logo": "assets/logos/kd.svg",
+      "leaderImages": [
+        "assets/leaders/ebba-busch.svg"
+      ]
     },
     {
       "id": "M",
@@ -161,7 +186,11 @@
         "values": 1,
         "energy": 2
       },
-      "summary": "Flaggskeppslöfte: en tvåbarnsfamilj ska behålla 5 000 kr mer i månaden. Fortsatt arbetslinje, bidragstak, hårdare straff och utbyggd kärnkraft."
+      "summary": "Flaggskeppslöfte: en tvåbarnsfamilj ska behålla 5 000 kr mer i månaden. Fortsatt arbetslinje, bidragstak, hårdare straff och utbyggd kärnkraft.",
+      "logo": "assets/logos/m.svg",
+      "leaderImages": [
+        "assets/leaders/ulf-kristersson.svg"
+      ]
     },
     {
       "id": "SD",
@@ -184,7 +213,11 @@
         "values": 2,
         "energy": 2
       },
-      "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet."
+      "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet.",
+      "logo": "assets/logos/sd.svg",
+      "leaderImages": [
+        "assets/leaders/jimmie-akesson.svg"
+      ]
     }
   ]
 }
