@@ -12,28 +12,46 @@ vilket stoppar deployen.
 import json
 import os
 import sys
+import time
+import urllib.error
 import urllib.request
 
 OK, FAIL = 0, 0
+PAUSE = 3          # sekunder mellan anrop — respekterar Wikimedias botpolicy
+BACKOFF = [10, 30, 60]  # omförsök vid 429/temporära fel
 
 
 def check_url(label, url):
     global OK, FAIL
     req = urllib.request.Request(url, method='GET', headers={
-        'User-Agent': 'Valkompassen-bildkontroll/1.0 (github.com/gbgeka/Valkompassen)'})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            ctype = r.headers.get('Content-Type', '')
-            size = len(r.read())
-            if r.status == 200 and ctype.startswith('image/') and size > 500:
-                print(f'  OK   {label}: {ctype}, {size} B')
-                OK += 1
-            else:
-                print(f'  FEL  {label}: status={r.status} type={ctype} size={size}')
-                FAIL += 1
-    except Exception as e:
-        print(f'  FEL  {label}: {e}')
-        FAIL += 1
+        'User-Agent': 'Valkompassen-bildkontroll/1.0 (github.com/gbgeka/Valkompassen; kontakt via repo)'})
+    attempts = [0] + BACKOFF
+    last_err = None
+    for wait in attempts:
+        if wait:
+            print(f'       {label}: väntar {wait}s och försöker igen …')
+            time.sleep(wait)
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                ctype = r.headers.get('Content-Type', '')
+                size = len(r.read())
+                if r.status == 200 and ctype.startswith('image/') and size > 500:
+                    print(f'  OK   {label}: {ctype}, {size} B')
+                    OK += 1
+                else:
+                    print(f'  FEL  {label}: status={r.status} type={ctype} size={size}')
+                    FAIL += 1
+                time.sleep(PAUSE)
+                return
+        except urllib.error.HTTPError as e:
+            last_err = e
+            if e.code != 429:
+                break
+        except Exception as e:
+            last_err = e
+    print(f'  FEL  {label}: {last_err}')
+    FAIL += 1
+    time.sleep(PAUSE)
 
 
 def check_local(label, path):
