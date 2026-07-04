@@ -2,7 +2,14 @@
   "meta": {
     "status": "DRAFT",
     "note": "Utkast till frågebank. partyPositions anger partiets förväntade svar på Likert-skalan -2 (tar helt avstånd) .. +2 (instämmer helt). Alla positioner är okodade gissningar tills source ersatts med riktig källa (manifest, votering eller partisvar). reversed=true betyder att instämmande pekar mot dimensionens positiva pol (höger/restriktiv/TAN).",
-    "answerScale": { "-2": "Tar helt avstånd", "-1": "Tar delvis avstånd", "0": "Neutral/vet ej", "1": "Instämmer delvis", "2": "Instämmer helt" }
+    "answerScale": {
+      "-2": "Tar helt avstånd",
+      "-1": "Tar delvis avstånd",
+      "0": "Neutral/vet ej",
+      "1": "Instämmer delvis",
+      "2": "Instämmer helt"
+    },
+    "infoNote": "info-fältet visas bakom infoknappen i testet: neutral förklaring plus för- och nackdelar (risk/reward) med respektive ståndpunkt att instämma i påståendet."
   },
   "questions": [
     {
@@ -10,256 +17,960 @@
       "dimension": "economy",
       "text": "Skatten på höga inkomster bör höjas.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 1, "S": 1, "C": -1, "L": -1, "KD": -2, "M": -2, "SD": -1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 1,
+        "S": 1,
+        "C": -1,
+        "L": -1,
+        "KD": -2,
+        "M": -2,
+        "SD": -1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige har progressiv inkomstskatt: den som tjänar över brytpunkten betalar 20 % statlig skatt utöver kommunalskatten. Frågan gäller om höga inkomster ska beskattas hårdare än i dag.",
+        "pros": [
+          "Mer pengar till välfärd, skola och omsorg",
+          "Minskar inkomstklyftorna",
+          "De med störst marginaler bidrar mest"
+        ],
+        "cons": [
+          "Kan minska drivkraften att arbeta, utbilda sig och ta ansvar",
+          "Risk att specialister och företagare flyttar utomlands",
+          "Höga marginalskatter kan ge mindre intäkter än väntat"
+        ]
+      }
     },
     {
       "id": "eco-02",
       "dimension": "economy",
       "text": "Skattesänkningar på arbete är viktigare än höjda bidrag och ersättningar.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -1,
+        "S": -1,
+        "C": 1,
+        "L": 1,
+        "KD": 2,
+        "M": 2,
+        "SD": 1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "En klassisk höger–vänster-fråga: ska staten främst sänka skatten på arbete så att lönen räcker längre, eller höja bidrag och ersättningar för dem som inte arbetar?",
+        "pros": [
+          "Gör det mer lönsamt att arbeta",
+          "Hushållen bestämmer själva över mer av sina pengar",
+          "Kan öka sysselsättningen"
+        ],
+        "cons": [
+          "Mindre resurser till dem som inte kan arbeta",
+          "Klyftan mellan arbetande och sjuka/arbetslösa växer",
+          "Skyddsnätet försvagas vid kris"
+        ]
+      }
     },
     {
       "id": "eco-03",
       "dimension": "economy",
       "text": "Ett tak för hur mycket ett hushåll sammanlagt kan få i bidrag bör finnas.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 0, "L": 1, "KD": 2, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -1,
+        "S": -1,
+        "C": 0,
+        "L": 1,
+        "KD": 2,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Ett bidragstak innebär en gräns för hur mycket ett hushåll sammanlagt kan få i olika bidrag, så att summan aldrig närmar sig en arbetsinkomst.",
+        "pros": [
+          "Arbete lönar sig alltid mer än bidrag",
+          "Tydliga drivkrafter mot egen försörjning",
+          "Kan minska långvarigt bidragsberoende"
+        ],
+        "cons": [
+          "Barnfamiljer med många barn kan drabbas hårt",
+          "Risk för ökad barnfattigdom",
+          "Hjälper inte dem som faktiskt inte kan arbeta"
+        ]
+      }
     },
     {
       "id": "eco-04",
       "dimension": "economy",
       "text": "Staten bör låna mer till stora offentliga investeringar även om statsskulden ökar.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 2,
+        "S": 1,
+        "C": -1,
+        "L": -1,
+        "KD": -1,
+        "M": -2,
+        "SD": 0
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige har låg statsskuld internationellt sett. Frågan är om staten ska låna mer för stora investeringar i t.ex. järnväg, elnät, bostäder och klimatomställning.",
+        "pros": [
+          "Investeringar i infrastruktur kan göras nu i stället för att skjutas upp",
+          "Kan öka tillväxt och sysselsättning",
+          "Sverige har råd — skulden är låg jämfört med omvärlden"
+        ],
+        "cons": [
+          "Statsskuld och räntekostnader ökar",
+          "Mindre marginaler vid nästa kris",
+          "Notan skickas delvis till framtida generationer"
+        ]
+      }
     },
     {
       "id": "mig-01",
       "dimension": "migration",
       "text": "Sverige bör ta emot fler flyktingar än i dag.",
       "reversed": false,
-      "partyPositions": { "V": 1, "MP": 2, "S": -1, "C": 1, "L": 0, "KD": -1, "M": -2, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": 2,
+        "S": -1,
+        "C": 1,
+        "L": 0,
+        "KD": -1,
+        "M": -2,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige har sedan 2015 stramat åt asylpolitiken kraftigt och tar i dag emot få kvotflyktingar och asylsökande jämfört med tidigare. Frågan är om mottagandet ska öka igen.",
+        "pros": [
+          "Humanitärt ansvar när krig och förföljelse ökar i världen",
+          "Invandring kan motverka arbetskraftsbrist och åldrande befolkning",
+          "Stärker Sveriges internationella anseende"
+        ],
+        "cons": [
+          "Integrationen av tidigare mottagna är inte klar",
+          "Kostnader för mottagande, bostäder och utbildning på kort sikt",
+          "Risk för ökad segregation om etableringen misslyckas"
+        ]
+      }
     },
     {
       "id": "mig-02",
       "dimension": "migration",
       "text": "Staten bör aktivt arbeta för att fler invandrare som inte etablerat sig i Sverige återvänder till sina hemländer.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": 0,
+        "C": -1,
+        "L": 0,
+        "KD": 1,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Återvandring betyder att personer med uppehållstillstånd eller medborgarskap frivilligt (eller genom påtryckningar) flyttar tillbaka till ursprungslandet, ofta med ekonomiskt stöd.",
+        "pros": [
+          "Kan minska utanförskap för dem som aldrig etablerat sig",
+          "Frivillig återvandring med stöd kan gynna både individ och hemland",
+          "Minskar belastningen på välfärdssystemen enligt förespråkare"
+        ],
+        "cons": [
+          "Riskerar att peka ut hela grupper som oönskade",
+          "Kan skada integrationen — varför anstränga sig om man ändå förväntas åka?",
+          "Arbetsgivare kan förlora arbetskraft"
+        ]
+      }
     },
     {
       "id": "mig-03",
       "dimension": "migration",
       "text": "Arbetskraftsinvandring till lågkvalificerade yrken bör begränsas med ett högt lönekrav.",
       "reversed": true,
-      "partyPositions": { "V": 1, "MP": -2, "S": 1, "C": -2, "L": 0, "KD": 1, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": -2,
+        "S": 1,
+        "C": -2,
+        "L": 0,
+        "KD": 1,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Arbetskraftsinvandrare utanför EU måste i dag tjäna en viss lön för att få tillstånd. Ett högt lönegolv stänger i praktiken ute lågkvalificerade yrken som städning och restaurang.",
+        "pros": [
+          "Motverkar lönedumpning och utnyttjande av utländsk arbetskraft",
+          "Minskar fusk med arbetstillstånd",
+          "Jobb med lägre löner går till arbetslösa som redan bor här"
+        ],
+        "cons": [
+          "Branscher med personalbrist får svårt att rekrytera",
+          "Företag kan tvingas stänga eller flytta",
+          "Individer som vill arbeta och göra rätt för sig stängs ute"
+        ]
+      }
     },
     {
       "id": "mig-04",
       "dimension": "migration",
       "text": "Offentliganställda ska vara skyldiga att anmäla personer som vistas i Sverige utan tillstånd.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 1, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": -1,
+        "C": -2,
+        "L": -1,
+        "KD": 1,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Den s.k. anmälningsplikten (informationsplikten) skulle kräva att offentliganställda, t.ex. lärare och vårdpersonal, rapporterar papperslösa personer de möter i tjänsten till myndigheterna.",
+        "pros": [
+          "Upprätthåller principen att ett nej i asylprocessen ska gälla",
+          "Myndigheter får bättre kontroll över vilka som vistas i landet",
+          "Kan minska skuggsamhället"
+        ],
+        "cons": [
+          "Sjuka och barn kan avstå vård och skola av rädsla",
+          "Lärare, läkare och socialarbetare tvingas ange människor de ska hjälpa",
+          "Kritiker kallar det ett angiverisamhälle som bryter mot yrkesetiken"
+        ]
+      }
     },
     {
       "id": "cli-01",
       "dimension": "climate",
       "text": "Sverige bör hålla fast vid målet om nettonollutsläpp till 2045 även om det kräver kostsamma åtgärder.",
       "reversed": false,
-      "partyPositions": { "V": 1, "MP": 2, "S": 1, "C": 1, "L": 1, "KD": 0, "M": 0, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": 2,
+        "S": 1,
+        "C": 1,
+        "L": 1,
+        "KD": 0,
+        "M": 0,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sveriges klimatmål är nettonollutsläpp senast 2045. Att nå det kräver dyra åtgärder i industri, transporter och jordbruk. Frågan är om målet ska ligga fast oavsett kostnad.",
+        "pros": [
+          "Sverige tar sin del av ansvaret för Parisavtalet",
+          "Tidig omställning kan ge svenska företag exportfördelar",
+          "Skjuts målet upp blir omställningen dyrare senare"
+        ],
+        "cons": [
+          "Höga kostnader för hushåll och industri på kort sikt",
+          "Marginell global effekt om stora utsläppsländer inte följer efter",
+          "Risk att jobb flyttar till länder med lägre krav"
+        ]
+      }
     },
     {
       "id": "cli-02",
       "dimension": "climate",
       "text": "Skatten på bensin och diesel bör sänkas.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -2,
+        "S": 0,
+        "C": -1,
+        "L": 0,
+        "KD": 1,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Skatten på bensin och diesel är både en inkomstkälla för staten och ett styrmedel för att minska utsläppen. Sänkningar gör det billigare att köra bil men ökar utsläppen.",
+        "pros": [
+          "Billigare vardag, särskilt på landsbygden där bilen är nödvändig",
+          "Sänker kostnader för transporter och företag",
+          "Minskar levnadskostnadskrisen för hushåll med små marginaler"
+        ],
+        "cons": [
+          "Utsläppen ökar och klimatmålen blir svårare att nå",
+          "Mindre pengar till statskassan",
+          "Gynnar även dem som lätt kunde valt alternativ"
+        ]
+      }
     },
     {
       "id": "cli-03",
       "dimension": "climate",
       "text": "Det bör bli dyrare att flyga för att minska utsläppen.",
       "reversed": false,
-      "partyPositions": { "V": 1, "MP": 2, "S": 0, "C": 0, "L": -1, "KD": -1, "M": -2, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": 2,
+        "S": 0,
+        "C": 0,
+        "L": -1,
+        "KD": -1,
+        "M": -2,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Flyget står för en liten del av Sveriges utsläpp men är svårt att ställa om. Högre flygskatt eller krav på dyrare bränslen gör resor dyrare men styr mot tåg och färre resor.",
+        "pros": [
+          "Minskar utsläppen från en växande utsläppskälla",
+          "Styr resande mot tåg där det är möjligt",
+          "Den som smutsar ner betalar för sig"
+        ],
+        "cons": [
+          "Dyrare resor slår mot vanliga familjers semester",
+          "Drabbar Norrland och öar där flyget saknar alternativ",
+          "Svensk flygskatt har liten effekt på det globala flyget"
+        ]
+      }
     },
     {
       "id": "cli-04",
       "dimension": "climate",
       "text": "Skyddet av skog och naturområden bör utökas även om det begränsar skogsbruket.",
       "reversed": false,
-      "partyPositions": { "V": 1, "MP": 2, "S": 0, "C": -2, "L": 0, "KD": -1, "M": -1, "SD": -1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": 2,
+        "S": 0,
+        "C": -2,
+        "L": 0,
+        "KD": -1,
+        "M": -1,
+        "SD": -1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Ungefär 70 % av Sverige är skog och skogsnäringen är en stor exportindustri. Frågan är om mer skog ska skyddas från avverkning för klimatets och artrikedomens skull.",
+        "pros": [
+          "Skyddar hotade arter och ekosystem",
+          "Gammal skog binder stora mängder kol",
+          "Bevarar natur för friluftsliv och kommande generationer"
+        ],
+        "cons": [
+          "Jobb och exportinkomster i skogslänen hotas",
+          "Ingrepp i enskildas äganderätt kräver dyra ersättningar",
+          "Mindre svensk skogsråvara kan ersättas av sämre alternativ"
+        ]
+      }
     },
     {
       "id": "sec-01",
       "dimension": "security",
       "text": "Straffen för gängrelaterad brottslighet bör skärpas ytterligare.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -1, "S": 1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -1,
+        "S": 1,
+        "C": 1,
+        "L": 1,
+        "KD": 2,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Straffen för gängbrottslighet har skärpts kraftigt de senaste åren (dubbla straff för gängkriminella, visitationszoner m.m.). Frågan är om de ska skärpas ytterligare.",
+        "pros": [
+          "Farliga gängkriminella låses in längre och kan inte begå nya brott",
+          "Tydlig signal om samhällets gränser",
+          "Kan öka tryggheten i utsatta områden"
+        ],
+        "cons": [
+          "Forskning visar begränsad avskräckande effekt av längre straff",
+          "Dyrt — fängelseplatser kostar och platsbrist råder redan",
+          "Riskerar att unga rekryteras som ersättare ändå"
+        ]
+      }
     },
     {
       "id": "sec-02",
       "dimension": "security",
       "text": "Polisen ska kunna använda visitationszoner i områden med hög brottslighet.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": 1, "KD": 2, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": 0,
+        "C": -1,
+        "L": 1,
+        "KD": 2,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "I en visitationszon får polisen kroppsvisitera personer och söka igenom fordon utan konkret brottsmisstanke. Infördes i Sverige 2024 efter dansk förebild.",
+        "pros": [
+          "Vapen och sprängmedel kan hittas innan de används",
+          "Verktyg mot gängens våldsvågor",
+          "Kan verka avskräckande i akuta lägen"
+        ],
+        "cons": [
+          "Ingrepp i den personliga integriteten utan brottsmisstanke",
+          "Risk för etnisk profilering och diskriminering",
+          "Kan skada förtroendet för polisen i områden där det behövs mest"
+        ]
+      }
     },
     {
       "id": "sec-03",
       "dimension": "security",
       "text": "Förebyggande sociala insatser är viktigare för att minska brottsligheten än fler poliser och hårdare straff.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": -1, "KD": -1, "M": -2, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 2,
+        "S": 1,
+        "C": 1,
+        "L": -1,
+        "KD": -1,
+        "M": -2,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Frågan ställer två strategier mot varandra: tidiga sociala insatser (skola, socialtjänst, fritid, föräldrastöd) eller mer resurser till polis och straff.",
+        "pros": [
+          "Angriper orsakerna innan brotten begås",
+          "Billigare på lång sikt än fängelse",
+          "Forskningsstöd för att tidiga insatser minskar nyrekrytering"
+        ],
+        "cons": [
+          "Ger inte snabb effekt mot pågående våldsvåg",
+          "Svårt att mäta och utvärdera",
+          "Kan uppfattas som svaghet mot dem som redan begår brott"
+        ]
+      }
     },
     {
       "id": "sec-04",
       "dimension": "security",
       "text": "Kameraövervakningen på offentliga platser bör byggas ut kraftigt.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -1, "S": 1, "C": -1, "L": 0, "KD": 1, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -1,
+        "S": 1,
+        "C": -1,
+        "L": 0,
+        "KD": 1,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Kameraövervakning på gator och torg har byggts ut kraftigt. Frågan är om utbyggnaden ska fortsätta i stor skala, t.ex. med fler AI-analyserade kameror.",
+        "pros": [
+          "Hjälper polisen att klara upp brott",
+          "Kan öka den upplevda tryggheten",
+          "Avskräcker viss brottslighet på övervakade platser"
+        ],
+        "cons": [
+          "Alla medborgare övervakas, inte bara kriminella",
+          "Brottsligheten kan flytta runt hörnet",
+          "Risk för ändamålsglidning — data kan användas till annat"
+        ]
+      }
     },
     {
       "id": "wel-01",
       "dimension": "welfare",
       "text": "Vinstuttag ur skattefinansierade friskolor bör förbjudas.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 1, "S": 2, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 1,
+        "S": 2,
+        "C": -1,
+        "L": -1,
+        "KD": -1,
+        "M": -2,
+        "SD": 0
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige är ensamt i världen om att tillåta vinstuttag ur skattefinansierade friskolor. Frågan är om vinstuttag ska förbjudas (pengarna måste återinvesteras i skolan).",
+        "pros": [
+          "Skattepengar avsedda för undervisning stannar i skolan",
+          "Minskar drivkraften till betygsinflation och elevsortering",
+          "De flesta andra länder tillåter inte vinstuttag ur skolor"
+        ],
+        "cons": [
+          "Många friskolor kan tvingas stänga — färre alternativ",
+          "Valfriheten minskar för familjer",
+          "Seriösa aktörer som levererar kvalitet straffas också"
+        ]
+      }
     },
     {
       "id": "wel-02",
       "dimension": "welfare",
       "text": "Rätten att välja privata utförare i vård och omsorg bör värnas.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 2, "L": 2, "KD": 2, "M": 2, "SD": 1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -1,
+        "S": -1,
+        "C": 2,
+        "L": 2,
+        "KD": 2,
+        "M": 2,
+        "SD": 1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Lagen om valfrihet låter patienter och brukare välja mellan offentliga och privata utförare i vård och omsorg, finansierat med skattepengar.",
+        "pros": [
+          "Individen bestämmer själv över sin vård och omsorg",
+          "Konkurrens kan pressa köer och höja kvalitet",
+          "Privata alternativ avlastar den offentliga vården"
+        ],
+        "cons": [
+          "Vinstintresse kan gå ut över kvalitet och bemanning",
+          "Privata utförare kan välja lönsamma patienter (gräddskumning)",
+          "Splittrar systemet och försvårar planering"
+        ]
+      }
     },
     {
       "id": "wel-03",
       "dimension": "welfare",
       "text": "Staten bör ta över huvudansvaret för sjukvården från regionerna.",
       "reversed": false,
-      "partyPositions": { "V": 0, "MP": 0, "S": -1, "C": -2, "L": 1, "KD": 2, "M": 0, "SD": 1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 0,
+        "MP": 0,
+        "S": -1,
+        "C": -2,
+        "L": 1,
+        "KD": 2,
+        "M": 0,
+        "SD": 1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sjukvården drivs i dag av 21 regioner med olika resurser och resultat. Förslaget innebär att staten tar över huvudansvaret för att vården ska bli likvärdig i hela landet.",
+        "pros": [
+          "Jämlik vård oavsett var du bor",
+          "Stordriftsfördelar och nationell planering av t.ex. IT och läkemedel",
+          "Slut på 21 parallella byråkratier"
+        ],
+        "cons": [
+          "Enorm omorganisation som tar år och kraft från vården",
+          "Beslut flyttas längre från patienter och personal",
+          "Ingen garanti att staten styr bättre än regionerna"
+        ]
+      }
     },
     {
       "id": "wel-04",
       "dimension": "welfare",
       "text": "Fler välfärdstjänster bör drivas i offentlig regi även om utbudet av privata alternativ minskar.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 1, "S": 1, "C": -2, "L": -2, "KD": -1, "M": -2, "SD": -1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 1,
+        "S": 1,
+        "C": -2,
+        "L": -2,
+        "KD": -1,
+        "M": -2,
+        "SD": -1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Frågan gäller den principiella avvägningen: ska välfärdstjänster i första hand drivas av det offentliga, även om privata alternativ då blir färre?",
+        "pros": [
+          "Demokratisk styrning och insyn i verksamheten",
+          "Inga skattepengar går till vinstuttag",
+          "Sammanhållet system utan gräddskumning"
+        ],
+        "cons": [
+          "Mindre mångfald och färre alternativ att välja mellan",
+          "Offentliga monopol kan bli ineffektiva utan konkurrens",
+          "Innovationstakten kan minska"
+        ]
+      }
     },
     {
       "id": "eu-01",
       "dimension": "eu",
       "text": "Sverige bör införa euron som valuta.",
       "reversed": false,
-      "partyPositions": { "V": -2, "MP": -1, "S": -1, "C": 0, "L": 2, "KD": -1, "M": 0, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -1,
+        "S": -1,
+        "C": 0,
+        "L": 2,
+        "KD": -1,
+        "M": 0,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige röstade nej till euron 2003 men är formellt förpliktigat att införa den någon gång. Genom Sverigelöftet planeras en ny folkomröstning på valdagen 2030.",
+        "pros": [
+          "Slipper växelkursrisk — enklare handel och resor",
+          "Plats vid bordet när eurozonen fattar beslut",
+          "Kronan är liten och sårbar vid oro"
+        ],
+        "cons": [
+          "Sverige förlorar egen penningpolitik och räntevapen",
+          "Kronan har fungerat som stötdämpare i kriser",
+          "Euroländernas problem kan bli våra"
+        ]
+      }
     },
     {
       "id": "eu-02",
       "dimension": "eu",
       "text": "EU bör få mer beslutsmakt i gränsöverskridande frågor som klimat och migration, även om Sveriges självbestämmande minskar.",
       "reversed": false,
-      "partyPositions": { "V": -1, "MP": 1, "S": 0, "C": 1, "L": 2, "KD": -1, "M": -1, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": 1,
+        "S": 0,
+        "C": 1,
+        "L": 2,
+        "KD": -1,
+        "M": -1,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Klimat, migration och säkerhet stannar inte vid gränser. Frågan är om EU ska få mer beslutsmakt i sådana frågor, även när Sverige blir överkört i enskilda beslut.",
+        "pros": [
+          "Gränsöverskridande problem kräver gemensamma beslut",
+          "Ett starkt EU står emot stormakter bättre än små länder var för sig",
+          "Gemensamma regler ger företag en jämn spelplan"
+        ],
+        "cons": [
+          "Sveriges självbestämmande minskar",
+          "Beslut flyttas längre från väljarna",
+          "EU-kompromisser kan bli sämre än svenska lösningar"
+        ]
+      }
     },
     {
       "id": "eu-03",
       "dimension": "eu",
       "text": "Sverige bör verka för att flytta tillbaka makt från EU till nationell nivå.",
       "reversed": true,
-      "partyPositions": { "V": 1, "MP": -1, "S": 0, "C": -1, "L": -2, "KD": 1, "M": 0, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 1,
+        "MP": -1,
+        "S": 0,
+        "C": -1,
+        "L": -2,
+        "KD": 1,
+        "M": 0,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Motsatt riktning: ska Sverige aktivt arbeta för att flytta tillbaka beslutsmakt från Bryssel till riksdagen, t.ex. i arbetsmarknads- och skogsfrågor?",
+        "pros": [
+          "Beslut fattas närmare svenska väljare",
+          "Regler kan anpassas till svenska förhållanden",
+          "Minskar EU-byråkratin"
+        ],
+        "cons": [
+          "Försvagar EU-samarbetet när omvärlden är orolig",
+          "Sverige förlorar inflytande över regler vi ändå påverkas av",
+          "Svårare att lösa gemensamma problem som brottslighet och klimat"
+        ]
+      }
     },
     {
       "id": "eu-04",
       "dimension": "eu",
       "text": "Sveriges bistånd till fattiga länder bör minskas.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 0, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": -1,
+        "C": -2,
+        "L": -1,
+        "KD": 0,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige har länge varit en av världens största biståndsgivare per invånare (målet var länge 1 % av BNI). Frågan är om biståndet ska minskas till förmån för inhemska behov.",
+        "pros": [
+          "Frigör miljarder till välfärd och försvar hemma",
+          "Delar av biståndet har haft svårmätt effekt",
+          "Andra rika länder ger betydligt mindre"
+        ],
+        "cons": [
+          "Drabbar världens fattigaste direkt",
+          "Minskar Sveriges internationella inflytande och anseende",
+          "Instabilitet och fattigdom i omvärlden kan öka migrationen på sikt"
+        ]
+      }
     },
     {
       "id": "val-01",
       "dimension": "values",
       "text": "Svenskt kulturarv och svenska traditioner bör få en större plats i skolan och det offentliga rummet.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -1, "S": 0, "C": 0, "L": 0, "KD": 2, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -1,
+        "S": 0,
+        "C": 0,
+        "L": 0,
+        "KD": 2,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "En värderingsfråga om det offentligas roll: ska svenskt kulturarv, traditioner och historia få större utrymme i skolan, kulturpolitiken och det offentliga rummet?",
+        "pros": [
+          "Stärker gemensam identitet och sammanhållning",
+          "Kulturarv riskerar annars att glömmas bort",
+          "Ger nyanlända en tydlig bild av det samhälle de möter"
+        ],
+        "cons": [
+          "Vem definierar vad som är svensk kultur?",
+          "Risk att människor med annan bakgrund pekas ut som mindre svenska",
+          "Skolans timmar är begränsade — något annat får stryka på foten"
+        ]
+      }
     },
     {
       "id": "val-02",
       "dimension": "values",
       "text": "Hbtqi-personers rättigheter bör stärkas ytterligare.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": 2, "KD": -1, "M": 0, "SD": -1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 2,
+        "S": 1,
+        "C": 1,
+        "L": 2,
+        "KD": -1,
+        "M": 0,
+        "SD": -1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Sverige rankas högt i hbtqi-rättigheter men debatt pågår om bl.a. juridiskt kön, vård för unga med könsdysfori och hatbrott. Frågan är om rättigheterna ska stärkas ytterligare.",
+        "pros": [
+          "Mänskliga rättigheter ska gälla fullt ut för alla",
+          "Minskar psykisk ohälsa i en utsatt grupp",
+          "Sverige kan vara föregångsland när rättigheter backar i omvärlden"
+        ],
+        "cons": [
+          "Kritiker menar att lagstiftningen redan är stark",
+          "Oenighet om t.ex. vård av minderåriga kräver försiktighet",
+          "Fler lagar löser inte attityder"
+        ]
+      }
     },
     {
       "id": "val-03",
       "dimension": "values",
       "text": "Ett nationellt förbud mot tiggeri bör införas.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": 0, "C": -1, "L": -1, "KD": 1, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": 0,
+        "C": -1,
+        "L": -1,
+        "KD": 1,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Tiggeri är i dag lagligt men flera kommuner har infört lokala förbud. Frågan gäller ett nationellt förbud mot att be om pengar på offentlig plats.",
+        "pros": [
+          "Kan minska utnyttjande av utsatta människor av kriminella nätverk",
+          "Ordning i det offentliga rummet",
+          "Tydlighet i stället för kommunalt lapptäcke"
+        ],
+        "cons": [
+          "Kriminaliserar fattigdom i stället för att bekämpa den",
+          "Löser inte orsakerna — de utsatta finns kvar",
+          "Svårt att förena med grundläggande fri- och rättigheter"
+        ]
+      }
     },
     {
       "id": "val-04",
       "dimension": "values",
       "text": "Public service (SVT och SR) bör få smalare uppdrag och minskade anslag.",
       "reversed": true,
-      "partyPositions": { "V": -2, "MP": -2, "S": -2, "C": -1, "L": -1, "KD": 1, "M": 1, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -2,
+        "MP": -2,
+        "S": -2,
+        "C": -1,
+        "L": -1,
+        "KD": 1,
+        "M": 1,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Public service (SVT, SR, UR) finansieras via skatten och har ett brett uppdrag. Frågan är om uppdraget ska smalnas av och anslagen minskas.",
+        "pros": [
+          "Mindre kostnad för skattebetalarna",
+          "Privata medier slipper konkurrera med skattefinansierat innehåll",
+          "Smalare uppdrag kan öka fokus på kärnan: nyheter och samhälle"
+        ],
+        "cons": [
+          "Oberoende journalistik i hela landet försvagas",
+          "Viktig beredskapsfunktion vid kris och krig",
+          "Smalt innehåll som inte bär sig kommersiellt försvinner"
+        ]
+      }
     },
     {
       "id": "ene-01",
       "dimension": "energy",
       "text": "Staten bör subventionera byggandet av ny kärnkraft.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": -1, "L": 2, "KD": 2, "M": 2, "SD": 2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -2,
+        "S": 0,
+        "C": -1,
+        "L": 2,
+        "KD": 2,
+        "M": 2,
+        "SD": 2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Regeringen har öppnat för statliga subventioner och riskdelning för ny kärnkraft. Utan statligt stöd byggs sannolikt ingen ny kärnkraft — den är för dyr och riskabel för marknaden.",
+        "pros": [
+          "Planerbar fossilfri el när industrin ska elektrifieras",
+          "Mindre beroende av väder och import",
+          "Teknikutveckling och kompetens stannar i Sverige"
+        ],
+        "cons": [
+          "Mycket dyrt — skattebetalarna bär risken vid förseningar",
+          "Tar 10–15 år; klimatomställningen behöver el nu",
+          "Kan tränga ut billigare och snabbare förnybar el"
+        ]
+      }
     },
     {
       "id": "ene-02",
       "dimension": "energy",
       "text": "Utbyggnaden av havsbaserad vindkraft bör påskyndas.",
       "reversed": false,
-      "partyPositions": { "V": 2, "MP": 2, "S": 1, "C": 1, "L": 0, "KD": -1, "M": -1, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 2,
+        "MP": 2,
+        "S": 1,
+        "C": 1,
+        "L": 0,
+        "KD": -1,
+        "M": -1,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Havsbaserad vindkraft kan ge stora mängder el men projekten är dyra, tar tid och har mött motstånd från Försvarsmakten. Frågan är om utbyggnaden ska påskyndas.",
+        "pros": [
+          "Stora mängder ny el relativt snabbt",
+          "Havsvind blåser jämnare än landvind",
+          "Skapar jobb längs kusterna"
+        ],
+        "cons": [
+          "Konflikter med försvarets radar och Nato-övervakning i Östersjön",
+          "Påverkan på marint liv och fiske",
+          "Kräver dyra elnätsanslutningar — vem betalar?"
+        ]
+      }
     },
     {
       "id": "ene-03",
       "dimension": "energy",
       "text": "Strandskyddet bör lättas för att göra det enklare att bygga på landsbygden.",
       "reversed": true,
-      "partyPositions": { "V": -1, "MP": -2, "S": 0, "C": 2, "L": 1, "KD": 1, "M": 1, "SD": 1 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": -1,
+        "MP": -2,
+        "S": 0,
+        "C": 2,
+        "L": 1,
+        "KD": 1,
+        "M": 1,
+        "SD": 1
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Strandskyddet förbjuder byggande nära vatten (generellt 100 m) för att skydda allemansrätt och natur. Lättnader skulle göra det enklare att bygga sjönära, främst på landsbygden.",
+        "pros": [
+          "Attraktivt boende kan vända utvecklingen i avfolkningsbygder",
+          "Markägare får bättre rätt att använda sin egen mark",
+          "Stora delar av Sveriges stränder är helt obebyggda"
+        ],
+        "cons": [
+          "Allmänhetens tillgång till stränder minskar",
+          "Strandnära natur är artrik och känslig",
+          "Risk att attraktiva lägen privatiseras för alltid"
+        ]
+      }
     },
     {
       "id": "ene-04",
       "dimension": "energy",
       "text": "Kärnkraften bör avvecklas på sikt.",
       "reversed": false,
-      "partyPositions": { "V": 0, "MP": 2, "S": -1, "C": -1, "L": -2, "KD": -2, "M": -2, "SD": -2 },
-      "source": "ATT_VERIFIERA"
+      "partyPositions": {
+        "V": 0,
+        "MP": 2,
+        "S": -1,
+        "C": -1,
+        "L": -2,
+        "KD": -2,
+        "M": -2,
+        "SD": -2
+      },
+      "source": "ATT_VERIFIERA",
+      "info": {
+        "explanation": "Den långsiktiga riktningsfrågan för energipolitiken: ska kärnkraften fasas ut när reaktorerna tjänat ut, till förmån för helt förnybar elproduktion?",
+        "pros": [
+          "Slipper olycksrisk och slutförvar av avfall i 100 000 år",
+          "Förnybar el är i dag billigast att bygga ny",
+          "Uran är en ändlig resurs som ofta importeras"
+        ],
+        "cons": [
+          "Planerbar elproduktion försvinner — risk för effektbrist vindstilla vinterdagar",
+          "Elpriserna kan bli mer volatila",
+          "Klimatmålen blir svårare om fossilfri el stängs i förtid"
+        ]
+      }
     }
   ]
 }

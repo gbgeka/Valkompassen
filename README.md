@@ -14,9 +14,9 @@ En sofistikerad valkompass för riksdagsvalet i Sverige **13 september 2026**. M
 | Fas | Innehåll | Status |
 |-----|----------|--------|
 | 1. Kartläggning | Partier, dimensioner, metodik | ✅ Klar (detta dokument + `docs/`) |
-| 2. Frågebank | ~30 påståenden + partipositioner med källor | 🔜 Utkast finns i `data/questions.draft.json` |
-| 3. Applikation | Webbapp (frontend + matchningsmotor) | ⬜ Ej påbörjad |
-| 4. Validering | Testning mot partiernas egna svar | ⬜ Ej påbörjad |
+| 2. Frågebank | 32 påståenden med infotexter (för-/nackdelar) | ✅ Utkast klart — källverifiering återstår |
+| 3. Applikation | `test.html` med frågeflöde, viktning, infoknapp, matchning och localStorage; resultat på startsidan | ✅ Första version live på [gbgeka.github.io/Valkompassen](https://gbgeka.github.io/Valkompassen/) |
+| 4. Validering | Testning mot partiernas egna svar | ⬜ Ej påbörjad (självtest i CI-flödet: parti matchar sig självt till 100 %) |
 
 ## Dokumentation
 
