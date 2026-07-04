@@ -10,7 +10,10 @@
       "id": "V",
       "name": "Vänsterpartiet",
       "leader": "Nooshi Dadgostar",
-      "ideology": ["socialism", "feminism"],
+      "ideology": [
+        "socialism",
+        "feminism"
+      ],
       "bloc": "rödgröna",
       "color": "#B00000",
       "website": "https://www.vansterpartiet.se",
@@ -23,13 +26,16 @@
         "eu": 1,
         "values": -2,
         "energy": -1
-      }
+      },
+      "summary": "Vill öka skatteintäkterna med 65–70 miljarder/år för välfärd utan vinstjakt, nå nollutsläpp 2035 och pressa priser för vanliga hushåll."
     },
     {
       "id": "MP",
       "name": "Miljöpartiet de gröna",
       "leader": "Amanda Lind & Daniel Helldén (språkrör)",
-      "ideology": ["grön ideologi"],
+      "ideology": [
+        "grön ideologi"
+      ],
       "bloc": "rödgröna",
       "color": "#53A045",
       "website": "https://www.mp.se",
@@ -42,13 +48,16 @@
         "eu": -1,
         "values": -2,
         "energy": -2
-      }
+      },
+      "summary": "Går till val på 'Sverige vinner på grön politik': snabbare klimatomställning, naturskydd, förnybart före kärnkraft och humanare migrationspolitik."
     },
     {
       "id": "S",
       "name": "Socialdemokraterna",
       "leader": "Magdalena Andersson",
-      "ideology": ["socialdemokrati"],
+      "ideology": [
+        "socialdemokrati"
+      ],
       "bloc": "rödgröna",
       "color": "#E8112D",
       "website": "https://www.socialdemokraterna.se",
@@ -61,13 +70,17 @@
         "eu": 0,
         "values": -1,
         "energy": 0
-      }
+      },
+      "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete."
     },
     {
       "id": "C",
       "name": "Centerpartiet",
       "leader": "Elisabeth Thand Ringqvist",
-      "ideology": ["grön socialliberalism", "agrar tradition"],
+      "ideology": [
+        "grön socialliberalism",
+        "agrar tradition"
+      ],
       "bloc": "rödgröna",
       "color": "#009933",
       "website": "https://www.centerpartiet.se",
@@ -80,13 +93,16 @@
         "eu": -1,
         "values": -1,
         "energy": 0
-      }
+      },
+      "summary": "Tre prioriteringar: fler jobb, lägre utsläpp och ett Sverige som fungerar i hela landet — genom företagande och marknadslösningar, aldrig med SD."
     },
     {
       "id": "L",
       "name": "Liberalerna",
       "leader": "Simona Mohamsson",
-      "ideology": ["socialliberalism"],
+      "ideology": [
+        "socialliberalism"
+      ],
       "bloc": "tidöpartierna",
       "color": "#006AB3",
       "website": "https://www.liberalerna.se",
@@ -99,13 +115,17 @@
         "eu": -2,
         "values": -1,
         "energy": 1
-      }
+      },
+      "summary": "Skol- och Europapartiet: kunskapsfokus, kärnkraft och via Sverigelöftet med SD en folkomröstning om euron 2030 och fördjupat EU/Nato-samarbete."
     },
     {
       "id": "KD",
       "name": "Kristdemokraterna",
       "leader": "Ebba Busch",
-      "ideology": ["kristdemokrati", "socialkonservatism"],
+      "ideology": [
+        "kristdemokrati",
+        "socialkonservatism"
+      ],
       "bloc": "tidöpartierna",
       "color": "#000077",
       "website": "https://www.kristdemokraterna.se",
@@ -118,13 +138,16 @@
         "eu": 0,
         "values": 1,
         "energy": 2
-      }
+      },
+      "summary": "Familj och vård främst: kvotfri föräldraförsäkring, avskaffad pensionärsskatt, statligt huvudansvar för sjukvården och utbyggd kärnkraft."
     },
     {
       "id": "M",
       "name": "Moderaterna",
       "leader": "Ulf Kristersson",
-      "ideology": ["liberalkonservatism"],
+      "ideology": [
+        "liberalkonservatism"
+      ],
       "bloc": "tidöpartierna",
       "color": "#52BDEC",
       "website": "https://www.moderaterna.se",
@@ -137,13 +160,17 @@
         "eu": 0,
         "values": 1,
         "energy": 2
-      }
+      },
+      "summary": "Flaggskeppslöfte: en tvåbarnsfamilj ska behålla 5 000 kr mer i månaden. Fortsatt arbetslinje, bidragstak, hårdare straff och utbyggd kärnkraft."
     },
     {
       "id": "SD",
       "name": "Sverigedemokraterna",
       "leader": "Jimmie Åkesson",
-      "ideology": ["socialkonservatism", "nationalism"],
+      "ideology": [
+        "socialkonservatism",
+        "nationalism"
+      ],
       "bloc": "tidöpartierna",
       "color": "#DDDD00",
       "website": "https://sd.se",
@@ -156,7 +183,8 @@
         "eu": 2,
         "values": 2,
         "energy": 2
-      }
+      },
+      "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet."
     }
   ]
 }
