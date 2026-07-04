@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partierna 2026–2030 · Valkompassen</title>
+</head>
+<body>
+<style>
+:root {
+  --paper:#FAF8F2; --ink:#20242B; --ink-2:#5C6068; --line:#E2DDD0;
+  --card:#FFFFFF; --accent:#F5C400; --accent-ink:#8A6D00; --chip:#F3EFE4;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper:#151920; --ink:#E7E3D9; --ink-2:#9BA0A8; --line:#2C323C;
+          --card:#1C222B; --accent:#F5C400; --accent-ink:#E5C34D; --chip:#242B36; }
+}
+:root[data-theme="dark"] { --paper:#151920; --ink:#E7E3D9; --ink-2:#9BA0A8; --line:#2C323C;
+          --card:#1C222B; --accent:#F5C400; --accent-ink:#E5C34D; --chip:#242B36; }
+:root[data-theme="light"] { --paper:#FAF8F2; --ink:#20242B; --ink-2:#5C6068; --line:#E2DDD0;
+          --card:#FFFFFF; --accent:#F5C400; --accent-ink:#8A6D00; --chip:#F3EFE4; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink);
+  font:16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+.wrap { max-width:52rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+.eyebrow { font:600 .72rem/1 ui-monospace, "SF Mono", Consolas, monospace;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink);
+  border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:.45rem; }
+h1 { font-family:Georgia, "Times New Roman", serif; font-size:clamp(1.9rem, 4.5vw, 2.7rem);
+  line-height:1.15; margin:.9rem 0 .5rem; text-wrap:balance; }
+.lede { color:var(--ink-2); max-width:38rem; margin:0 0 1.8rem; }
+.facts { display:flex; flex-wrap:wrap; gap:.6rem 2rem; border-block:1px solid var(--line);
+  padding:.9rem 0; margin-bottom:2rem; }
+.facts div { font:500 .8rem/1.5 ui-monospace, "SF Mono", Consolas, monospace; color:var(--ink-2); }
+.facts strong { display:block; color:var(--ink); font-size:1.05rem; font-variant-numeric:tabular-nums; }
+.notice { background:var(--chip); border:1px solid var(--line); border-radius:6px;
+  padding:.9rem 1.1rem; font-size:.92rem; margin-bottom:2.6rem; }
+.notice strong { color:var(--accent-ink); }
+h2.bloc { font-family:Georgia, serif; font-size:1.35rem; margin:2.6rem 0 .3rem; }
+p.bloc-sub { margin:0 0 1.2rem; color:var(--ink-2); font-size:.9rem; }
+.party { background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:1.4rem 1.5rem 1.2rem; margin-bottom:1.1rem;
+  border-top:4px solid var(--pc); }
+.party-head { display:flex; align-items:center; gap:1rem; }
+.party-head h3 { font-family:Georgia, serif; margin:0; font-size:1.3rem; }
+.ideology { margin:.1rem 0 0; font:500 .72rem/1.4 ui-monospace, monospace;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+.leaders { display:flex; flex-wrap:wrap; gap:.75rem 1.75rem; margin:1rem 0 .4rem; }
+.leader { display:flex; align-items:center; gap:.65rem; margin:0; }
+.leader figcaption { font-size:.85rem; line-height:1.35; }
+.leader figcaption span { display:block; color:var(--ink-2); font-size:.75rem; }
+.program { margin:.6rem 0 0; font-size:.95rem; }
+footer { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.2rem;
+  font-size:.8rem; color:var(--ink-2); }
+footer a { color:var(--accent-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .party { transition: border-color .15s ease; }
+}
+</style>
+<div class="wrap">
+<header>
+  <span class="eyebrow">Valkompassen · Riksdagsvalet 2026</span>
+  <h1>Vad partierna vill åstadkomma 2026–2030</h1>
+  <p class="lede">Kort sammanställning av de åtta riksdagspartiernas program inför valet:
+  vad de står för och vad de lovar väljarna den kommande mandatperioden.
+  Baserad på valplattformar och vallöften kända t.o.m. juli 2026.</p>
+  <div class="facts">
+    <div>Valdag<strong>13 sep 2026</strong></div>
+    <div>Riksdagspartier<strong>8</strong></div>
+    <div>Mandat<strong>349</strong></div>
+    <div>Riksdagsspärr<strong>4&nbsp;%</strong></div>
+  </div>
+  <div class="notice"><strong>Sverigelöftet (mars 2026):</strong> SD:s och L:s avtal om fortsatt
+  samarbete — alla fyra Tidöpartier ska ingå i regeringen vid valseger, en euro-utredning
+  genomförs och en folkomröstning om euron hålls på valdagen 2030.</div>
+</header>
+
+<h2 class="bloc">De rödgröna</h2>
+<p class="bloc-sub">Socialdemokraterna, Vänsterpartiet, Miljöpartiet — samt Centerpartiet, som samarbetar åt det rödgröna hållet men definierar sig som liberalt mittenparti.</p>
+<article class="party" id="s" style="--pc:#E8112D">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Socialdemokraterna logotyp"><circle cx="32" cy="32" r="30" fill="#E8112D"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#fff">S</text></svg>
+    <div class="party-title">
+      <h3>Socialdemokraterna</h3>
+      <p class="ideology">socialdemokrati</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Magdalena Andersson"><defs><clipPath id="cpMAE81"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpMAE81)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#E8112D" stroke-width="3.5"/></svg><figcaption><strong>Magdalena Andersson</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Går till val på plattformen <strong>"Plan för Sverige"</strong> med tre prioriteringar: ekonomi, välfärd och trygghet. S vill stärka hushållens plånböcker underifrån — höjt barnbidrag och studiebidrag, billigare mediciner, gratis tandvård för unga och skydd mot höga elpriser — och sätta press på banker och matjättar i stället för breda skattesänkningar. Partiet lovar nya jobb genom investeringar, fler anställda i välfärden och stora utbildningssatsningar. Mot gängkriminaliteten kombineras hårdare tag med förebyggande arbete, och migrationspolitiken förblir stram med fokus på integration. Kärnan: ett starkare samhälle går före skattesänkningar.</p>
+</article><article class="party" id="v" style="--pc:#B00000">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Vänsterpartiet logotyp"><circle cx="32" cy="32" r="30" fill="#B00000"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#fff">V</text></svg>
+    <div class="party-title">
+      <h3>Vänsterpartiet</h3>
+      <p class="ideology">socialism · feminism</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Nooshi Dadgostar"><defs><clipPath id="cpNDB00"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpNDB00)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#B00000" stroke-width="3.5"/></svg><figcaption><strong>Nooshi Dadgostar</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Vill omfördela kraftigt: skatteintäkterna ska öka med <strong>65–70 miljarder kronor per år</strong> genom högre skatt på kapital och höga inkomster, för att finansiera välfärd utan vinstjakt, fler anställda i vård och omsorg samt lägre avgifter för vanliga hushåll. Klimatmålet skärps till <strong>nollutsläpp senast 2035</strong> med staten som motor i omställningen. V vill stoppa vinster i välfärden, bygga hyresrätter, pressa mat- och elpriser och korta arbetstiden. Kärnan: jämlikhet — ekonomin ska styras för löntagare och låginkomsttagare, inte för storföretag.</p>
+</article><article class="party" id="mp" style="--pc:#53A045">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Miljöpartiet de gröna logotyp"><circle cx="32" cy="32" r="30" fill="#53A045"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="24" fill="#fff">MP</text></svg>
+    <div class="party-title">
+      <h3>Miljöpartiet de gröna</h3>
+      <p class="ideology">grön ideologi</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Amanda Lind"><defs><clipPath id="cpAL53A"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpAL53A)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#53A045" stroke-width="3.5"/></svg><figcaption><strong>Amanda Lind</strong><span>språkrör</span></figcaption></figure><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Daniel Helldén"><defs><clipPath id="cpDH53A"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpDH53A)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#53A045" stroke-width="3.5"/></svg><figcaption><strong>Daniel Helldén</strong><span>språkrör</span></figcaption></figure></div>
+  <p class="program">Går till val på budskapet <strong>"Sverige vinner på grön politik"</strong>. MP vill accelerera klimatomställningen med skarpare utsläppsmål och styrmedel, avveckla fossila subventioner, skydda skog och biologisk mångfald (partiet säger ja till samtliga av Naturskyddsföreningens 22 miljöförslag) och bygga ut det förnybara i stället för ny kärnkraft. Därtill: en humanare migrationspolitik, stora satsningar på psykisk hälsa och gröna jobb i hela landet. Kärnan: klimatet är ödesfrågan, och omställningen är en möjlighet för jobb och välfärd — inte ett hot.</p>
+</article><article class="party" id="c" style="--pc:#009933">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Centerpartiet logotyp"><circle cx="32" cy="32" r="30" fill="#009933"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#fff">C</text></svg>
+    <div class="party-title">
+      <h3>Centerpartiet</h3>
+      <p class="ideology">grön socialliberalism · agrar tradition</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Elisabeth Thand Ringqvist"><defs><clipPath id="cpET009"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpET009)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#009933" stroke-width="3.5"/></svg><figcaption><strong>Elisabeth Thand Ringqvist</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Under nya ledaren Elisabeth Thand Ringqvist går C till val på tre prioriteringar: <strong>fler jobb, lägre klimatutsläpp och ett Sverige som fungerar i hela landet</strong>. Receptet är liberalt: enklare regler och lägre kostnader för företag, grön omställning genom marknadslösningar snarare än förbud, och kraftfulla satsningar på landsbygd och gröna näringar. C vägrar samarbete med SD och positionerar sig som den liberala mittenrösten i det rödgröna lägret. Kärnan: jobb och klimat löses bäst av företagsamhet, inte av staten — och hela landet ska leva.</p>
+</article>
+
+<h2 class="bloc">Tidöpartierna</h2>
+<p class="bloc-sub">Moderaterna, Sverigedemokraterna, Kristdemokraterna och Liberalerna — regeringsunderlaget sedan 2022, med ambition att regera i fyrpartiregering efter valet.</p>
+<article class="party" id="m" style="--pc:#52BDEC">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Moderaterna logotyp"><circle cx="32" cy="32" r="30" fill="#52BDEC"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#1a1a1a">M</text></svg>
+    <div class="party-title">
+      <h3>Moderaterna</h3>
+      <p class="ideology">liberalkonservatism</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Ulf Kristersson"><defs><clipPath id="cpUK52B"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpUK52B)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#52BDEC" stroke-width="3.5"/></svg><figcaption><strong>Ulf Kristersson</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Statsministerpartiet söker förnyat mandat på ekonomisk frihet och trygghet. Flaggskeppslöftet är att <strong>en typisk tvåbarnsfamilj ska få behålla 5 000 kronor mer i månaden</strong> genom sänkta skatter på arbete. M vill fortsätta arbetslinjen med bidragstak, fullfölja "paradigmskiftet" i migrationspolitiken, bygga ut kärnkraften och fortsätta upprustningen av försvaret. Mot gängen: hårdare straff, fler poliser, visitationszoner och utökad kameraövervakning. Kärnan: det ska löna sig att arbeta, och staten ska vara hård mot brott men mindre i ekonomin.</p>
+</article><article class="party" id="sd" style="--pc:#DDDD00">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Sverigedemokraterna logotyp"><circle cx="32" cy="32" r="30" fill="#DDDD00"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="24" fill="#1a1a1a">SD</text></svg>
+    <div class="party-title">
+      <h3>Sverigedemokraterna</h3>
+      <p class="ideology">socialkonservatism · nationalism</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Jimmie Åkesson"><defs><clipPath id="cpJÅDDD"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpJÅDDD)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#DDDD00" stroke-width="3.5"/></svg><figcaption><strong>Jimmie Åkesson</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Vill fullborda omläggningen av migrationspolitiken: kraftigt minskad invandring och ett aktivt återvandringsprogram. Sänkt skatt på bensin och diesel är ett av partiets främsta vallöften, tillsammans med hårdare straff, utbyggd kärnkraft och stärkt välfärd för medborgarna. SD är EU-skeptiskt och vill flytta makt tillbaka till Sverige. Genom Sverigelöftet med L siktar partiet för första gången på <strong>regeringsmedverkan</strong> — inte bara stödparti. Kärnan: nationell sammanhållning, låga levnadsomkostnader och en migrationspolitik stramare än alla andras.</p>
+</article><article class="party" id="kd" style="--pc:#000077">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Kristdemokraterna logotyp"><circle cx="32" cy="32" r="30" fill="#000077"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="24" fill="#fff">KD</text></svg>
+    <div class="party-title">
+      <h3>Kristdemokraterna</h3>
+      <p class="ideology">kristdemokrati · socialkonservatism</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Ebba Busch"><defs><clipPath id="cpEB000"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpEB000)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#000077" stroke-width="3.5"/></svg><figcaption><strong>Ebba Busch</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Sätter familjen och vården främst. Viktigaste vallöftena är en <strong>kvotfri föräldraförsäkring</strong> — familjer ska själva bestämma över föräldradagarna — och <strong>avskaffad pensionärsskatt</strong>. KD vill att staten tar över huvudansvaret för sjukvården från regionerna för jämlik vård i hela landet, satsar på äldreomsorgen och fortsätter bygga ut kärnkraften. I rättspolitiken: hårdare straff och stöd för Tidösamarbetets linje. Kärnan: ett samhälle byggt på familjer, civilsamhälle och trygghet genom hela livet — med mindre politisk klåfingrighet i vardagen.</p>
+</article><article class="party" id="l" style="--pc:#006AB3">
+  <div class="party-head">
+    <svg class="logo" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Liberalerna logotyp"><circle cx="32" cy="32" r="30" fill="#006AB3"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#fff">L</text></svg>
+    <div class="party-title">
+      <h3>Liberalerna</h3>
+      <p class="ideology">socialliberalism</p>
+    </div>
+  </div>
+  <div class="leaders"><figure class="leader"><svg viewBox="0 0 64 64" width="52" height="52" role="img" aria-label="Porträtt Simona Mohamsson"><defs><clipPath id="cpSM006"><circle cx="32" cy="32" r="29"/></clipPath></defs><circle cx="32" cy="32" r="29" fill="#e9e4dc"/><g clip-path="url(#cpSM006)"><circle cx="32" cy="26" r="11" fill="#8a8378"/><ellipse cx="32" cy="55" rx="19" ry="16" fill="#8a8378"/></g><circle cx="32" cy="32" r="29" fill="none" stroke="#006AB3" stroke-width="3.5"/></svg><figcaption><strong>Simona Mohamsson</strong><span>partiledare</span></figcaption></figure></div>
+  <p class="program">Skolpartiet framför allt: kunskapsfokus, ordning i klassrummen och på sikt statligt huvudansvar för skolan. Genom <strong>Sverigelöftet</strong> med SD har L säkrat en euro-utredning och en <strong>folkomröstning om euron på valdagen 2030</strong> samt fördjupat EU- och Natosamarbete, fortsatt Ukrainastöd och snabb upprustning av civilt och militärt försvar. L vill bygga ut kärnkraften, driva integration med tydliga krav och samtidigt värna liberala rättigheter. Kärnan: en socialliberal röst för kunskap, Europa och individens frihet — inom Tidösamarbetet.</p>
+</article>
+
+<footer>
+  <p>Logotypmärken och porträtt är platshållare i partiets färg — officiellt bildmaterial
+  läggs in enligt <a href="https://github.com/gbgeka/Valkompassen/blob/claude/swedish-voter-compass-42d6l8/assets/KALLOR.md">assets/KALLOR.md</a>.
+  Texterna bygger på nyhetsrapportering och partiernas utspel t.o.m. juli 2026; uppdateras när
+  kompletta valmanifest släppts. Del av projektet
+  <a href="https://github.com/gbgeka/Valkompassen">Valkompassen</a>.</p>
+</footer>
+</div>
+</body>
+</html>
