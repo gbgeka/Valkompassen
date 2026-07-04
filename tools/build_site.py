@@ -9,7 +9,8 @@ Bildpolicy:
   renderas ett platshållarmärke med partibokstaven i partifärg.
 - Alla logotyper ritas i en fast 64x64-ruta med object-fit:contain på en
   ljus platta, så att olika proportioner får enhetlig visuell storlek.
-- Porträtt beskärs till 52x52-cirkel med object-fit:cover.
+- Porträtt beskärs till 64x64-cirkel med object-fit:cover — samma storlek
+  som logotyprutan.
 - onerror-fallback: om en extern bild inte laddar visas platshållaren.
 """
 import json
@@ -143,7 +144,7 @@ p.bloc-sub { margin:0 0 1.2rem; color:var(--ink-2); font-size:.9rem; }
 .logo-box.img-failed .ph { display:block; }
 .leaders { display:flex; flex-wrap:wrap; gap:.75rem 1.75rem; margin:1rem 0 .4rem; }
 .leader { display:flex; align-items:center; gap:.65rem; margin:0; }
-.portrait { width:52px; height:52px; flex:none; border-radius:50%;
+.portrait { width:64px; height:64px; flex:none; border-radius:50%;
   border:3px solid var(--pc); overflow:hidden; display:block; background:#e9e4dc; }
 .portrait img { width:100%; height:100%; object-fit:cover; display:block; }
 .portrait .ph { display:none; width:100%; height:100%; }
