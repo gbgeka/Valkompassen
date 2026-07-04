@@ -29,10 +29,6 @@
         "energy": -1
       },
       "summary": "Vill öka skatteintäkterna med 65–70 miljarder/år för välfärd utan vinstjakt, nå nollutsläpp 2035 och pressa priser för vanliga hushåll.",
-      "logo": "assets/logos/v.svg",
-      "leaderImages": [
-        "assets/leaders/nooshi-dadgostar.svg"
-      ],
       "logoCommonsFile": "Vänsterpartiet logo.svg",
       "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A4nsterpartiet%20logo.svg?width=128",
       "leaders": [
@@ -66,10 +62,6 @@
       },
       "summary": "Går till val på 'Sverige vinner på grön politik': snabbare klimatomställning, naturskydd, förnybart före kärnkraft och humanare migrationspolitik.",
       "logo": "assets/logos/mp.svg",
-      "leaderImages": [
-        "assets/leaders/amanda-lind.svg",
-        "assets/leaders/daniel-hellden.svg"
-      ],
       "logoCommonsFile": null,
       "logoUrl": null,
       "leaders": [
@@ -109,9 +101,6 @@
       },
       "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete.",
       "logo": "assets/logos/s.svg",
-      "leaderImages": [
-        "assets/leaders/magdalena-andersson.svg"
-      ],
       "logoCommonsFile": null,
       "logoUrl": null,
       "leaders": [
@@ -145,10 +134,6 @@
         "energy": 0
       },
       "summary": "Tre prioriteringar: fler jobb, lägre utsläpp och ett Sverige som fungerar i hela landet — genom företagande och marknadslösningar, aldrig med SD.",
-      "logo": "assets/logos/c.svg",
-      "leaderImages": [
-        "assets/leaders/elisabeth-thand-ringqvist.svg"
-      ],
       "logoCommonsFile": "Centerpartiet.svg",
       "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Centerpartiet.svg?width=128",
       "leaders": [
@@ -181,10 +166,6 @@
         "energy": 1
       },
       "summary": "Skol- och Europapartiet: kunskapsfokus, kärnkraft och via Sverigelöftet med SD en folkomröstning om euron 2030 och fördjupat EU/Nato-samarbete.",
-      "logo": "assets/logos/l.svg",
-      "leaderImages": [
-        "assets/leaders/simona-mohamsson.svg"
-      ],
       "logoCommonsFile": "Liberals (Sweden) logo.svg",
       "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Liberals%20%28Sweden%29%20logo.svg?width=128",
       "leaders": [
@@ -218,10 +199,6 @@
         "energy": 2
       },
       "summary": "Familj och vård främst: kvotfri föräldraförsäkring, avskaffad pensionärsskatt, statligt huvudansvar för sjukvården och utbyggd kärnkraft.",
-      "logo": "assets/logos/kd.svg",
-      "leaderImages": [
-        "assets/leaders/ebba-busch.svg"
-      ],
       "logoCommonsFile": "Kd v1.svg",
       "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kd%20v1.svg?width=128",
       "leaders": [
@@ -254,10 +231,6 @@
         "energy": 2
       },
       "summary": "Flaggskeppslöfte: en tvåbarnsfamilj ska behålla 5 000 kr mer i månaden. Fortsatt arbetslinje, bidragstak, hårdare straff och utbyggd kärnkraft.",
-      "logo": "assets/logos/m.svg",
-      "leaderImages": [
-        "assets/leaders/ulf-kristersson.svg"
-      ],
       "logoCommonsFile": "Moderata samlingspartiet Logo.svg",
       "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moderata%20samlingspartiet%20Logo.svg?width=128",
       "leaders": [
@@ -292,9 +265,6 @@
       },
       "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet.",
       "logo": "assets/logos/sd.svg",
-      "leaderImages": [
-        "assets/leaders/jimmie-akesson.svg"
-      ],
       "logoCommonsFile": null,
       "logoUrl": null,
       "leaders": [
