@@ -1,36 +1,54 @@
-# Bildkällor och ersättningsplan
+# Bildkällor
 
-## Status: platshållare
+## Partiledarfoton — Wikimedia Commons (hotlänkade)
 
-Bilderna i `assets/logos/` och `assets/leaders/` är **egengenererade SVG-platshållare** (logotypmärke med partibokstav i partiets färg, respektive porträttsilhuett med initialer). De är inte partiernas officiella logotyper eller foton.
+Foton hotlänkas via `https://commons.wikimedia.org/wiki/Special:FilePath/<filnamn>?width=…`.
+Samtliga är fritt licensierade (CC BY / CC BY-SA / motsvarande) — kontrollera exakt licens
+och fotograf på respektive filsida före tryck/vidarespridning utanför webben.
 
-Skälet: utvecklingsmiljöns nätverkspolicy blockerar externa bildkällor (Wikimedia Commons, partiernas webbplatser, TT), så riktiga bilder kunde inte hämtas automatiskt.
+| Person | Parti | Commons-fil |
+|--------|-------|-------------|
+| Magdalena Andersson | S | `Magdalena Andersson in 2022 (cropped).jpg` |
+| Ulf Kristersson | M | `Ulf Kristersson January 2023.jpg` |
+| Jimmie Åkesson | SD | `Jimmie Åkesson (cropped).jpg` |
+| Elisabeth Thand Ringqvist | C | `ElisabethTR2.jpg` (Centerpartiet/Margoåå0, CC BY-SA 4.0) |
+| Nooshi Dadgostar | V | `Nooshi Dadgostar (V) in 2021 (cropped).jpg` |
+| Ebba Busch | KD | `Deputy Prime Minister of Sweden, Ebba Busch, in 2024.jpg` |
+| Simona Mohamsson | L | `Simona Mohamsson June 2025 (cropped).jpg` |
+| Amanda Lind | MP | `Amanda Lind in 2023.jpg` |
+| Daniel Helldén | MP | `Daniel Helldén (MP) 2018.jpg` |
 
-## Så ersätts de med riktiga bilder
+Filsida: `https://commons.wikimedia.org/wiki/File:<filnamn med _ i st.f. mellanslag>`
 
-Behåll filnamnen — dokument och `data/parties.json` pekar på dem.
+## Partisymboler
 
-### Partiloggor (`assets/logos/<id>.svg`)
+### Fritt licensierade på Commons (hotlänkade)
 
-Hämta officiella logotyper från respektive partis pressrum/grafiska profil:
+| Parti | Commons-fil |
+|-------|-------------|
+| V | `Vänsterpartiet logo.svg` |
+| C | `Centerpartiet.svg` |
+| L | `Liberals (Sweden) logo.svg` |
+| KD | `Kd v1.svg` |
+| M | `Moderata samlingspartiet Logo.svg` |
 
-| Fil | Parti | Pressrum |
-|-----|-------|----------|
-| `s.svg` | Socialdemokraterna | socialdemokraterna.se/press |
-| `m.svg` | Moderaterna | moderaterna.se/press |
-| `sd.svg` | Sverigedemokraterna | sd.se/press |
-| `c.svg` | Centerpartiet | centerpartiet.se/press |
-| `v.svg` | Vänsterpartiet | vansterpartiet.se/press |
-| `kd.svg` | Kristdemokraterna | kristdemokraterna.se/press |
-| `l.svg` | Liberalerna | liberalerna.se/press |
-| `mp.svg` | Miljöpartiet | mp.se/press |
+### Ej fritt licensierade — platshållare används
 
-**OBS juridik:** partiloggor är varumärkesskyddade. Användning i en valkompass (nyhets-/upplysningssammanhang) är normalt okontroversiell, men kontrollera respektive partis riktlinjer för användning av grafiskt material innan publik lansering.
+**S (rosen), SD (blåsippan) och MP (maskrosen)** finns inte fritt licensierade på Wikimedia
+Commons (upphovsrättsskyddade). För dessa visas egengenererade märken med partibokstav i
+partifärg (`assets/logos/s.svg`, `sd.svg`, `mp.svg`).
 
-### Partiledarporträtt (`assets/leaders/<namn>.svg`)
+Verifierad fallgrop: `Social Democratic Party logo (2021).svg` på Commons är **brittiska**
+SDP — använd den inte.
 
-Fritt licensierade porträtt finns på Wikimedia Commons (sök på namnet, välj CC BY/CC BY-SA-licensierad bild, ange fotograf enligt licensen) eller använd partiernas pressbilder (oftast fria för redaktionell användning med fotografangivelse):
+För officiella logotyper: hämta från partiernas pressrum (socialdemokraterna.se/press,
+sd.se/press, mp.se/press) och lägg som lokala filer med samma filnamn som platshållarna;
+byggskriptet `tools/build_site.py` kan då pekas om. Partiloggor är varumärkesskyddade —
+kontrollera partiernas riktlinjer före publik lansering.
 
-- Magdalena Andersson (S), Ulf Kristersson (M), Jimmie Åkesson (SD), Elisabeth Thand Ringqvist (C), Nooshi Dadgostar (V), Ebba Busch (KD), Simona Mohamsson (L), Amanda Lind & Daniel Helldén (MP).
+## Storlekshantering
 
-När en riktig bild läggs in: uppdatera denna fil med **källa, fotograf och licens** per bild.
+Alla logotyper renderas i en fast 64×64-ruta (`object-fit: contain`) på ljus platta så att
+olika proportioner ser enhetliga ut; porträtt beskärs till 52×52-cirkel
+(`object-fit: cover`). Thumbnails begärs i 128 px (2× för skärpa). Om en extern bild inte
+laddar faller sidan tillbaka till platshållaren automatiskt (`onerror`).

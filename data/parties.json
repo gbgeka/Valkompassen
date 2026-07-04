@@ -3,7 +3,8 @@
     "election": "Riksdagsvalet 2026-09-13",
     "updated": "2026-07-04",
     "note": "Positioner är redaktionella utgångsvärden (skala -2..+2) som MÅSTE verifieras mot valmanifest 2026, riksdagsvoteringar och partisvar före lansering. Se docs/01-partikartlaggning.md.",
-    "positionStatus": "UNVERIFIED_DRAFT"
+    "positionStatus": "UNVERIFIED_DRAFT",
+    "imageNote": "Foton och friast tillgängliga partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S-, SD- och MP-logotyperna är inte fritt licensierade; lokala platshållarmärken används tills officiellt material lagts in. Se assets/KALLOR.md."
   },
   "parties": [
     {
@@ -31,6 +32,16 @@
       "logo": "assets/logos/v.svg",
       "leaderImages": [
         "assets/leaders/nooshi-dadgostar.svg"
+      ],
+      "logoCommonsFile": "Vänsterpartiet logo.svg",
+      "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A4nsterpartiet%20logo.svg?width=128",
+      "leaders": [
+        {
+          "name": "Nooshi Dadgostar",
+          "commonsFile": "Nooshi Dadgostar (V) in 2021 (cropped).jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nooshi%20Dadgostar%20%28V%29%20in%202021%20%28cropped%29.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Nooshi_Dadgostar_(V)_in_2021_(cropped).jpg"
+        }
       ]
     },
     {
@@ -58,6 +69,22 @@
       "leaderImages": [
         "assets/leaders/amanda-lind.svg",
         "assets/leaders/daniel-hellden.svg"
+      ],
+      "logoCommonsFile": null,
+      "logoUrl": null,
+      "leaders": [
+        {
+          "name": "Amanda Lind",
+          "commonsFile": "Amanda Lind in 2023.jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amanda%20Lind%20in%202023.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Amanda_Lind_in_2023.jpg"
+        },
+        {
+          "name": "Daniel Helldén",
+          "commonsFile": "Daniel Helldén (MP) 2018.jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Daniel%20Helld%C3%A9n%20%28MP%29%202018.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Daniel_Helld%C3%A9n_(MP)_2018.jpg"
+        }
       ]
     },
     {
@@ -84,6 +111,16 @@
       "logo": "assets/logos/s.svg",
       "leaderImages": [
         "assets/leaders/magdalena-andersson.svg"
+      ],
+      "logoCommonsFile": null,
+      "logoUrl": null,
+      "leaders": [
+        {
+          "name": "Magdalena Andersson",
+          "commonsFile": "Magdalena Andersson in 2022 (cropped).jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Magdalena%20Andersson%20in%202022%20%28cropped%29.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Magdalena_Andersson_in_2022_(cropped).jpg"
+        }
       ]
     },
     {
@@ -111,6 +148,16 @@
       "logo": "assets/logos/c.svg",
       "leaderImages": [
         "assets/leaders/elisabeth-thand-ringqvist.svg"
+      ],
+      "logoCommonsFile": "Centerpartiet.svg",
+      "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Centerpartiet.svg?width=128",
+      "leaders": [
+        {
+          "name": "Elisabeth Thand Ringqvist",
+          "commonsFile": "ElisabethTR2.jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ElisabethTR2.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:ElisabethTR2.jpg"
+        }
       ]
     },
     {
@@ -137,6 +184,16 @@
       "logo": "assets/logos/l.svg",
       "leaderImages": [
         "assets/leaders/simona-mohamsson.svg"
+      ],
+      "logoCommonsFile": "Liberals (Sweden) logo.svg",
+      "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Liberals%20%28Sweden%29%20logo.svg?width=128",
+      "leaders": [
+        {
+          "name": "Simona Mohamsson",
+          "commonsFile": "Simona Mohamsson June 2025 (cropped).jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Simona%20Mohamsson%20June%202025%20%28cropped%29.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Simona_Mohamsson_June_2025_(cropped).jpg"
+        }
       ]
     },
     {
@@ -164,6 +221,16 @@
       "logo": "assets/logos/kd.svg",
       "leaderImages": [
         "assets/leaders/ebba-busch.svg"
+      ],
+      "logoCommonsFile": "Kd v1.svg",
+      "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kd%20v1.svg?width=128",
+      "leaders": [
+        {
+          "name": "Ebba Busch",
+          "commonsFile": "Deputy Prime Minister of Sweden, Ebba Busch, in 2024.jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Deputy%20Prime%20Minister%20of%20Sweden%2C%20Ebba%20Busch%2C%20in%202024.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Deputy_Prime_Minister_of_Sweden,_Ebba_Busch,_in_2024.jpg"
+        }
       ]
     },
     {
@@ -190,6 +257,16 @@
       "logo": "assets/logos/m.svg",
       "leaderImages": [
         "assets/leaders/ulf-kristersson.svg"
+      ],
+      "logoCommonsFile": "Moderata samlingspartiet Logo.svg",
+      "logoUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moderata%20samlingspartiet%20Logo.svg?width=128",
+      "leaders": [
+        {
+          "name": "Ulf Kristersson",
+          "commonsFile": "Ulf Kristersson January 2023.jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ulf%20Kristersson%20January%202023.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Ulf_Kristersson_January_2023.jpg"
+        }
       ]
     },
     {
@@ -217,6 +294,16 @@
       "logo": "assets/logos/sd.svg",
       "leaderImages": [
         "assets/leaders/jimmie-akesson.svg"
+      ],
+      "logoCommonsFile": null,
+      "logoUrl": null,
+      "leaders": [
+        {
+          "name": "Jimmie Åkesson",
+          "commonsFile": "Jimmie Åkesson (cropped).jpg",
+          "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jimmie%20%C3%85kesson%20%28cropped%29.jpg?width=128",
+          "filePage": "https://commons.wikimedia.org/wiki/File:Jimmie_%C3%85kesson_(cropped).jpg"
+        }
       ]
     }
   ]
