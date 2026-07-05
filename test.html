@@ -180,10 +180,29 @@ details.info .info-body > p { margin:0 0 .85rem; }
 }
 .warn { background:var(--chip); border:1px solid var(--accent); border-radius:8px;
   padding:.8rem 1rem; font-size:.9rem; margin:1rem 0; }
-.review-item { border-bottom:1px solid var(--line); padding:.9rem 0; }
+.qtools { display:flex; justify-content:flex-end; gap:.4rem; margin:-.7rem 0 .7rem; }
+.qtools button { background:none; border:none; cursor:pointer; font-size:.8rem;
+  color:var(--ink-2); text-decoration:underline; text-underline-offset:3px; padding:.3rem .5rem; }
+.qtools button:hover { color:var(--ink); }
+.qtools button:disabled { opacity:.35; cursor:default; text-decoration:none; }
+.rev-summary { display:flex; flex-wrap:wrap; gap:.5rem; margin:.6rem 0 .9rem; }
+.chip { display:inline-flex; align-items:center; gap:.35rem; font:600 .75rem/1 ui-monospace, monospace;
+  padding:.38rem .7rem; border-radius:99px; border:1.5px solid var(--line); color:var(--ink-2);
+  white-space:nowrap; }
+.chip-ok { border-color:var(--pro); color:var(--pro); }
+.chip-skip { border-color:var(--accent-ink); color:var(--accent-ink); }
+.chip-none { border-color:var(--con); color:var(--con); }
+.review-item { border-bottom:1px solid var(--line); padding:.9rem 0 .9rem .9rem;
+  border-left:4px solid var(--line); margin-bottom:.15rem; }
+.review-item.st-answered { border-left-color:var(--pro); }
+.review-item.st-skipped { border-left-color:var(--accent); }
+.review-item.st-missing { border-left-color:var(--con); background:var(--chip); border-radius:0 8px 8px 0; }
 .review-item .rq { font-weight:600; }
-.review-item .ra { font-size:.9rem; margin-top:.2rem; }
+.review-item .ra { font-size:.9rem; margin:.35rem 0 .3rem; display:flex; flex-wrap:wrap;
+  gap:.4rem .8rem; align-items:center; }
 .review-item .ra b { color:var(--accent-ink); }
+.review-item .jump { background:none; border:none; cursor:pointer; font-size:.85rem;
+  color:var(--accent-ink); text-decoration:underline; text-underline-offset:3px; padding:0; }
 .hidden { display:none !important; }
 .startbox { text-align:center; padding:2.5rem 1rem; }
 .startbox .cta { margin-top:1rem; border:none; cursor:pointer; }
@@ -208,6 +227,10 @@ details.info .info-body > p { margin:0 0 .85rem; }
 <section id="v-quiz" class="hidden">
   <div class="qmeta"><span id="q-step"></span><span id="q-dim"></span></div>
   <div class="progress"><i id="q-bar" style="width:0%"></i></div>
+  <div class="qtools">
+    <button id="q-undo" type="button" disabled>↶ Ångra senaste</button>
+    <button id="q-reset" type="button">Nollställ testet</button>
+  </div>
   <div class="qcard">
     <p class="qtext" id="q-text"></p>
     <details class="info" id="q-info">
@@ -250,10 +273,13 @@ details.info .info-body > p { margin:0 0 .85rem; }
 
 <section id="v-review" class="hidden">
   <h1>Dina svar</h1>
-  <p class="small">Sparade lokalt i din webbläsare. Öppna infoknappen för att läsa om frågan igen.</p>
+  <p class="small">Sparade lokalt i din webbläsare. Öppna infoknappen för att läsa om frågan igen,
+  eller tryck på Ändra/Svara för att hoppa till frågan.</p>
+  <div id="rev-summary" class="rev-summary"></div>
+  <div id="rev-actions" class="startrow" style="justify-content:flex-start"></div>
   <div id="rev-list"></div>
   <div class="startrow">
-    <button class="btn" id="rev-back" type="button">← Till resultatet</button>
+    <button class="btn" id="rev-back" type="button">← Tillbaka</button>
     <a class="btn" href="index.html" style="text-decoration:none">Till startsidan</a>
   </div>
 </section>
@@ -274,6 +300,7 @@ var DARKTEXT = ['#DDDD00', '#52BDEC'];
 
 var answers = load(KEY_A) || {};
 var idx = 0;
+var hist = [];  // ångra-stack (per session): {qid, idx, prev}
 
 function load(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
 function save(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
@@ -330,7 +357,7 @@ function renderStart() {
     }
     if (res) row.appendChild(btn('Se resultat', 'btn', function () { renderResult(false); }));
     row.appendChild(btn('Se dina svar', 'btn', function () { renderReview(); }));
-    row.appendChild(btn('Börja om', 'btn', restart));
+    row.appendChild(btn('Nollställ testet', 'btn', function () { restart(false); }));
     box.appendChild(row);
   }
 }
@@ -338,10 +365,31 @@ function firstUnanswered() {
   for (var i = 0; i < QUESTIONS.length; i++) if (!(QUESTIONS[i].id in answers)) return i;
   return 0;
 }
-function restart() {
+function restart(force) {
+  if (!force && touchedCount() > 0 &&
+      !confirm('Detta nollställer testet: alla dina svar och ditt resultat raderas. Vill du fortsätta?')) return;
   localStorage.removeItem(KEY_A); localStorage.removeItem(KEY_R);
-  answers = {}; idx = 0; show('v-quiz'); renderQ();
+  answers = {}; hist = []; idx = 0; show('v-quiz'); renderQ();
 }
+
+/* ---- ångra ---- */
+function snapshot(qid) {
+  return answers[qid] ? JSON.parse(JSON.stringify(answers[qid])) : null;
+}
+function pushHist(qid) {
+  hist.push({ qid: qid, idx: idx, prev: snapshot(qid) });
+  if (hist.length > 200) hist.shift();
+}
+function undo() {
+  var h = hist.pop();
+  if (!h) return;
+  if (h.prev) answers[h.qid] = h.prev; else delete answers[h.qid];
+  save(KEY_A, answers);
+  idx = h.idx;
+  show('v-quiz'); renderQ();
+}
+el('q-undo').addEventListener('click', undo);
+el('q-reset').addEventListener('click', function () { restart(false); });
 
 /* ---- frågevy ---- */
 function renderQ() {
@@ -374,6 +422,7 @@ function renderQ() {
     b.textContent = pair[1];
     if (w === pair[0]) b.className = 'sel';
     b.addEventListener('click', function () {
+      pushHist(q.id);
       var cur = answers[q.id] || {}; cur.w = pair[0]; answers[q.id] = cur;
       save(KEY_A, answers); renderQ();
     });
@@ -383,9 +432,11 @@ function renderQ() {
   el('q-next').textContent = (idx === QUESTIONS.length - 1) ? 'Visa resultat' : 'Nästa →';
   el('q-next').classList.toggle('btn-go', q.id in answers);
   el('q-next').disabled = !(q.id in answers);
+  el('q-undo').disabled = hist.length === 0;
 }
 function pick(v) {
   var q = QUESTIONS[idx];
+  pushHist(q.id);
   var cur = answers[q.id] || {};
   cur.v = v; if (!cur.w) cur.w = 1;
   answers[q.id] = cur; save(KEY_A, answers);
@@ -399,6 +450,7 @@ el('q-prev').addEventListener('click', function () { if (idx > 0) { idx--; rende
 el('q-next').addEventListener('click', next);
 el('q-skip').addEventListener('click', function () {
   var q = QUESTIONS[idx];
+  pushHist(q.id);
   answers[q.id] = { v: null, w: answers[q.id] && answers[q.id].w || 1 };
   save(KEY_A, answers); next();
 });
@@ -436,7 +488,7 @@ function renderResult(saveIt) {
   });
   show('v-result');
 }
-el('r-redo').addEventListener('click', restart);
+el('r-redo').addEventListener('click', function () { restart(false); });
 el('r-review').addEventListener('click', renderReview);
 el('rev-back').addEventListener('click', function () {
   if (load(KEY_R)) renderResult(false); else { show('v-start'); renderStart(); }
@@ -452,15 +504,56 @@ function weightFor(w) {
   for (var i = 0; i < WEIGHTS.length; i++) if (WEIGHTS[i][0] === w) return WEIGHTS[i][1];
   return 'Normal';
 }
+function statusOf(q) {
+  var a = answers[q.id];
+  if (!a) return 'missing';
+  if (a.v === null || a.v === undefined) return 'skipped';
+  return 'answered';
+}
+function goTo(i) { idx = i; show('v-quiz'); renderQ(); }
 function renderReview() {
+  var counts = { answered: 0, skipped: 0, missing: 0 };
+  QUESTIONS.forEach(function (q) { counts[statusOf(q)]++; });
+
+  el('rev-summary').innerHTML =
+    '<span class="chip chip-ok">✓ ' + counts.answered + ' besvarade</span>' +
+    '<span class="chip chip-skip">↷ ' + counts.skipped + ' överhoppade</span>' +
+    '<span class="chip chip-none">○ ' + counts.missing + ' obesvarade</span>';
+
+  var actions = el('rev-actions'); actions.innerHTML = '';
+  if (counts.missing + counts.skipped > 0) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn btn-go';
+    b.textContent = 'Svara på nästa obesvarade fråga';
+    b.addEventListener('click', function () {
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        var st = statusOf(QUESTIONS[i]);
+        if (st === 'missing' || st === 'skipped') { goTo(i); return; }
+      }
+    });
+    actions.appendChild(b);
+  }
+
+  var STATUS_TXT = { answered: null, skipped: 'Hoppade över', missing: 'Obesvarad' };
   var list = el('rev-list'); list.innerHTML = '';
   QUESTIONS.forEach(function (q, i) {
     var a = answers[q.id];
-    var item = document.createElement('div'); item.className = 'review-item';
-    var ansTxt = a ? labelFor(a.v) : 'Ej besvarad ännu';
-    var wTxt = a && a.v !== null && a.v !== undefined ? ' · vikt: ' + weightFor(a.w || 1) : '';
+    var st = statusOf(q);
+    var item = document.createElement('div');
+    item.className = 'review-item st-' + st;
+    var ansHtml;
+    if (st === 'answered') {
+      ansHtml = 'Ditt svar: <b>' + labelFor(a.v) + '</b> <span>· vikt: ' + weightFor(a.w || 1) + '</span>';
+    } else {
+      ansHtml = '<b>' + STATUS_TXT[st] + '</b>';
+    }
     item.innerHTML = '<div class="rq">' + (i + 1) + '. ' + q.text + '</div>' +
-      '<div class="ra">Ditt svar: <b>' + ansTxt + '</b>' + wTxt + '</div>';
+      '<div class="ra">' + ansHtml + '</div>';
+    var jump = document.createElement('button');
+    jump.type = 'button'; jump.className = 'jump';
+    jump.textContent = (st === 'answered') ? 'Ändra svar' : 'Svara på frågan';
+    jump.addEventListener('click', function () { goTo(i); });
+    item.querySelector('.ra').appendChild(jump);
     var det = document.createElement('details'); det.className = 'info';
     det.innerHTML = '<summary><span class="info-badge">i</span>Om frågan<span class="chev">▼</span></summary>';
     var body = document.createElement('div'); body.className = 'info-body';
@@ -481,7 +574,7 @@ function renderReview() {
   var h = location.hash;
   if (h === '#resultat' && load(KEY_R)) { renderResult(false); return; }
   if (h === '#svar' && touchedCount() > 0) { renderReview(); return; }
-  if (h === '#om') { restart(); return; }
+  if (h === '#om') { restart(true); return; }
   renderStart(); show('v-start');
 })();
 </script>

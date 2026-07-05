@@ -180,10 +180,29 @@ details.info .info-body > p { margin:0 0 .85rem; }
 }
 .warn { background:var(--chip); border:1px solid var(--accent); border-radius:8px;
   padding:.8rem 1rem; font-size:.9rem; margin:1rem 0; }
-.review-item { border-bottom:1px solid var(--line); padding:.9rem 0; }
+.qtools { display:flex; justify-content:flex-end; gap:.4rem; margin:-.7rem 0 .7rem; }
+.qtools button { background:none; border:none; cursor:pointer; font-size:.8rem;
+  color:var(--ink-2); text-decoration:underline; text-underline-offset:3px; padding:.3rem .5rem; }
+.qtools button:hover { color:var(--ink); }
+.qtools button:disabled { opacity:.35; cursor:default; text-decoration:none; }
+.rev-summary { display:flex; flex-wrap:wrap; gap:.5rem; margin:.6rem 0 .9rem; }
+.chip { display:inline-flex; align-items:center; gap:.35rem; font:600 .75rem/1 ui-monospace, monospace;
+  padding:.38rem .7rem; border-radius:99px; border:1.5px solid var(--line); color:var(--ink-2);
+  white-space:nowrap; }
+.chip-ok { border-color:var(--pro); color:var(--pro); }
+.chip-skip { border-color:var(--accent-ink); color:var(--accent-ink); }
+.chip-none { border-color:var(--con); color:var(--con); }
+.review-item { border-bottom:1px solid var(--line); padding:.9rem 0 .9rem .9rem;
+  border-left:4px solid var(--line); margin-bottom:.15rem; }
+.review-item.st-answered { border-left-color:var(--pro); }
+.review-item.st-skipped { border-left-color:var(--accent); }
+.review-item.st-missing { border-left-color:var(--con); background:var(--chip); border-radius:0 8px 8px 0; }
 .review-item .rq { font-weight:600; }
-.review-item .ra { font-size:.9rem; margin-top:.2rem; }
+.review-item .ra { font-size:.9rem; margin:.35rem 0 .3rem; display:flex; flex-wrap:wrap;
+  gap:.4rem .8rem; align-items:center; }
 .review-item .ra b { color:var(--accent-ink); }
+.review-item .jump { background:none; border:none; cursor:pointer; font-size:.85rem;
+  color:var(--accent-ink); text-decoration:underline; text-underline-offset:3px; padding:0; }
 .hidden { display:none !important; }
 .startbox { text-align:center; padding:2.5rem 1rem; }
 .startbox .cta { margin-top:1rem; border:none; cursor:pointer; }
