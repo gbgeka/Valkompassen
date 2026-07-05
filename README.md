@@ -24,6 +24,7 @@ En sofistikerad valkompass för riksdagsvalet i Sverige **13 september 2026**. M
 - [`docs/02-fragedesign.md`](docs/02-fragedesign.md) — vilka typer av frågor som behövs, de åtta dimensionerna, frågeformat och principer för bra påståenden.
 - [`docs/03-matchningsalgoritm.md`](docs/03-matchningsalgoritm.md) — hur användarens svar matchas mot partierna (viktad distans, normalisering, resultatpresentation).
 - [`docs/04-partiernas-program-2026-2030.md`](docs/04-partiernas-program-2026-2030.md) — kort sammanställning per parti: vad de står för och vill åstadkomma under mandatperioden 2026–2030.
+- [`docs/05-funktionsgap.md`](docs/05-funktionsgap.md) — jämförelse med etablerade valkompasser och prioriterad utvecklingsplan.
 
 ## Data
 
