@@ -571,7 +571,7 @@ function pick(v) {{
   var cur = answers[q.id] || {{}};
   cur.v = v; if (!cur.w) cur.w = 1;
   answers[q.id] = cur; save(KEY_A, answers);
-  setTimeout(next, 160);
+  renderQ();
 }}
 function next() {{
   if (idx < QUESTIONS.length - 1) {{ idx++; renderQ(); }}
