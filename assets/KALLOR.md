@@ -32,21 +32,26 @@ Filsida: `https://commons.wikimedia.org/wiki/File:<filnamn med _ i st.f. mellans
 | KD | `Kd v1.svg` |
 | M | `Moderata samlingspartiet Logo.svg` |
 
-### Ej fritt licensierade — egenritade symboler används
+### Ej på Wikimedia Commons — hotlänkas från externa källor
 
 **S (rosen), SD (blåsippan) och MP (maskrosen)** finns inte fritt licensierade på Wikimedia
-Commons (upphovsrättsskyddade). I deras ställe visas egenritade, stiliserade tolkningar av
-respektive partisymbol — en röd ros, en blåsippa och en maskros — i partifärg
-(`assets/logos/s.svg`, `sd.svg`, `mp.svg`). Detta är originalillustrationer, inte partiernas
-officiella logotypfiler, och renderas via `logo`-fältet i `data/parties.json`.
+Commons. Deras officiella logotyper hotlänkas i stället från externa källor via `logoUrl` i
+`data/parties.json`:
+
+| Parti | Källa (logoUrl) |
+|-------|-----------------|
+| S | logopedia-wikin (`static.wikia.nocookie.net/logopedia/…/Socialdemokraternalogo2006-2010.png`) |
+| MP | finska Wikipedia (`upload.wikimedia.org/wikipedia/fi/…/Miljöpartiet_logo.svg`) |
+| SD | TT Nyhetsbyrån (`via.tt.se/data/images/…`) |
+
+Dessa logotyper är **varumärkesskyddade** — kontrollera partiernas riktlinjer före publik
+lansering. Om en extern bild inte laddar faller kortet automatiskt tillbaka till ett neutralt
+bokstavsmärke i partifärg (`onerror`). Som lokal reserv finns dessutom egenritade, stiliserade
+symboler (`assets/logos/s.svg`, `sd.svg`, `mp.svg`) — originalillustrationer, inte officiella
+logotypfiler; de används om `logoUrl` tas bort så att `logo`-fältet tar över.
 
 Verifierad fallgrop: `Social Democratic Party logo (2021).svg` på Commons är **brittiska**
 SDP — använd den inte.
-
-För officiella logotyper: hämta från partiernas pressrum (socialdemokraterna.se/press,
-sd.se/press, mp.se/press) och lägg som lokala filer med samma filnamn som de egenritade
-symbolerna; byggskriptet `tools/build_site.py` plockar automatiskt upp `logo`-fältet. Partiloggor
-är varumärkesskyddade — kontrollera partiernas riktlinjer före publik lansering.
 
 ## Storlekshantering
 
