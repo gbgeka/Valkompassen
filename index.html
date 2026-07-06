@@ -356,15 +356,15 @@ button.prh[aria-expanded="true"] .caret { transform:rotate(180deg); }
   </div>
   <div class="leaders"><figure class="leader"><span class="portrait" style="--pc:#52BDEC"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ulf%20Kristersson%20January%202023.jpg?width=128" alt="Porträtt: Ulf Kristersson" loading="lazy" onerror="this.parentElement.classList.add('img-failed')"><svg class="ph" viewBox="0 0 64 64" role="img" aria-label="Ulf Kristersson"><circle cx="32" cy="32" r="30" fill="#e9e4dc"/><text x="32" y="35" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="22" fill="#6b6459">UK</text></svg></span><figcaption><strong>Ulf Kristersson</strong><span>partiledare</span></figcaption></figure></div>
   <p class="program">Statsministerpartiet söker förnyat mandat på ekonomisk frihet och trygghet. Flaggskeppslöftet är att <strong>en typisk tvåbarnsfamilj ska få behålla 5 000 kronor mer i månaden</strong> genom sänkta skatter på arbete. M vill fortsätta arbetslinjen med bidragstak, fullfölja "paradigmskiftet" i migrationspolitiken, bygga ut kärnkraften och fortsätta upprustningen av försvaret. Mot gängen: hårdare straff, fler poliser, visitationszoner och utökad kameraövervakning. Kärnan: det ska löna sig att arbeta, och staten ska vara hård mot brott men mindre i ekonomin.</p>
-</article><article class="party" id="sd" style="--pc:#DDDD00">
+</article><article class="party" id="sd" style="--pc:#F8D800">
   <div class="party-head">
-    <span class="logo-box"><img src="assets/logos/sd.png" alt="Sverigedemokraterna logotyp" loading="lazy" onerror="this.parentElement.classList.add('img-failed')"><svg class="ph" viewBox="0 0 64 64" role="img" aria-label="Sverigedemokraterna symbol"><circle cx="32" cy="32" r="30" fill="#DDDD00"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="22" fill="#1a1a1a">SD</text></svg></span>
+    <span class="logo-box"><img src="assets/logos/sd.png" alt="Sverigedemokraterna logotyp" loading="lazy" onerror="this.parentElement.classList.add('img-failed')"><svg class="ph" viewBox="0 0 64 64" role="img" aria-label="Sverigedemokraterna symbol"><circle cx="32" cy="32" r="30" fill="#F8D800"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="bold" font-size="22" fill="#1a1a1a">SD</text></svg></span>
     <div class="party-title">
       <h3>Sverigedemokraterna</h3>
       <p class="ideology">socialkonservatism · nationalism</p>
     </div>
   </div>
-  <div class="leaders"><figure class="leader"><span class="portrait" style="--pc:#DDDD00"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jimmie%20%C3%85kesson%20%28cropped%29.jpg?width=128" alt="Porträtt: Jimmie Åkesson" loading="lazy" onerror="this.parentElement.classList.add('img-failed')"><svg class="ph" viewBox="0 0 64 64" role="img" aria-label="Jimmie Åkesson"><circle cx="32" cy="32" r="30" fill="#e9e4dc"/><text x="32" y="35" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="22" fill="#6b6459">JÅ</text></svg></span><figcaption><strong>Jimmie Åkesson</strong><span>partiledare</span></figcaption></figure></div>
+  <div class="leaders"><figure class="leader"><span class="portrait" style="--pc:#F8D800"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jimmie%20%C3%85kesson%20%28cropped%29.jpg?width=128" alt="Porträtt: Jimmie Åkesson" loading="lazy" onerror="this.parentElement.classList.add('img-failed')"><svg class="ph" viewBox="0 0 64 64" role="img" aria-label="Jimmie Åkesson"><circle cx="32" cy="32" r="30" fill="#e9e4dc"/><text x="32" y="35" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="22" fill="#6b6459">JÅ</text></svg></span><figcaption><strong>Jimmie Åkesson</strong><span>partiledare</span></figcaption></figure></div>
   <p class="program">Vill fullborda omläggningen av migrationspolitiken: kraftigt minskad invandring och ett aktivt återvandringsprogram. Sänkt skatt på bensin och diesel är ett av partiets främsta vallöften, tillsammans med hårdare straff, utbyggd kärnkraft och stärkt välfärd för medborgarna. SD är EU-skeptiskt och vill flytta makt tillbaka till Sverige. Genom Sverigelöftet med L siktar partiet för första gången på <strong>regeringsmedverkan</strong> — inte bara stödparti. Kärnan: nationell sammanhållning, låga levnadsomkostnader och en migrationspolitik stramare än alla andras.</p>
 </article><article class="party" id="kd" style="--pc:#000077">
   <div class="party-head">
@@ -410,7 +410,7 @@ button.prh[aria-expanded="true"] .caret { transform:rotate(180deg); }
   var list = document.getElementById('res-list');
   res.scores.slice(0, 3).forEach(function (s) {
     var row = document.createElement('div'); row.className = 'score-row';
-    var dark = ['#DDDD00', '#52BDEC'].indexOf(s.color) >= 0;
+    var dark = ['#F8D800', '#52BDEC'].indexOf(s.color) >= 0;
     row.innerHTML = '<span class="pid" style="background:' + s.color + ';color:' +
       (dark ? '#1a1a1a' : '#fff') + '">' + s.id + '</span>' +
       '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
