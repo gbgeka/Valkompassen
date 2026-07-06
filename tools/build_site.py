@@ -57,9 +57,10 @@ def logo_html(p):
         f'<text x="32" y="33" text-anchor="middle" dominant-baseline="central" '
         f'font-family="Georgia,serif" font-weight="bold" font-size="{fs}" '
         f'fill="{ph_fg}">{p["id"]}</text></svg>')
-    if p.get('logoUrl'):
+    src = p.get('logoUrl') or p.get('logo')
+    if src:
         return (f'<span class="logo-box">'
-                f'<img src="{p["logoUrl"]}" alt="{p["name"]} logotyp" loading="lazy" '
+                f'<img src="{src}" alt="{p["name"]} logotyp" loading="lazy" '
                 f'onerror="this.parentElement.classList.add(\'img-failed\')">'
                 f'{placeholder}</span>')
     return f'<span class="logo-box no-media">{placeholder}</span>'
@@ -411,8 +412,8 @@ def build_index(parties_by_id, texts):
   <p>Partiledarfoton och fritt licensierade partisymboler:
   <a href="https://commons.wikimedia.org">Wikimedia Commons</a> (CC-licenser, källor per bild i
   <a href="https://github.com/gbgeka/Valkompassen/blob/claude/swedish-voter-compass-42d6l8/assets/KALLOR.md">assets/KALLOR.md</a>).
-  S-, SD- och MP-symbolerna visas som neutrala märken i partifärg eftersom de officiella
-  logotyperna inte är fritt licensierade. Texterna bygger på nyhetsrapportering och partiernas
+  S, SD och MP visas med egenritade stiliserade symboler (ros, maskros och blåsippa) eftersom
+  de officiella logotyperna inte är fritt licensierade. Texterna bygger på nyhetsrapportering och partiernas
   utspel t.o.m. juli 2026. Del av projektet
   <a href="https://github.com/gbgeka/Valkompassen">Valkompassen</a>.</p>
 </footer>

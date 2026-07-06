@@ -4,7 +4,7 @@
     "updated": "2026-07-04",
     "note": "Positioner är redaktionella utgångsvärden (skala -2..+2) som MÅSTE verifieras mot valmanifest 2026, riksdagsvoteringar och partisvar före lansering. Se docs/01-partikartlaggning.md.",
     "positionStatus": "UNVERIFIED_DRAFT",
-    "imageNote": "Foton och friast tillgängliga partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S-, SD- och MP-logotyperna är inte fritt licensierade; lokala platshållarmärken används tills officiellt material lagts in. Se assets/KALLOR.md."
+    "imageNote": "Foton och friast tillgängliga partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S-, SD- och MP-logotyperna är inte fritt licensierade; egenritade stiliserade symboler (ros, maskros, blåsippa) i assets/logos/ används i deras ställe. Se assets/KALLOR.md."
   },
   "parties": [
     {
