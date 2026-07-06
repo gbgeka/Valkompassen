@@ -412,8 +412,8 @@ def build_index(parties_by_id, texts):
   <p>Partiledarfoton och fritt licensierade partisymboler:
   <a href="https://commons.wikimedia.org">Wikimedia Commons</a> (CC-licenser, källor per bild i
   <a href="https://github.com/gbgeka/Valkompassen/blob/claude/swedish-voter-compass-42d6l8/assets/KALLOR.md">assets/KALLOR.md</a>).
-  S, SD och MP visas med egenritade stiliserade symboler (ros, maskros och blåsippa) eftersom
-  de officiella logotyperna inte är fritt licensierade. Texterna bygger på nyhetsrapportering och partiernas
+  S, MP och SD använder lokalt lagrade officiella logotyper; logotyperna är varumärkesskyddade.
+  Texterna bygger på nyhetsrapportering och partiernas
   utspel t.o.m. juli 2026. Del av projektet
   <a href="https://github.com/gbgeka/Valkompassen">Valkompassen</a>.</p>
 </footer>

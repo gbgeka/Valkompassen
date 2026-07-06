@@ -32,21 +32,24 @@ Filsida: `https://commons.wikimedia.org/wiki/File:<filnamn med _ i st.f. mellans
 | KD | `Kd v1.svg` |
 | M | `Moderata samlingspartiet Logo.svg` |
 
-### Ej fritt licensierade — egenritade symboler används
+### Ej på Wikimedia Commons — lokalt lagrade officiella logotyper
 
 **S (rosen), SD (blåsippan) och MP (maskrosen)** finns inte fritt licensierade på Wikimedia
-Commons (upphovsrättsskyddade). I deras ställe visas egenritade, stiliserade tolkningar av
-respektive partisymbol — en röd ros, en blåsippa och en maskros — i partifärg
-(`assets/logos/s.svg`, `sd.svg`, `mp.svg`). Detta är originalillustrationer, inte partiernas
-officiella logotypfiler, och renderas via `logo`-fältet i `data/parties.json`.
+Commons. Deras officiella logotyper lagras i stället lokalt i `assets/logos/` och pekas ut via
+`logo`-fältet i `data/parties.json`:
+
+| Parti | Lokal fil | Ursprung |
+|-------|-----------|----------|
+| S | `assets/logos/s.png` | logopedia-wikin (Socialdemokraternalogo2006-2010) |
+| MP | `assets/logos/mp.svg` | finska Wikipedia (Miljöpartiet_logo) |
+| SD | `assets/logos/sd.png` | TT Nyhetsbyrån |
+
+Dessa logotyper är **varumärkesskyddade** — kontrollera partiernas riktlinjer före publik
+lansering. Om en lokal fil saknas eller inte laddar faller kortet automatiskt tillbaka till ett
+neutralt bokstavsmärke i partifärg (`onerror`).
 
 Verifierad fallgrop: `Social Democratic Party logo (2021).svg` på Commons är **brittiska**
 SDP — använd den inte.
-
-För officiella logotyper: hämta från partiernas pressrum (socialdemokraterna.se/press,
-sd.se/press, mp.se/press) och lägg som lokala filer med samma filnamn som de egenritade
-symbolerna; byggskriptet `tools/build_site.py` plockar automatiskt upp `logo`-fältet. Partiloggor
-är varumärkesskyddade — kontrollera partiernas riktlinjer före publik lansering.
 
 ## Storlekshantering
 

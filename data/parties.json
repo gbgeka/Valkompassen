@@ -4,7 +4,7 @@
     "updated": "2026-07-04",
     "note": "Positioner är redaktionella utgångsvärden (skala -2..+2) som MÅSTE verifieras mot valmanifest 2026, riksdagsvoteringar och partisvar före lansering. Se docs/01-partikartlaggning.md.",
     "positionStatus": "UNVERIFIED_DRAFT",
-    "imageNote": "Foton och friast tillgängliga partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S-, SD- och MP-logotyperna är inte fritt licensierade; egenritade stiliserade symboler (ros, maskros, blåsippa) i assets/logos/ används i deras ställe. Se assets/KALLOR.md."
+    "imageNote": "Foton och de flesta partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S, MP och SD använder lokalt lagrade officiella logotyper i assets/logos/ (s.png, mp.svg, sd.png). Logotyperna är varumärkesskyddade — kontrollera partiernas riktlinjer före publik lansering. Se assets/KALLOR.md."
   },
   "parties": [
     {
@@ -100,7 +100,7 @@
         "energy": 0
       },
       "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete.",
-      "logo": "assets/logos/s.svg",
+      "logo": "assets/logos/s.png",
       "logoCommonsFile": null,
       "logoUrl": null,
       "leaders": [
@@ -264,7 +264,7 @@
         "energy": 2
       },
       "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet.",
-      "logo": "assets/logos/sd.svg",
+      "logo": "assets/logos/sd.png",
       "logoCommonsFile": null,
       "logoUrl": null,
       "leaders": [
