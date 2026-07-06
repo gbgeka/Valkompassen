@@ -32,23 +32,21 @@ Filsida: `https://commons.wikimedia.org/wiki/File:<filnamn med _ i st.f. mellans
 | KD | `Kd v1.svg` |
 | M | `Moderata samlingspartiet Logo.svg` |
 
-### Ej på Wikimedia Commons — hotlänkas från externa källor
+### Ej på Wikimedia Commons — lokalt lagrade officiella logotyper
 
 **S (rosen), SD (blåsippan) och MP (maskrosen)** finns inte fritt licensierade på Wikimedia
-Commons. Deras officiella logotyper hotlänkas i stället från externa källor via `logoUrl` i
-`data/parties.json`:
+Commons. Deras officiella logotyper lagras i stället lokalt i `assets/logos/` och pekas ut via
+`logo`-fältet i `data/parties.json`:
 
-| Parti | Källa (logoUrl) |
-|-------|-----------------|
-| S | logopedia-wikin (`static.wikia.nocookie.net/logopedia/…/Socialdemokraternalogo2006-2010.png`) |
-| MP | finska Wikipedia (`upload.wikimedia.org/wikipedia/fi/…/Miljöpartiet_logo.svg`) |
-| SD | TT Nyhetsbyrån (`via.tt.se/data/images/…`) |
+| Parti | Lokal fil | Ursprung |
+|-------|-----------|----------|
+| S | `assets/logos/s.png` | logopedia-wikin (Socialdemokraternalogo2006-2010) |
+| MP | `assets/logos/mp.svg` | finska Wikipedia (Miljöpartiet_logo) |
+| SD | `assets/logos/sd.png` | TT Nyhetsbyrån |
 
 Dessa logotyper är **varumärkesskyddade** — kontrollera partiernas riktlinjer före publik
-lansering. Om en extern bild inte laddar faller kortet automatiskt tillbaka till ett neutralt
-bokstavsmärke i partifärg (`onerror`). Som lokal reserv finns dessutom egenritade, stiliserade
-symboler (`assets/logos/s.svg`, `sd.svg`, `mp.svg`) — originalillustrationer, inte officiella
-logotypfiler; de används om `logoUrl` tas bort så att `logo`-fältet tar över.
+lansering. Om en lokal fil saknas eller inte laddar faller kortet automatiskt tillbaka till ett
+neutralt bokstavsmärke i partifärg (`onerror`).
 
 Verifierad fallgrop: `Social Democratic Party logo (2021).svg` på Commons är **brittiska**
 SDP — använd den inte.

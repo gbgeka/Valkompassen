@@ -4,7 +4,7 @@
     "updated": "2026-07-04",
     "note": "Positioner är redaktionella utgångsvärden (skala -2..+2) som MÅSTE verifieras mot valmanifest 2026, riksdagsvoteringar och partisvar före lansering. Se docs/01-partikartlaggning.md.",
     "positionStatus": "UNVERIFIED_DRAFT",
-    "imageNote": "Foton och de flesta partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S, MP och SD hotlänkar sina logotyper från externa källor (logopedia-wikin, finska Wikipedia respektive TT); egenritade stiliserade symboler i assets/logos/ finns kvar som lokal reserv. Logotyperna är varumärkesskyddade — kontrollera partiernas riktlinjer före publik lansering. Se assets/KALLOR.md."
+    "imageNote": "Foton och de flesta partisymboler hotlänkas från Wikimedia Commons via Special:FilePath. S, MP och SD använder lokalt lagrade officiella logotyper i assets/logos/ (s.png, mp.svg, sd.png). Logotyperna är varumärkesskyddade — kontrollera partiernas riktlinjer före publik lansering. Se assets/KALLOR.md."
   },
   "parties": [
     {
@@ -63,7 +63,7 @@
       "summary": "Går till val på 'Sverige vinner på grön politik': snabbare klimatomställning, naturskydd, förnybart före kärnkraft och humanare migrationspolitik.",
       "logo": "assets/logos/mp.svg",
       "logoCommonsFile": null,
-      "logoUrl": "https://upload.wikimedia.org/wikipedia/fi/f/f5/Milj%C3%B6partiet_logo.svg",
+      "logoUrl": null,
       "leaders": [
         {
           "name": "Amanda Lind",
@@ -100,9 +100,9 @@
         "energy": 0
       },
       "summary": "Plattformen 'Plan för Sverige': ekonomi, välfärd och trygghet — höjda barnbidrag, billigare mediciner, press på banker och matjättar samt hårda tag mot gängen kombinerat med förebyggande arbete.",
-      "logo": "assets/logos/s.svg",
+      "logo": "assets/logos/s.png",
       "logoCommonsFile": null,
-      "logoUrl": "https://static.wikia.nocookie.net/logopedia/images/a/ac/Socialdemokraternalogo2006-2010.png/revision/latest/scale-to-width-down/1000?cb=20240113113430",
+      "logoUrl": null,
       "leaders": [
         {
           "name": "Magdalena Andersson",
@@ -264,9 +264,9 @@
         "energy": 2
       },
       "summary": "Kraftigt minskad invandring och återvandring, sänkt bensin- och dieselskatt, hårdare straff — och för första gången sikte på regeringsmedverkan via Sverigelöftet.",
-      "logo": "assets/logos/sd.svg",
+      "logo": "assets/logos/sd.png",
       "logoCommonsFile": null,
-      "logoUrl": "https://via.tt.se/data/images/00740/a2324df2-849a-44a3-b779-1569a30de3ac-w_960_h_960.png",
+      "logoUrl": null,
       "leaders": [
         {
           "name": "Jimmie Åkesson",
