@@ -1,7 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <circle cx="100" cy="100" r="92" fill="#53A045"/>
-  <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="4"/>
-  <text x="100" y="100" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-weight="bold"
-        font-size="72" fill="#ffffff">MP</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Miljöpartiet de gröna – maskros">
+  <!-- stjälk -->
+  <path d="M32 30 C32 41 32 50 31 59" fill="none" stroke="#53A045" stroke-width="3" stroke-linecap="round"/>
+  <!-- blad -->
+  <path d="M32 45 C25 43 20 45 16 50 C23 52 29 50 32 46 Z" fill="#53A045"/>
+  <!-- maskrosens fröboll: strålar med frön -->
+  <g stroke="#53A045" stroke-width="2.2" stroke-linecap="round">
+    <path d="M32 22 L45 22"/>
+    <path d="M32 22 L43.3 28.5"/>
+    <path d="M32 22 L38.5 33.3"/>
+    <path d="M32 22 L32 35"/>
+    <path d="M32 22 L25.5 33.3"/>
+    <path d="M32 22 L20.7 28.5"/>
+    <path d="M32 22 L19 22"/>
+    <path d="M32 22 L20.7 15.5"/>
+    <path d="M32 22 L25.5 10.7"/>
+    <path d="M32 22 L32 9"/>
+    <path d="M32 22 L38.5 10.7"/>
+    <path d="M32 22 L43.3 15.5"/>
+  </g>
+  <g fill="#4A9540">
+    <circle cx="45" cy="22" r="1.7"/>
+    <circle cx="43.3" cy="28.5" r="1.7"/>
+    <circle cx="38.5" cy="33.3" r="1.7"/>
+    <circle cx="32" cy="35" r="1.7"/>
+    <circle cx="25.5" cy="33.3" r="1.7"/>
+    <circle cx="20.7" cy="28.5" r="1.7"/>
+    <circle cx="19" cy="22" r="1.7"/>
+    <circle cx="20.7" cy="15.5" r="1.7"/>
+    <circle cx="25.5" cy="10.7" r="1.7"/>
+    <circle cx="32" cy="9" r="1.7"/>
+    <circle cx="38.5" cy="10.7" r="1.7"/>
+    <circle cx="43.3" cy="15.5" r="1.7"/>
+  </g>
+  <circle cx="32" cy="22" r="3.4" fill="#3C8A38"/>
 </svg>
