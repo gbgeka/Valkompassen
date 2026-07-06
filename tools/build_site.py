@@ -262,6 +262,55 @@ details.info .info-body > p { margin:0 0 .85rem; }
     transform .08s ease; }
   details.info summary .chev { transition:transform .18s ease; }
 }
+/* --- prioritering --- */
+.prio-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(13rem, 1fr)); gap:.6rem;
+  margin:1.4rem 0; text-align:left; }
+.prio-grid button { display:flex; align-items:center; gap:.6rem; padding:.75rem .9rem;
+  border:1.5px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink);
+  font-size:.95rem; cursor:pointer; text-align:left; }
+.prio-grid button::before { content:''; flex:none; width:19px; height:19px; border-radius:6px;
+  border:2px solid var(--line); background:var(--paper); font:700 12px/16px sans-serif;
+  text-align:center; color:var(--go-ink); }
+.prio-grid button:hover { border-color:var(--go); }
+.prio-grid button.sel { border-color:var(--go); background:rgba(27,122,61,.08); font-weight:600; }
+.prio-grid button.sel::before { content:'✓'; background:var(--go); border-color:var(--go); }
+.prio-grid button:disabled { opacity:.45; cursor:default; }
+
+/* --- resultat: expanderbara partirader & områden --- */
+.party-result { margin:.45rem 0; }
+button.prh { display:grid; grid-template-columns:2.4rem 1fr 3.2rem 1rem; gap:.7rem; width:100%;
+  align-items:center; background:none; border:none; padding:.15rem 0; cursor:pointer;
+  color:var(--ink); font:inherit; text-align:left; }
+button.prh .caret { font-size:.7rem; color:var(--ink-2); }
+button.prh[aria-expanded="true"] .caret { transform:rotate(180deg); }
+.pr-detail { margin:.4rem 0 .9rem 3.1rem; font-size:.88rem; border-left:3px solid var(--line);
+  padding-left:.9rem; }
+.pr-detail p { margin:.3rem 0; }
+.pr-detail .q-quote { color:var(--ink-2); font-style:italic; }
+.dimsec { border:1px solid var(--line); border-radius:8px; margin:.5rem 0; background:var(--card); }
+.dimsec summary { cursor:pointer; padding:.65rem .9rem; display:flex; flex-wrap:wrap;
+  gap:.3rem .8rem; align-items:baseline; list-style:none; }
+.dimsec summary::-webkit-details-marker { display:none; }
+.dimsec summary .dimname { font-weight:600; }
+.dimsec summary .dimtop { color:var(--accent-ink); font-size:.88rem; }
+.dimsec summary .dimn { color:var(--ink-2); font-size:.75rem; margin-left:auto; }
+.dimsec .dimbody { padding:.2rem .9rem .7rem; border-top:1px solid var(--line); }
+.share-row { display:flex; gap:.7rem; flex-wrap:wrap; margin:1.2rem 0; }
+.shared-note { background:var(--chip); border:1px solid var(--accent); border-radius:8px;
+  padding:.7rem 1rem; font-size:.9rem; margin:.8rem 0; }
+
+/* --- jämför partier --- */
+.cmp-selects { display:flex; gap:.7rem; align-items:center; flex-wrap:wrap; margin:1rem 0; }
+.cmp-selects select { font-size:.95rem; padding:.55rem .7rem; border-radius:8px;
+  border:1.5px solid var(--line); background:var(--card); color:var(--ink); }
+.cmp-sum { margin:.4rem 0 1.1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+.cmp-item { border-bottom:1px solid var(--line); padding:.75rem 0; }
+.cmp-item .rq { font-size:.92rem; font-weight:600; }
+.cmp-item.diff-big { border-left:4px solid var(--con); padding-left:.7rem; }
+.cmp-chips { display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.4rem; }
+.cmp-chip { font:600 .78rem/1.3 ui-monospace, monospace; padding:.35rem .6rem; border-radius:6px; }
+.cmp-chip.du { background:none; border:1.5px dashed var(--go); color:var(--ink); }
+
 /* --- mobilfinput --- */
 @media (max-width:600px) {
   .wrap { padding:1.3rem .85rem 3rem; }
@@ -335,6 +384,7 @@ def build_index(parties_by_id, texts):
     <div class="result-links">
       <a href="test.html#resultat">Se hela resultatet</a>
       <a href="test.html#svar">Se dina svar</a>
+      <a href="test.html#jamfor">Jämför partier</a>
       <a href="test.html#om">Gör om testet</a>
     </div>
   </section>
@@ -394,9 +444,11 @@ def build_test(parties, questions, dimensions):
     dim_names = {d['id']: d['name'] for d in dimensions}
     parties_js = js_embed([{'id': p['id'], 'name': p['name'], 'color': p['color']}
                            for p in parties])
+    dims_js = js_embed([{'id': d['id'], 'name': d['name']} for d in dimensions])
     questions_js = js_embed([{
-        'id': q['id'], 'dimension': dim_names[q['dimension']], 'text': q['text'],
-        'info': q['info'], 'partyPositions': q['partyPositions']} for q in questions])
+        'id': q['id'], 'dim': q['dimension'], 'dimension': dim_names[q['dimension']],
+        'text': q['text'], 'info': q['info'], 'partyPositions': q['partyPositions']}
+        for q in questions])
 
     return f'''<style>{CSS}</style>
 <div class="wrap">
@@ -404,14 +456,28 @@ def build_test(parties, questions, dimensions):
   <span class="eyebrow"><a href="index.html" style="color:inherit;text-decoration:none">← Valkompassen</a> · Testet</span>
 </header>
 
-<section id="v-start" class="startbox">
-  <h1>Valkompasstestet</h1>
-  <p class="lede" style="margin-inline:auto">32 påståenden om svensk politik. Svara på en femgradig skala,
-  markera vilka frågor som är extra viktiga för dig, och tryck på infoknappen om du vill
-  förstå frågan bättre — med för- och nackdelar för varje ståndpunkt.</p>
-  <p class="small">Dina svar sparas bara lokalt i din webbläsare (localStorage) — inget skickas någonstans.
-  Du kan när som helst komma tillbaka och se dina svar och ditt resultat.</p>
+<section id="v-start" class="startbox hidden">
+  <h1>Välkommen tillbaka</h1>
+  <p class="lede" style="margin-inline:auto">Dina tidigare svar finns sparade lokalt i din webbläsare.
+  Fortsätt där du var, titta på resultatet eller börja om från början.</p>
   <div id="start-buttons"></div>
+</section>
+
+<section id="v-prio" class="hidden">
+  <h1>Vad är viktigast för dig?</h1>
+  <p class="lede">Välj upp till tre samhällsområden som väger tyngst när du röstar —
+  frågor inom dem får större inverkan på matchningen. Sedan väntar 32 påståenden (cirka 8 minuter)
+  med svar på en femgradig skala. Markera gärna extra viktiga frågor, och tryck på infoknappen
+  när du vill förstå en fråga bättre — med för- och nackdelar för varje ståndpunkt.</p>
+  <p class="small">Dina svar sparas bara lokalt i din webbläsare — inget skickas någonstans.
+  Du kan när som helst komma tillbaka, se dina svar och ändra dem.</p>
+  <div class="prio-grid" id="prio-grid"></div>
+  <div class="startrow">
+    <button class="cta" id="prio-done" type="button" style="border:none;cursor:pointer">Starta frågorna</button>
+  </div>
+  <div class="startrow">
+    <button class="skip" id="prio-skip" type="button">Hoppa över — vikta alla områden lika</button>
+  </div>
 </section>
 
 <section id="v-quiz" class="hidden">
@@ -447,16 +513,43 @@ def build_test(parties, questions, dimensions):
 </section>
 
 <section id="v-result" class="hidden">
-  <h1>Ditt resultat</h1>
+  <h1 id="r-title">Ditt resultat</h1>
   <p class="small" id="r-meta"></p>
+  <div id="r-shared-note"></div>
   <div id="r-warn"></div>
   <div id="r-list"></div>
+  <p class="small" id="r-hint"></p>
+  <div class="share-row" id="r-share-row">
+    <button class="btn" id="r-share" type="button">Kopiera resultatlänk</button>
+    <button class="btn" id="r-compare" type="button">Jämför två partier</button>
+  </div>
+  <div id="r-dims-wrap">
+    <h2 class="bloc" style="margin-top:1.8rem">Så matchar du per område</h2>
+    <div id="r-dims"></div>
+  </div>
   <p class="small">Matchningen bygger på viktad överensstämmelse fråga för fråga
   (se <a href="https://github.com/gbgeka/Valkompassen/blob/claude/swedish-voter-compass-42d6l8/docs/03-matchningsalgoritm.md">metodiken</a>).
   Partipositionerna är redaktionella utkast som verifieras mot valmanifest och partisvar före skarp lansering.</p>
-  <div class="startrow">
+  <div class="startrow" id="r-own-actions">
     <button class="btn" id="r-review" type="button">Se dina svar</button>
     <button class="btn" id="r-redo" type="button">Gör om testet</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Till startsidan</a>
+  </div>
+</section>
+
+<section id="v-compare" class="hidden">
+  <h1>Jämför två partier</h1>
+  <p class="small">Fråga för fråga, sida vid sida. Rader med stor åsiktsskillnad (minst två steg) markeras.
+  Ditt eget svar visas när det finns.</p>
+  <div class="cmp-selects">
+    <select id="cmp-a" aria-label="Parti A"></select>
+    <span>mot</span>
+    <select id="cmp-b" aria-label="Parti B"></select>
+  </div>
+  <div class="cmp-sum" id="cmp-sum"></div>
+  <div id="cmp-list"></div>
+  <div class="startrow">
+    <button class="btn" id="cmp-back" type="button">← Tillbaka</button>
     <a class="btn" href="index.html" style="text-decoration:none">Till startsidan</a>
   </div>
 </section>
@@ -482,15 +575,42 @@ och försvinner om du rensar webbplatsdata. Del av projektet
 <script>
 var PARTIES = {parties_js};
 var QUESTIONS = {questions_js};
+var DIMS = {dims_js};
 var LABELS = [[-2, 'Tar helt avstånd'], [-1, 'Tar delvis avstånd'], [0, 'Neutral / vet ej'],
               [1, 'Instämmer delvis'], [2, 'Instämmer helt']];
 var WEIGHTS = [[0.5, 'Mindre viktig'], [1, 'Normal'], [2, 'Extra viktig']];
 var KEY_A = '{STORE_ANSWERS}', KEY_R = '{STORE_RESULT}', MIN = {MIN_ANSWERED};
+var KEY_P = 'vk_prio_v1', KEY_O = 'vk_ordning_v1';
+var PRIO_BOOST = 1.5;
 var DARKTEXT = ['#DDDD00', '#52BDEC'];
+var PBYID = {{}};
+PARTIES.forEach(function (p) {{ PBYID[p.id] = p; }});
+var QBYID = {{}};
+QUESTIONS.forEach(function (q) {{ QBYID[q.id] = q; }});
 
 var answers = load(KEY_A) || {{}};
 var idx = 0;
 var hist = [];  // ångra-stack (per session): {{qid, idx, prev}}
+
+/* slumpad frågeordning inom varje område; sparas så numrering är stabil */
+function ensureOrder() {{
+  var o = load(KEY_O);
+  if (o && o.length === QUESTIONS.length) return o;
+  o = [];
+  DIMS.forEach(function (d) {{
+    var g = QUESTIONS.filter(function (q) {{ return q.dim === d.id; }}).map(function (q) {{ return q.id; }});
+    for (var i = g.length - 1; i > 0; i--) {{
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = g[i]; g[i] = g[j]; g[j] = t;
+    }}
+    o = o.concat(g);
+  }});
+  save(KEY_O, o);
+  return o;
+}}
+var ORDER = ensureOrder();
+function getQ(i) {{ return QBYID[ORDER[i]]; }}
+function prio() {{ return load(KEY_P) || []; }}
 
 function load(k) {{ try {{ return JSON.parse(localStorage.getItem(k)); }} catch (e) {{ return null; }} }}
 function save(k, v) {{ localStorage.setItem(k, JSON.stringify(v)); }}
@@ -503,31 +623,55 @@ function answeredCount() {{
 function touchedCount() {{ return Object.keys(answers).length; }}
 
 function show(view) {{
-  ['v-start', 'v-quiz', 'v-result', 'v-review'].forEach(function (v) {{
+  ['v-start', 'v-prio', 'v-quiz', 'v-result', 'v-review', 'v-compare'].forEach(function (v) {{
     el(v).classList.toggle('hidden', v !== view);
   }});
   window.scrollTo(0, 0);
 }}
 
-/* ---- matchning: viktad L1 enligt docs/03 ---- */
-function computeScores() {{
+/* ---- matchning: viktad L1 enligt docs/03, med områdesprioritering ---- */
+function effWeight(q, a) {{
+  var w = a.w || 1;
+  if (prio().indexOf(q.dim) >= 0) w *= PRIO_BOOST;
+  return w;
+}}
+function computeScores(dimId) {{
   var rows = PARTIES.map(function (p) {{
-    var num = 0, den = 0;
+    var num = 0, den = 0, n = 0;
     QUESTIONS.forEach(function (q) {{
+      if (dimId && q.dim !== dimId) return;
       var a = answers[q.id];
       if (!a || a.v === null || a.v === undefined) return;
-      var w = a.w || 1;
+      var w = effWeight(q, a);
       num += w * Math.abs(a.v - q.partyPositions[p.id]);
       den += w * 4;
+      n++;
     }});
-    return {{ id: p.id, name: p.name, color: p.color,
+    return {{ id: p.id, name: p.name, color: p.color, n: n,
              pct: den ? Math.round(100 * (1 - num / den)) : 0 }};
   }});
   rows.sort(function (a, b) {{ return b.pct - a.pct; }});
   return rows;
 }}
+/* överensstämmelse per parti: samma svar / nära / störst samsyn & skillnad */
+function agreeStats(pid) {{
+  var same = 0, near = 0, n = 0, best = null, worst = null;
+  QUESTIONS.forEach(function (q) {{
+    var a = answers[q.id];
+    if (!a || a.v === null || a.v === undefined) return;
+    n++;
+    var pv = q.partyPositions[pid];
+    var d = Math.abs(a.v - pv);
+    if (d === 0) {{
+      same++;
+      if (!best || Math.abs(a.v) > Math.abs(best.v)) best = {{ q: q, v: a.v }};
+    }} else if (d === 1) near++;
+    if (!worst || d > worst.d) worst = {{ q: q, d: d, u: a.v, pv: pv }};
+  }});
+  return {{ same: same, near: near, n: n, best: best, worst: worst }};
+}}
 
-/* ---- startvy ---- */
+/* ---- startvy: visas bara för återvändande besökare med sparade svar ---- */
 function renderStart() {{
   var box = el('start-buttons'); box.innerHTML = '';
   var res = load(KEY_R);
@@ -536,31 +680,59 @@ function renderStart() {{
     var b = document.createElement('button'); b.type = 'button';
     b.className = cls; b.textContent = txt; b.addEventListener('click', fn); return b;
   }}
-  if (touched === 0) {{
-    box.appendChild(btn('Starta testet', 'cta', function () {{ idx = 0; show('v-quiz'); renderQ(); }}));
-  }} else {{
-    var row = document.createElement('div'); row.className = 'startrow';
-    if (touched < QUESTIONS.length) {{
-      row.appendChild(btn('Fortsätt (' + touched + ' av ' + QUESTIONS.length + ')', 'cta', function () {{
-        idx = firstUnanswered(); show('v-quiz'); renderQ();
-      }}));
-    }}
-    if (res) row.appendChild(btn('Se resultat', 'btn', function () {{ renderResult(false); }}));
-    row.appendChild(btn('Se dina svar', 'btn', function () {{ renderReview(); }}));
-    row.appendChild(btn('Nollställ testet', 'btn', function () {{ restart(false); }}));
-    box.appendChild(row);
+  var row = document.createElement('div'); row.className = 'startrow';
+  if (touched < QUESTIONS.length) {{
+    row.appendChild(btn('Fortsätt (' + touched + ' av ' + QUESTIONS.length + ')', 'cta', function () {{
+      idx = firstUnanswered(); show('v-quiz'); renderQ();
+    }}));
   }}
+  if (res) row.appendChild(btn('Se resultat', 'btn', function () {{ renderResult(false); }}));
+  row.appendChild(btn('Se dina svar', 'btn', function () {{ renderReview(); }}));
+  row.appendChild(btn('Nollställ testet', 'btn', function () {{ restart(false); }}));
+  box.appendChild(row);
+  show('v-start');
 }}
 function firstUnanswered() {{
-  for (var i = 0; i < QUESTIONS.length; i++) if (!(QUESTIONS[i].id in answers)) return i;
+  for (var i = 0; i < ORDER.length; i++) if (!(ORDER[i] in answers)) return i;
   return 0;
 }}
 function restart(force) {{
   if (!force && touchedCount() > 0 &&
       !confirm('Detta nollställer testet: alla dina svar och ditt resultat raderas. Vill du fortsätta?')) return;
   localStorage.removeItem(KEY_A); localStorage.removeItem(KEY_R);
-  answers = {{}}; hist = []; idx = 0; show('v-quiz'); renderQ();
+  localStorage.removeItem(KEY_P); localStorage.removeItem(KEY_O);
+  answers = {{}}; hist = []; idx = 0;
+  ORDER = ensureOrder();
+  renderPrio();
 }}
+
+/* ---- prioritering: första steget för nya besökare ---- */
+function renderPrio() {{
+  var grid = el('prio-grid'); grid.innerHTML = '';
+  var sel = prio().slice();
+  DIMS.forEach(function (d) {{
+    var b = document.createElement('button'); b.type = 'button';
+    b.textContent = d.name;
+    function refresh() {{
+      b.classList.toggle('sel', sel.indexOf(d.id) >= 0);
+      b.disabled = sel.length >= 3 && sel.indexOf(d.id) < 0;
+    }}
+    b.addEventListener('click', function () {{
+      var i = sel.indexOf(d.id);
+      if (i >= 0) sel.splice(i, 1); else if (sel.length < 3) sel.push(d.id);
+      grid.querySelectorAll('button').forEach(function (btn2, k) {{
+        btn2.classList.toggle('sel', sel.indexOf(DIMS[k].id) >= 0);
+        btn2.disabled = sel.length >= 3 && sel.indexOf(DIMS[k].id) < 0;
+      }});
+    }});
+    refresh();
+    grid.appendChild(b);
+  }});
+  el('prio-done').onclick = function () {{ save(KEY_P, sel); startQuiz(); }};
+  el('prio-skip').onclick = function () {{ save(KEY_P, []); startQuiz(); }};
+  show('v-prio');
+}}
+function startQuiz() {{ idx = firstUnanswered(); show('v-quiz'); renderQ(); }}
 
 /* ---- ångra ---- */
 function snapshot(qid) {{
@@ -583,7 +755,7 @@ el('q-reset').addEventListener('click', function () {{ restart(false); }});
 
 /* ---- frågevy ---- */
 function renderQ() {{
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   var a = answers[q.id] || {{}};
   el('q-step').textContent = 'Fråga ' + (idx + 1) + ' av ' + QUESTIONS.length;
   el('q-dim').textContent = q.dimension;
@@ -625,7 +797,7 @@ function renderQ() {{
   el('q-undo').disabled = hist.length === 0;
 }}
 function pick(v) {{
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   pushHist(q.id);
   var cur = answers[q.id] || {{}};
   cur.v = v; if (!cur.w) cur.w = 1;
@@ -639,49 +811,226 @@ function next() {{
 el('q-prev').addEventListener('click', function () {{ if (idx > 0) {{ idx--; renderQ(); }} }});
 el('q-next').addEventListener('click', next);
 el('q-skip').addEventListener('click', function () {{
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   pushHist(q.id);
   answers[q.id] = {{ v: null, w: answers[q.id] && answers[q.id].w || 1 }};
   save(KEY_A, answers); next();
 }});
 
 /* ---- resultatvy ---- */
-function renderResult(saveIt) {{
-  var n = answeredCount();
-  var warn = el('r-warn'); warn.innerHTML = '';
-  if (n < MIN) {{
-    warn.innerHTML = '<div class="warn">Du har besvarat ' + n + ' frågor. Det behövs minst ' +
-      MIN + ' för ett pålitligt resultat — <a href="#" id="warn-more">svara på fler frågor</a>.</div>';
-    el('r-list').innerHTML = '';
-    el('r-meta').textContent = '';
-    show('v-result');
-    el('warn-more').addEventListener('click', function (ev) {{
-      ev.preventDefault(); idx = firstUnanswered(); show('v-quiz'); renderQ();
+function fgFor(color) {{ return DARKTEXT.indexOf(color) >= 0 ? '#1a1a1a' : '#fff'; }}
+function scoreRowHtml(s) {{
+  return '<span class="pid" style="background:' + s.color + ';color:' + fgFor(s.color) + '">' + s.id + '</span>' +
+    '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
+    '<span class="pct">' + s.pct + ' %</span>';
+}}
+function partyDetailHtml(s) {{
+  var st = agreeStats(s.id);
+  var html = '<p><strong>Samma svar i ' + st.same + ' av ' + st.n + '</strong> besvarade frågor, ' +
+    'ett steg ifrån i ' + st.near + '.</p>';
+  if (st.best) {{
+    html += '<p>Störst samsyn: <span class="q-quote">”' + st.best.q.text + '”</span> — ni svarar båda <b>' +
+      labelFor(st.best.v).toLowerCase() + '</b>.</p>';
+  }}
+  if (st.worst && st.worst.d >= 2) {{
+    html += '<p>Störst skillnad: <span class="q-quote">”' + st.worst.q.text + '”</span> — du: <b>' +
+      labelFor(st.worst.u).toLowerCase() + '</b>, ' + s.id + ': <b>' + labelFor(st.worst.pv).toLowerCase() + '</b>.</p>';
+  }}
+  return html;
+}}
+function renderDims() {{
+  var wrap = el('r-dims'); wrap.innerHTML = '';
+  DIMS.forEach(function (d) {{
+    var rows = computeScores(d.id);
+    var nAns = rows[0] ? rows[0].n : 0;
+    var det = document.createElement('details'); det.className = 'dimsec';
+    var starred = prio().indexOf(d.id) >= 0 ? ' ★' : '';
+    if (nAns === 0) {{
+      det.innerHTML = '<summary><span class="dimname">' + d.name + starred +
+        '</span><span class="dimn">inga besvarade frågor</span></summary>';
+      wrap.appendChild(det);
+      return;
+    }}
+    var top = rows.slice(0, 3).map(function (s) {{ return s.id + ' ' + s.pct + ' %'; }}).join(' · ');
+    det.innerHTML = '<summary><span class="dimname">' + d.name + starred + '</span>' +
+      '<span class="dimtop">' + top + '</span>' +
+      '<span class="dimn">' + nAns + ' av 4 frågor</span></summary>';
+    var body = document.createElement('div'); body.className = 'dimbody';
+    rows.forEach(function (s) {{
+      var row = document.createElement('div'); row.className = 'score-row';
+      row.innerHTML = scoreRowHtml(s);
+      body.appendChild(row);
     }});
-    return;
+    det.appendChild(body);
+    wrap.appendChild(det);
+  }});
+}}
+function encodeShare(res) {{
+  var payload = {{ d: res.date, a: res.answered, t: res.total,
+                  s: res.scores.map(function (x) {{ return [x.id, x.pct]; }}) }};
+  return btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
+    .replace(/\\+/g, '-').replace(/\\//g, '_').replace(/=+$/, '');
+}}
+function decodeShare(str) {{
+  try {{
+    var json = decodeURIComponent(escape(atob(str.replace(/-/g, '+').replace(/_/g, '/'))));
+    var p = JSON.parse(json);
+    return {{ date: p.d, answered: p.a, total: p.t,
+             scores: p.s.map(function (x) {{
+               var party = PBYID[x[0]] || {{ name: x[0], color: '#888' }};
+               return {{ id: x[0], name: party.name, color: party.color, pct: x[1] }};
+             }}) }};
+  }} catch (e) {{ return null; }}
+}}
+function renderResult(saveIt, shared) {{
+  el('r-shared-note').innerHTML = '';
+  el('r-warn').innerHTML = '';
+  var scores, n, total;
+
+  if (shared) {{
+    el('r-title').textContent = 'Delat resultat';
+    el('r-meta').textContent = 'Gjort ' + shared.date + ' · ' + shared.answered + ' av ' +
+      shared.total + ' frågor besvarade.';
+    el('r-shared-note').innerHTML = '<div class="shared-note">Det här är någon annans resultat, ' +
+      'delat via länk. <a href="test.html">Gör testet själv</a> så får du ditt eget.</div>';
+    el('r-own-actions').classList.add('hidden');
+    el('r-share-row').classList.add('hidden');
+    el('r-dims-wrap').classList.add('hidden');
+    el('r-hint').textContent = '';
+    scores = shared.scores;
+  }} else {{
+    el('r-title').textContent = 'Ditt resultat';
+    el('r-own-actions').classList.remove('hidden');
+    el('r-share-row').classList.remove('hidden');
+    el('r-dims-wrap').classList.remove('hidden');
+    n = answeredCount(); total = QUESTIONS.length;
+    if (n < MIN) {{
+      el('r-warn').innerHTML = '<div class="warn">Du har besvarat ' + n + ' frågor. Det behövs minst ' +
+        MIN + ' för ett pålitligt resultat — <a href="#" id="warn-more">svara på fler frågor</a>.</div>';
+      el('r-list').innerHTML = ''; el('r-meta').textContent = '';
+      el('r-dims').innerHTML = ''; el('r-hint').textContent = '';
+      el('r-share-row').classList.add('hidden');
+      show('v-result');
+      el('warn-more').addEventListener('click', function (ev) {{
+        ev.preventDefault(); idx = firstUnanswered(); show('v-quiz'); renderQ();
+      }});
+      return;
+    }}
+    scores = computeScores();
+    if (saveIt) {{
+      save(KEY_R, {{ date: new Date().toISOString().slice(0, 10), answered: n,
+                    total: total, scores: scores }});
+    }}
+    var pnames = prio().map(function (id) {{
+      var d = DIMS.filter(function (x) {{ return x.id === id; }})[0];
+      return d ? d.name : id;
+    }});
+    el('r-meta').textContent = n + ' av ' + total + ' frågor besvarade. ' +
+      'Högre procent = större samsyn med partiet i dina viktade svar.' +
+      (pnames.length ? ' Prioriterade områden (★): ' + pnames.join(', ') + '.' : '');
+    el('r-hint').textContent = 'Tryck på en partirad för detaljer: hur många frågor ni svarar lika på, och var ni skiljer er mest.';
   }}
-  var scores = computeScores();
-  if (saveIt) {{
-    save(KEY_R, {{ date: new Date().toISOString().slice(0, 10), answered: n,
-                  total: QUESTIONS.length, scores: scores }});
-  }}
-  el('r-meta').textContent = n + ' av ' + QUESTIONS.length + ' frågor besvarade. ' +
-    'Högre procent = större samsyn med partiet i dina viktade svar.';
+
   var list = el('r-list'); list.innerHTML = '';
   scores.forEach(function (s) {{
-    var row = document.createElement('div'); row.className = 'score-row';
-    var fg = DARKTEXT.indexOf(s.color) >= 0 ? '#1a1a1a' : '#fff';
-    row.innerHTML = '<span class="pid" style="background:' + s.color + ';color:' + fg + '">' + s.id + '</span>' +
-      '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
-      '<span class="pct">' + s.pct + ' %</span>';
-    list.appendChild(row);
+    if (shared) {{
+      var row = document.createElement('div'); row.className = 'score-row';
+      row.innerHTML = scoreRowHtml(s);
+      list.appendChild(row);
+      return;
+    }}
+    var box = document.createElement('div'); box.className = 'party-result';
+    var head = document.createElement('button');
+    head.type = 'button'; head.className = 'prh'; head.setAttribute('aria-expanded', 'false');
+    head.innerHTML = scoreRowHtml(s) + '<span class="caret">▼</span>';
+    var detail = document.createElement('div'); detail.className = 'pr-detail hidden';
+    head.addEventListener('click', function () {{
+      var nowHidden = detail.classList.toggle('hidden');
+      head.setAttribute('aria-expanded', String(!nowHidden));
+      if (!nowHidden && !detail.innerHTML) detail.innerHTML = partyDetailHtml(s);
+    }});
+    box.appendChild(head); box.appendChild(detail);
+    list.appendChild(box);
   }});
+
+  if (!shared) renderDims();
   show('v-result');
 }}
+
+/* ---- dela resultat ---- */
+el('r-share').addEventListener('click', function () {{
+  var res = load(KEY_R);
+  if (!res) return;
+  var url = location.origin + location.pathname + '#r=' + encodeShare(res);
+  var btn = el('r-share');
+  function done() {{
+    btn.textContent = 'Länk kopierad ✓';
+    setTimeout(function () {{ btn.textContent = 'Kopiera resultatlänk'; }}, 2500);
+  }}
+  if (navigator.share) {{
+    navigator.share({{ title: 'Mitt valkompassresultat', url: url }}).catch(function () {{}});
+  }} else if (navigator.clipboard && navigator.clipboard.writeText) {{
+    navigator.clipboard.writeText(url).then(done);
+  }} else {{
+    window.prompt('Kopiera länken:', url);
+  }}
+}});
+el('r-compare').addEventListener('click', function () {{ renderCompare(null, null); }});
+
+/* ---- jämför två partier ---- */
+function fillCompareSelect(sel, chosen) {{
+  sel.innerHTML = '';
+  PARTIES.forEach(function (p) {{
+    var o = document.createElement('option');
+    o.value = p.id; o.textContent = p.name;
+    if (p.id === chosen) o.selected = true;
+    sel.appendChild(o);
+  }});
+}}
+function renderCompare(aId, bId) {{
+  var res = load(KEY_R);
+  if (!aId || !bId) {{
+    if (res && res.scores.length >= 2) {{ aId = res.scores[0].id; bId = res.scores[1].id; }}
+    else {{ aId = 'S'; bId = 'M'; }}
+  }}
+  fillCompareSelect(el('cmp-a'), aId);
+  fillCompareSelect(el('cmp-b'), bId);
+  el('cmp-a').onchange = el('cmp-b').onchange = function () {{
+    renderCompare(el('cmp-a').value, el('cmp-b').value);
+  }};
+  var A = PBYID[aId], B = PBYID[bId];
+  var same = 0, near = 0;
+  var list = el('cmp-list'); list.innerHTML = '';
+  QUESTIONS.forEach(function (q) {{
+    var av = q.partyPositions[aId], bv = q.partyPositions[bId];
+    var d = Math.abs(av - bv);
+    if (d === 0) same++; else if (d === 1) near++;
+    var item = document.createElement('div');
+    item.className = 'cmp-item' + (d >= 2 ? ' diff-big' : '');
+    var chips = '<span class="cmp-chip" style="background:' + A.color + ';color:' + fgFor(A.color) + '">' +
+      aId + ': ' + labelFor(av) + '</span>' +
+      '<span class="cmp-chip" style="background:' + B.color + ';color:' + fgFor(B.color) + '">' +
+      bId + ': ' + labelFor(bv) + '</span>';
+    var ua = answers[q.id];
+    if (ua && ua.v !== null && ua.v !== undefined) {{
+      chips += '<span class="cmp-chip du">Du: ' + labelFor(ua.v) + '</span>';
+    }}
+    item.innerHTML = '<div class="rq">' + q.text + '</div><div class="cmp-chips">' + chips + '</div>';
+    list.appendChild(item);
+  }});
+  el('cmp-sum').innerHTML =
+    '<span class="chip chip-ok">Samma svar i ' + same + ' av ' + QUESTIONS.length + '</span>' +
+    '<span class="chip chip-skip">Ett steg ifrån i ' + near + '</span>' +
+    '<span class="chip chip-none">Längre isär i ' + (QUESTIONS.length - same - near) + '</span>';
+  show('v-compare');
+}}
+el('cmp-back').addEventListener('click', function () {{
+  if (load(KEY_R)) renderResult(false); else if (touchedCount() > 0) renderStart(); else renderPrio();
+}});
 el('r-redo').addEventListener('click', function () {{ restart(false); }});
 el('r-review').addEventListener('click', renderReview);
 el('rev-back').addEventListener('click', function () {{
-  if (load(KEY_R)) renderResult(false); else {{ show('v-start'); renderStart(); }}
+  if (load(KEY_R)) renderResult(false); else renderStart();
 }});
 
 /* ---- granska svar ---- */
@@ -703,7 +1052,7 @@ function statusOf(q) {{
 function goTo(i) {{ idx = i; show('v-quiz'); renderQ(); }}
 function renderReview() {{
   var counts = {{ answered: 0, skipped: 0, missing: 0 }};
-  QUESTIONS.forEach(function (q) {{ counts[statusOf(q)]++; }});
+  ORDER.forEach(function (qid) {{ counts[statusOf(QBYID[qid])]++; }});
 
   el('rev-summary').innerHTML =
     '<span class="chip chip-ok">✓ ' + counts.answered + ' besvarade</span>' +
@@ -716,8 +1065,8 @@ function renderReview() {{
     b.type = 'button'; b.className = 'btn btn-go';
     b.textContent = 'Svara på nästa obesvarade fråga';
     b.addEventListener('click', function () {{
-      for (var i = 0; i < QUESTIONS.length; i++) {{
-        var st = statusOf(QUESTIONS[i]);
+      for (var i = 0; i < ORDER.length; i++) {{
+        var st = statusOf(QBYID[ORDER[i]]);
         if (st === 'missing' || st === 'skipped') {{ goTo(i); return; }}
       }}
     }});
@@ -726,7 +1075,8 @@ function renderReview() {{
 
   var STATUS_TXT = {{ answered: null, skipped: 'Hoppade över', missing: 'Obesvarad' }};
   var list = el('rev-list'); list.innerHTML = '';
-  QUESTIONS.forEach(function (q, i) {{
+  ORDER.forEach(function (qid, i) {{
+    var q = QBYID[qid];
     var a = answers[q.id];
     var st = statusOf(q);
     var item = document.createElement('div');
@@ -785,13 +1135,19 @@ function renderReview() {{
   show('v-review');
 }}
 
-/* ---- init: stöd direktlänkar från index ---- */
+/* ---- init: direktlänkar + val av första vy ---- */
 (function init() {{
   var h = location.hash;
+  if (h.indexOf('#r=') === 0) {{
+    var sharedRes = decodeShare(h.slice(3));
+    if (sharedRes) {{ renderResult(false, sharedRes); return; }}
+  }}
   if (h === '#resultat' && load(KEY_R)) {{ renderResult(false); return; }}
   if (h === '#svar' && touchedCount() > 0) {{ renderReview(); return; }}
+  if (h === '#jamfor') {{ renderCompare(null, null); return; }}
   if (h === '#om') {{ restart(true); return; }}
-  renderStart(); show('v-start');
+  if (touchedCount() === 0 && !load(KEY_R)) {{ renderPrio(); return; }}
+  renderStart();
 }})();
 </script>'''
 

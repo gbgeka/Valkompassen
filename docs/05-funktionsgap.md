@@ -16,14 +16,14 @@ Jämförelse mot SVT:s valkompass 2026 (35 frågor, riksdag + lokala + kandidate
 
 ## Luckor, prioriterade
 
-### A. Snabba att bygga, hög effekt (befintlig data räcker)
+### A. Snabba att bygga, hög effekt — ✅ byggda juli 2026
 
-1. **Resultat per ämnesområde** — stapel/radar per dimension: "du matchar M i ekonomi men V i klimat". Alla stora kompasser har någon form av detta. Dimensionsdatat finns redan.
-2. **"Ni är överens i X av Y frågor"** + största samsyn/största skillnad per parti på resultatsidan (planerat i docs/03 §5).
-3. **Dela resultat** — SVT m.fl. har social delning. Privacy-vänlig variant: koda resultatet i URL-fragmentet (`#r=...`), ingen server behövs.
-4. **Prioriteringsfrågan** — "välj dina tre viktigaste områden" (docs/02 §3), ger dimensionsviktning och bättre resultatpresentation.
-5. **Slumpad frågeordning inom område** — minskar ordningsbias, standard i seriösa kompasser.
-6. **Jämför två partier sida vid sida** — fråga för fråga (planerat i docs/03 §5.4).
+1. ✅ **Resultat per ämnesområde** — stapel/radar per dimension: "du matchar M i ekonomi men V i klimat". Alla stora kompasser har någon form av detta. Dimensionsdatat finns redan.
+2. ✅ **"Ni är överens i X av Y frågor"** + största samsyn/största skillnad per parti på resultatsidan (planerat i docs/03 §5).
+3. ✅ **Dela resultat** — SVT m.fl. har social delning. Privacy-vänlig variant: koda resultatet i URL-fragmentet (`#r=...`), ingen server behövs.
+4. ✅ **Prioriteringsfrågan** — "välj dina tre viktigaste områden" (docs/02 §3), ger dimensionsviktning och bättre resultatpresentation.
+5. ✅ **Slumpad frågeordning inom område** — minskar ordningsbias, standard i seriösa kompasser.
+6. ✅ **Jämför två partier sida vid sida** — fråga för fråga (planerat i docs/03 §5.4).
 
 ### B. Innehållsarbete (kräver redaktion/partikontakt)
 
@@ -44,4 +44,4 @@ Jämförelse mot SVT:s valkompass 2026 (35 frågor, riksdag + lokala + kandidate
 
 ## Rekommenderad ordning
 
-Fas A (1–6) före valrörelsens slutspurt — allt bygger på data som redan finns i `data/`. Punkt 7 (källverifiering) är dock **viktigast av allt** innan sidan marknadsförs: en valkompass med overifierade partipositioner får inte uppfattas som auktoritativ.
+Fas A (1–6) är byggd. Punkt 7 (källverifiering) är **viktigast av allt** innan sidan marknadsförs: en valkompass med overifierade partipositioner får inte uppfattas som auktoritativ.

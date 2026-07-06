@@ -168,6 +168,55 @@ details.info .info-body > p { margin:0 0 .85rem; }
     transform .08s ease; }
   details.info summary .chev { transition:transform .18s ease; }
 }
+/* --- prioritering --- */
+.prio-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(13rem, 1fr)); gap:.6rem;
+  margin:1.4rem 0; text-align:left; }
+.prio-grid button { display:flex; align-items:center; gap:.6rem; padding:.75rem .9rem;
+  border:1.5px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink);
+  font-size:.95rem; cursor:pointer; text-align:left; }
+.prio-grid button::before { content:''; flex:none; width:19px; height:19px; border-radius:6px;
+  border:2px solid var(--line); background:var(--paper); font:700 12px/16px sans-serif;
+  text-align:center; color:var(--go-ink); }
+.prio-grid button:hover { border-color:var(--go); }
+.prio-grid button.sel { border-color:var(--go); background:rgba(27,122,61,.08); font-weight:600; }
+.prio-grid button.sel::before { content:'✓'; background:var(--go); border-color:var(--go); }
+.prio-grid button:disabled { opacity:.45; cursor:default; }
+
+/* --- resultat: expanderbara partirader & områden --- */
+.party-result { margin:.45rem 0; }
+button.prh { display:grid; grid-template-columns:2.4rem 1fr 3.2rem 1rem; gap:.7rem; width:100%;
+  align-items:center; background:none; border:none; padding:.15rem 0; cursor:pointer;
+  color:var(--ink); font:inherit; text-align:left; }
+button.prh .caret { font-size:.7rem; color:var(--ink-2); }
+button.prh[aria-expanded="true"] .caret { transform:rotate(180deg); }
+.pr-detail { margin:.4rem 0 .9rem 3.1rem; font-size:.88rem; border-left:3px solid var(--line);
+  padding-left:.9rem; }
+.pr-detail p { margin:.3rem 0; }
+.pr-detail .q-quote { color:var(--ink-2); font-style:italic; }
+.dimsec { border:1px solid var(--line); border-radius:8px; margin:.5rem 0; background:var(--card); }
+.dimsec summary { cursor:pointer; padding:.65rem .9rem; display:flex; flex-wrap:wrap;
+  gap:.3rem .8rem; align-items:baseline; list-style:none; }
+.dimsec summary::-webkit-details-marker { display:none; }
+.dimsec summary .dimname { font-weight:600; }
+.dimsec summary .dimtop { color:var(--accent-ink); font-size:.88rem; }
+.dimsec summary .dimn { color:var(--ink-2); font-size:.75rem; margin-left:auto; }
+.dimsec .dimbody { padding:.2rem .9rem .7rem; border-top:1px solid var(--line); }
+.share-row { display:flex; gap:.7rem; flex-wrap:wrap; margin:1.2rem 0; }
+.shared-note { background:var(--chip); border:1px solid var(--accent); border-radius:8px;
+  padding:.7rem 1rem; font-size:.9rem; margin:.8rem 0; }
+
+/* --- jämför partier --- */
+.cmp-selects { display:flex; gap:.7rem; align-items:center; flex-wrap:wrap; margin:1rem 0; }
+.cmp-selects select { font-size:.95rem; padding:.55rem .7rem; border-radius:8px;
+  border:1.5px solid var(--line); background:var(--card); color:var(--ink); }
+.cmp-sum { margin:.4rem 0 1.1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+.cmp-item { border-bottom:1px solid var(--line); padding:.75rem 0; }
+.cmp-item .rq { font-size:.92rem; font-weight:600; }
+.cmp-item.diff-big { border-left:4px solid var(--con); padding-left:.7rem; }
+.cmp-chips { display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.4rem; }
+.cmp-chip { font:600 .78rem/1.3 ui-monospace, monospace; padding:.35rem .6rem; border-radius:6px; }
+.cmp-chip.du { background:none; border:1.5px dashed var(--go); color:var(--ink); }
+
 /* --- mobilfinput --- */
 @media (max-width:600px) {
   .wrap { padding:1.3rem .85rem 3rem; }
@@ -222,14 +271,28 @@ details.info .info-body > p { margin:0 0 .85rem; }
   <span class="eyebrow"><a href="index.html" style="color:inherit;text-decoration:none">← Valkompassen</a> · Testet</span>
 </header>
 
-<section id="v-start" class="startbox">
-  <h1>Valkompasstestet</h1>
-  <p class="lede" style="margin-inline:auto">32 påståenden om svensk politik. Svara på en femgradig skala,
-  markera vilka frågor som är extra viktiga för dig, och tryck på infoknappen om du vill
-  förstå frågan bättre — med för- och nackdelar för varje ståndpunkt.</p>
-  <p class="small">Dina svar sparas bara lokalt i din webbläsare (localStorage) — inget skickas någonstans.
-  Du kan när som helst komma tillbaka och se dina svar och ditt resultat.</p>
+<section id="v-start" class="startbox hidden">
+  <h1>Välkommen tillbaka</h1>
+  <p class="lede" style="margin-inline:auto">Dina tidigare svar finns sparade lokalt i din webbläsare.
+  Fortsätt där du var, titta på resultatet eller börja om från början.</p>
   <div id="start-buttons"></div>
+</section>
+
+<section id="v-prio" class="hidden">
+  <h1>Vad är viktigast för dig?</h1>
+  <p class="lede">Välj upp till tre samhällsområden som väger tyngst när du röstar —
+  frågor inom dem får större inverkan på matchningen. Sedan väntar 32 påståenden (cirka 8 minuter)
+  med svar på en femgradig skala. Markera gärna extra viktiga frågor, och tryck på infoknappen
+  när du vill förstå en fråga bättre — med för- och nackdelar för varje ståndpunkt.</p>
+  <p class="small">Dina svar sparas bara lokalt i din webbläsare — inget skickas någonstans.
+  Du kan när som helst komma tillbaka, se dina svar och ändra dem.</p>
+  <div class="prio-grid" id="prio-grid"></div>
+  <div class="startrow">
+    <button class="cta" id="prio-done" type="button" style="border:none;cursor:pointer">Starta frågorna</button>
+  </div>
+  <div class="startrow">
+    <button class="skip" id="prio-skip" type="button">Hoppa över — vikta alla områden lika</button>
+  </div>
 </section>
 
 <section id="v-quiz" class="hidden">
@@ -265,16 +328,43 @@ details.info .info-body > p { margin:0 0 .85rem; }
 </section>
 
 <section id="v-result" class="hidden">
-  <h1>Ditt resultat</h1>
+  <h1 id="r-title">Ditt resultat</h1>
   <p class="small" id="r-meta"></p>
+  <div id="r-shared-note"></div>
   <div id="r-warn"></div>
   <div id="r-list"></div>
+  <p class="small" id="r-hint"></p>
+  <div class="share-row" id="r-share-row">
+    <button class="btn" id="r-share" type="button">Kopiera resultatlänk</button>
+    <button class="btn" id="r-compare" type="button">Jämför två partier</button>
+  </div>
+  <div id="r-dims-wrap">
+    <h2 class="bloc" style="margin-top:1.8rem">Så matchar du per område</h2>
+    <div id="r-dims"></div>
+  </div>
   <p class="small">Matchningen bygger på viktad överensstämmelse fråga för fråga
   (se <a href="https://github.com/gbgeka/Valkompassen/blob/claude/swedish-voter-compass-42d6l8/docs/03-matchningsalgoritm.md">metodiken</a>).
   Partipositionerna är redaktionella utkast som verifieras mot valmanifest och partisvar före skarp lansering.</p>
-  <div class="startrow">
+  <div class="startrow" id="r-own-actions">
     <button class="btn" id="r-review" type="button">Se dina svar</button>
     <button class="btn" id="r-redo" type="button">Gör om testet</button>
+    <a class="btn" href="index.html" style="text-decoration:none">Till startsidan</a>
+  </div>
+</section>
+
+<section id="v-compare" class="hidden">
+  <h1>Jämför två partier</h1>
+  <p class="small">Fråga för fråga, sida vid sida. Rader med stor åsiktsskillnad (minst två steg) markeras.
+  Ditt eget svar visas när det finns.</p>
+  <div class="cmp-selects">
+    <select id="cmp-a" aria-label="Parti A"></select>
+    <span>mot</span>
+    <select id="cmp-b" aria-label="Parti B"></select>
+  </div>
+  <div class="cmp-sum" id="cmp-sum"></div>
+  <div id="cmp-list"></div>
+  <div class="startrow">
+    <button class="btn" id="cmp-back" type="button">← Tillbaka</button>
     <a class="btn" href="index.html" style="text-decoration:none">Till startsidan</a>
   </div>
 </section>
@@ -299,16 +389,43 @@ och försvinner om du rensar webbplatsdata. Del av projektet
 
 <script>
 var PARTIES = [{"id": "V", "name": "Vänsterpartiet", "color": "#B00000"}, {"id": "MP", "name": "Miljöpartiet de gröna", "color": "#53A045"}, {"id": "S", "name": "Socialdemokraterna", "color": "#E8112D"}, {"id": "C", "name": "Centerpartiet", "color": "#009933"}, {"id": "L", "name": "Liberalerna", "color": "#006AB3"}, {"id": "KD", "name": "Kristdemokraterna", "color": "#000077"}, {"id": "M", "name": "Moderaterna", "color": "#52BDEC"}, {"id": "SD", "name": "Sverigedemokraterna", "color": "#DDDD00"}];
-var QUESTIONS = [{"id": "eco-01", "dimension": "Ekonomi & skatter", "text": "Skatten på höga inkomster bör höjas.", "info": {"explanation": "Sverige har progressiv inkomstskatt: den som tjänar över brytpunkten betalar 20 % statlig skatt utöver kommunalskatten. Frågan gäller om höga inkomster ska beskattas hårdare än i dag.", "pros": ["Mer pengar till välfärd, skola och omsorg", "Minskar inkomstklyftorna", "De med störst marginaler bidrar mest"], "cons": ["Kan minska drivkraften att arbeta, utbilda sig och ta ansvar", "Risk att specialister och företagare flyttar utomlands", "Höga marginalskatter kan ge mindre intäkter än väntat"]}, "partyPositions": {"V": 2, "MP": 1, "S": 1, "C": -1, "L": -1, "KD": -2, "M": -2, "SD": -1}}, {"id": "eco-02", "dimension": "Ekonomi & skatter", "text": "Skattesänkningar på arbete är viktigare än höjda bidrag och ersättningar.", "info": {"explanation": "En klassisk höger–vänster-fråga: ska staten främst sänka skatten på arbete så att lönen räcker längre, eller höja bidrag och ersättningar för dem som inte arbetar?", "pros": ["Gör det mer lönsamt att arbeta", "Hushållen bestämmer själva över mer av sina pengar", "Kan öka sysselsättningen"], "cons": ["Mindre resurser till dem som inte kan arbeta", "Klyftan mellan arbetande och sjuka/arbetslösa växer", "Skyddsnätet försvagas vid kris"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 1}}, {"id": "eco-03", "dimension": "Ekonomi & skatter", "text": "Ett tak för hur mycket ett hushåll sammanlagt kan få i bidrag bör finnas.", "info": {"explanation": "Ett bidragstak innebär en gräns för hur mycket ett hushåll sammanlagt kan få i olika bidrag, så att summan aldrig närmar sig en arbetsinkomst.", "pros": ["Arbete lönar sig alltid mer än bidrag", "Tydliga drivkrafter mot egen försörjning", "Kan minska långvarigt bidragsberoende"], "cons": ["Barnfamiljer med många barn kan drabbas hårt", "Risk för ökad barnfattigdom", "Hjälper inte dem som faktiskt inte kan arbeta"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 0, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "eco-04", "dimension": "Ekonomi & skatter", "text": "Staten bör låna mer till stora offentliga investeringar även om statsskulden ökar.", "info": {"explanation": "Sverige har låg statsskuld internationellt sett. Frågan är om staten ska låna mer för stora investeringar i t.ex. järnväg, elnät, bostäder och klimatomställning.", "pros": ["Investeringar i infrastruktur kan göras nu i stället för att skjutas upp", "Kan öka tillväxt och sysselsättning", "Sverige har råd — skulden är låg jämfört med omvärlden"], "cons": ["Statsskuld och räntekostnader ökar", "Mindre marginaler vid nästa kris", "Notan skickas delvis till framtida generationer"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0}}, {"id": "mig-01", "dimension": "Migration & integration", "text": "Sverige bör ta emot fler flyktingar än i dag.", "info": {"explanation": "Sverige har sedan 2015 stramat åt asylpolitiken kraftigt och tar i dag emot få kvotflyktingar och asylsökande jämfört med tidigare. Frågan är om mottagandet ska öka igen.", "pros": ["Humanitärt ansvar när krig och förföljelse ökar i världen", "Invandring kan motverka arbetskraftsbrist och åldrande befolkning", "Stärker Sveriges internationella anseende"], "cons": ["Integrationen av tidigare mottagna är inte klar", "Kostnader för mottagande, bostäder och utbildning på kort sikt", "Risk för ökad segregation om etableringen misslyckas"]}, "partyPositions": {"V": 1, "MP": 2, "S": -1, "C": 1, "L": 0, "KD": -1, "M": -2, "SD": -2}}, {"id": "mig-02", "dimension": "Migration & integration", "text": "Staten bör aktivt arbeta för att fler invandrare som inte etablerat sig i Sverige återvänder till sina hemländer.", "info": {"explanation": "Återvandring betyder att personer med uppehållstillstånd eller medborgarskap frivilligt (eller genom påtryckningar) flyttar tillbaka till ursprungslandet, ofta med ekonomiskt stöd.", "pros": ["Kan minska utanförskap för dem som aldrig etablerat sig", "Frivillig återvandring med stöd kan gynna både individ och hemland", "Minskar belastningen på välfärdssystemen enligt förespråkare"], "cons": ["Riskerar att peka ut hela grupper som oönskade", "Kan skada integrationen — varför anstränga sig om man ändå förväntas åka?", "Arbetsgivare kan förlora arbetskraft"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "mig-03", "dimension": "Migration & integration", "text": "Arbetskraftsinvandring till lågkvalificerade yrken bör begränsas med ett högt lönekrav.", "info": {"explanation": "Arbetskraftsinvandrare utanför EU måste i dag tjäna en viss lön för att få tillstånd. Ett högt lönegolv stänger i praktiken ute lågkvalificerade yrken som städning och restaurang.", "pros": ["Motverkar lönedumpning och utnyttjande av utländsk arbetskraft", "Minskar fusk med arbetstillstånd", "Jobb med lägre löner går till arbetslösa som redan bor här"], "cons": ["Branscher med personalbrist får svårt att rekrytera", "Företag kan tvingas stänga eller flytta", "Individer som vill arbeta och göra rätt för sig stängs ute"]}, "partyPositions": {"V": 1, "MP": -2, "S": 1, "C": -2, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "mig-04", "dimension": "Migration & integration", "text": "Offentliganställda ska vara skyldiga att anmäla personer som vistas i Sverige utan tillstånd.", "info": {"explanation": "Den s.k. anmälningsplikten (informationsplikten) skulle kräva att offentliganställda, t.ex. lärare och vårdpersonal, rapporterar papperslösa personer de möter i tjänsten till myndigheterna.", "pros": ["Upprätthåller principen att ett nej i asylprocessen ska gälla", "Myndigheter får bättre kontroll över vilka som vistas i landet", "Kan minska skuggsamhället"], "cons": ["Sjuka och barn kan avstå vård och skola av rädsla", "Lärare, läkare och socialarbetare tvingas ange människor de ska hjälpa", "Kritiker kallar det ett angiverisamhälle som bryter mot yrkesetiken"]}, "partyPositions": {"V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 1, "M": 1, "SD": 2}}, {"id": "cli-01", "dimension": "Klimat & miljö", "text": "Sverige bör hålla fast vid målet om nettonollutsläpp till 2045 även om det kräver kostsamma åtgärder.", "info": {"explanation": "Sveriges klimatmål är nettonollutsläpp senast 2045. Att nå det kräver dyra åtgärder i industri, transporter och jordbruk. Frågan är om målet ska ligga fast oavsett kostnad.", "pros": ["Sverige tar sin del av ansvaret för Parisavtalet", "Tidig omställning kan ge svenska företag exportfördelar", "Skjuts målet upp blir omställningen dyrare senare"], "cons": ["Höga kostnader för hushåll och industri på kort sikt", "Marginell global effekt om stora utsläppsländer inte följer efter", "Risk att jobb flyttar till länder med lägre krav"]}, "partyPositions": {"V": 1, "MP": 2, "S": 1, "C": 1, "L": 1, "KD": 0, "M": 0, "SD": -2}}, {"id": "cli-02", "dimension": "Klimat & miljö", "text": "Skatten på bensin och diesel bör sänkas.", "info": {"explanation": "Skatten på bensin och diesel är både en inkomstkälla för staten och ett styrmedel för att minska utsläppen. Sänkningar gör det billigare att köra bil men ökar utsläppen.", "pros": ["Billigare vardag, särskilt på landsbygden där bilen är nödvändig", "Sänker kostnader för transporter och företag", "Minskar levnadskostnadskrisen för hushåll med små marginaler"], "cons": ["Utsläppen ökar och klimatmålen blir svårare att nå", "Mindre pengar till statskassan", "Gynnar även dem som lätt kunde valt alternativ"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "cli-03", "dimension": "Klimat & miljö", "text": "Det bör bli dyrare att flyga för att minska utsläppen.", "info": {"explanation": "Flyget står för en liten del av Sveriges utsläpp men är svårt att ställa om. Högre flygskatt eller krav på dyrare bränslen gör resor dyrare men styr mot tåg och färre resor.", "pros": ["Minskar utsläppen från en växande utsläppskälla", "Styr resande mot tåg där det är möjligt", "Den som smutsar ner betalar för sig"], "cons": ["Dyrare resor slår mot vanliga familjers semester", "Drabbar Norrland och öar där flyget saknar alternativ", "Svensk flygskatt har liten effekt på det globala flyget"]}, "partyPositions": {"V": 1, "MP": 2, "S": 0, "C": 0, "L": -1, "KD": -1, "M": -2, "SD": -2}}, {"id": "cli-04", "dimension": "Klimat & miljö", "text": "Skyddet av skog och naturområden bör utökas även om det begränsar skogsbruket.", "info": {"explanation": "Ungefär 70 % av Sverige är skog och skogsnäringen är en stor exportindustri. Frågan är om mer skog ska skyddas från avverkning för klimatets och artrikedomens skull.", "pros": ["Skyddar hotade arter och ekosystem", "Gammal skog binder stora mängder kol", "Bevarar natur för friluftsliv och kommande generationer"], "cons": ["Jobb och exportinkomster i skogslänen hotas", "Ingrepp i enskildas äganderätt kräver dyra ersättningar", "Mindre svensk skogsråvara kan ersättas av sämre alternativ"]}, "partyPositions": {"V": 1, "MP": 2, "S": 0, "C": -2, "L": 0, "KD": -1, "M": -1, "SD": -1}}, {"id": "sec-01", "dimension": "Lag & ordning", "text": "Straffen för gängrelaterad brottslighet bör skärpas ytterligare.", "info": {"explanation": "Straffen för gängbrottslighet har skärpts kraftigt de senaste åren (dubbla straff för gängkriminella, visitationszoner m.m.). Frågan är om de ska skärpas ytterligare.", "pros": ["Farliga gängkriminella låses in längre och kan inte begå nya brott", "Tydlig signal om samhällets gränser", "Kan öka tryggheten i utsatta områden"], "cons": ["Forskning visar begränsad avskräckande effekt av längre straff", "Dyrt — fängelseplatser kostar och platsbrist råder redan", "Riskerar att unga rekryteras som ersättare ändå"]}, "partyPositions": {"V": -1, "MP": -1, "S": 1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "sec-02", "dimension": "Lag & ordning", "text": "Polisen ska kunna använda visitationszoner i områden med hög brottslighet.", "info": {"explanation": "I en visitationszon får polisen kroppsvisitera personer och söka igenom fordon utan konkret brottsmisstanke. Infördes i Sverige 2024 efter dansk förebild.", "pros": ["Vapen och sprängmedel kan hittas innan de används", "Verktyg mot gängens våldsvågor", "Kan verka avskräckande i akuta lägen"], "cons": ["Ingrepp i den personliga integriteten utan brottsmisstanke", "Risk för etnisk profilering och diskriminering", "Kan skada förtroendet för polisen i områden där det behövs mest"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "sec-03", "dimension": "Lag & ordning", "text": "Förebyggande sociala insatser är viktigare för att minska brottsligheten än fler poliser och hårdare straff.", "info": {"explanation": "Frågan ställer två strategier mot varandra: tidiga sociala insatser (skola, socialtjänst, fritid, föräldrastöd) eller mer resurser till polis och straff.", "pros": ["Angriper orsakerna innan brotten begås", "Billigare på lång sikt än fängelse", "Forskningsstöd för att tidiga insatser minskar nyrekrytering"], "cons": ["Ger inte snabb effekt mot pågående våldsvåg", "Svårt att mäta och utvärdera", "Kan uppfattas som svaghet mot dem som redan begår brott"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": -1, "KD": -1, "M": -2, "SD": -2}}, {"id": "sec-04", "dimension": "Lag & ordning", "text": "Kameraövervakningen på offentliga platser bör byggas ut kraftigt.", "info": {"explanation": "Kameraövervakning på gator och torg har byggts ut kraftigt. Frågan är om utbyggnaden ska fortsätta i stor skala, t.ex. med fler AI-analyserade kameror.", "pros": ["Hjälper polisen att klara upp brott", "Kan öka den upplevda tryggheten", "Avskräcker viss brottslighet på övervakade platser"], "cons": ["Alla medborgare övervakas, inte bara kriminella", "Brottsligheten kan flytta runt hörnet", "Risk för ändamålsglidning — data kan användas till annat"]}, "partyPositions": {"V": -1, "MP": -1, "S": 1, "C": -1, "L": 0, "KD": 1, "M": 2, "SD": 2}}, {"id": "wel-01", "dimension": "Välfärdens organisation", "text": "Vinstuttag ur skattefinansierade friskolor bör förbjudas.", "info": {"explanation": "Sverige är ensamt i världen om att tillåta vinstuttag ur skattefinansierade friskolor. Frågan är om vinstuttag ska förbjudas (pengarna måste återinvesteras i skolan).", "pros": ["Skattepengar avsedda för undervisning stannar i skolan", "Minskar drivkraften till betygsinflation och elevsortering", "De flesta andra länder tillåter inte vinstuttag ur skolor"], "cons": ["Många friskolor kan tvingas stänga — färre alternativ", "Valfriheten minskar för familjer", "Seriösa aktörer som levererar kvalitet straffas också"]}, "partyPositions": {"V": 2, "MP": 1, "S": 2, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0}}, {"id": "wel-02", "dimension": "Välfärdens organisation", "text": "Rätten att välja privata utförare i vård och omsorg bör värnas.", "info": {"explanation": "Lagen om valfrihet låter patienter och brukare välja mellan offentliga och privata utförare i vård och omsorg, finansierat med skattepengar.", "pros": ["Individen bestämmer själv över sin vård och omsorg", "Konkurrens kan pressa köer och höja kvalitet", "Privata alternativ avlastar den offentliga vården"], "cons": ["Vinstintresse kan gå ut över kvalitet och bemanning", "Privata utförare kan välja lönsamma patienter (gräddskumning)", "Splittrar systemet och försvårar planering"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 2, "L": 2, "KD": 2, "M": 2, "SD": 1}}, {"id": "wel-03", "dimension": "Välfärdens organisation", "text": "Staten bör ta över huvudansvaret för sjukvården från regionerna.", "info": {"explanation": "Sjukvården drivs i dag av 21 regioner med olika resurser och resultat. Förslaget innebär att staten tar över huvudansvaret för att vården ska bli likvärdig i hela landet.", "pros": ["Jämlik vård oavsett var du bor", "Stordriftsfördelar och nationell planering av t.ex. IT och läkemedel", "Slut på 21 parallella byråkratier"], "cons": ["Enorm omorganisation som tar år och kraft från vården", "Beslut flyttas längre från patienter och personal", "Ingen garanti att staten styr bättre än regionerna"]}, "partyPositions": {"V": 0, "MP": 0, "S": -1, "C": -2, "L": 1, "KD": 2, "M": 0, "SD": 1}}, {"id": "wel-04", "dimension": "Välfärdens organisation", "text": "Fler välfärdstjänster bör drivas i offentlig regi även om utbudet av privata alternativ minskar.", "info": {"explanation": "Frågan gäller den principiella avvägningen: ska välfärdstjänster i första hand drivas av det offentliga, även om privata alternativ då blir färre?", "pros": ["Demokratisk styrning och insyn i verksamheten", "Inga skattepengar går till vinstuttag", "Sammanhållet system utan gräddskumning"], "cons": ["Mindre mångfald och färre alternativ att välja mellan", "Offentliga monopol kan bli ineffektiva utan konkurrens", "Innovationstakten kan minska"]}, "partyPositions": {"V": 2, "MP": 1, "S": 1, "C": -2, "L": -2, "KD": -1, "M": -2, "SD": -1}}, {"id": "eu-01", "dimension": "EU & internationellt", "text": "Sverige bör införa euron som valuta.", "info": {"explanation": "Sverige röstade nej till euron 2003 men är formellt förpliktigat att införa den någon gång. Genom Sverigelöftet planeras en ny folkomröstning på valdagen 2030.", "pros": ["Slipper växelkursrisk — enklare handel och resor", "Plats vid bordet när eurozonen fattar beslut", "Kronan är liten och sårbar vid oro"], "cons": ["Sverige förlorar egen penningpolitik och räntevapen", "Kronan har fungerat som stötdämpare i kriser", "Euroländernas problem kan bli våra"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 0, "L": 2, "KD": -1, "M": 0, "SD": -2}}, {"id": "eu-02", "dimension": "EU & internationellt", "text": "EU bör få mer beslutsmakt i gränsöverskridande frågor som klimat och migration, även om Sveriges självbestämmande minskar.", "info": {"explanation": "Klimat, migration och säkerhet stannar inte vid gränser. Frågan är om EU ska få mer beslutsmakt i sådana frågor, även när Sverige blir överkört i enskilda beslut.", "pros": ["Gränsöverskridande problem kräver gemensamma beslut", "Ett starkt EU står emot stormakter bättre än små länder var för sig", "Gemensamma regler ger företag en jämn spelplan"], "cons": ["Sveriges självbestämmande minskar", "Beslut flyttas längre från väljarna", "EU-kompromisser kan bli sämre än svenska lösningar"]}, "partyPositions": {"V": -1, "MP": 1, "S": 0, "C": 1, "L": 2, "KD": -1, "M": -1, "SD": -2}}, {"id": "eu-03", "dimension": "EU & internationellt", "text": "Sverige bör verka för att flytta tillbaka makt från EU till nationell nivå.", "info": {"explanation": "Motsatt riktning: ska Sverige aktivt arbeta för att flytta tillbaka beslutsmakt från Bryssel till riksdagen, t.ex. i arbetsmarknads- och skogsfrågor?", "pros": ["Beslut fattas närmare svenska väljare", "Regler kan anpassas till svenska förhållanden", "Minskar EU-byråkratin"], "cons": ["Försvagar EU-samarbetet när omvärlden är orolig", "Sverige förlorar inflytande över regler vi ändå påverkas av", "Svårare att lösa gemensamma problem som brottslighet och klimat"]}, "partyPositions": {"V": 1, "MP": -1, "S": 0, "C": -1, "L": -2, "KD": 1, "M": 0, "SD": 2}}, {"id": "eu-04", "dimension": "EU & internationellt", "text": "Sveriges bistånd till fattiga länder bör minskas.", "info": {"explanation": "Sverige har länge varit en av världens största biståndsgivare per invånare (målet var länge 1 % av BNI). Frågan är om biståndet ska minskas till förmån för inhemska behov.", "pros": ["Frigör miljarder till välfärd och försvar hemma", "Delar av biståndet har haft svårmätt effekt", "Andra rika länder ger betydligt mindre"], "cons": ["Drabbar världens fattigaste direkt", "Minskar Sveriges internationella inflytande och anseende", "Instabilitet och fattigdom i omvärlden kan öka migrationen på sikt"]}, "partyPositions": {"V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 0, "M": 1, "SD": 2}}, {"id": "val-01", "dimension": "Värderingar (GAL–TAN)", "text": "Svenskt kulturarv och svenska traditioner bör få en större plats i skolan och det offentliga rummet.", "info": {"explanation": "En värderingsfråga om det offentligas roll: ska svenskt kulturarv, traditioner och historia få större utrymme i skolan, kulturpolitiken och det offentliga rummet?", "pros": ["Stärker gemensam identitet och sammanhållning", "Kulturarv riskerar annars att glömmas bort", "Ger nyanlända en tydlig bild av det samhälle de möter"], "cons": ["Vem definierar vad som är svensk kultur?", "Risk att människor med annan bakgrund pekas ut som mindre svenska", "Skolans timmar är begränsade — något annat får stryka på foten"]}, "partyPositions": {"V": -1, "MP": -1, "S": 0, "C": 0, "L": 0, "KD": 2, "M": 1, "SD": 2}}, {"id": "val-02", "dimension": "Värderingar (GAL–TAN)", "text": "Hbtqi-personers rättigheter bör stärkas ytterligare.", "info": {"explanation": "Sverige rankas högt i hbtqi-rättigheter men debatt pågår om bl.a. juridiskt kön, vård för unga med könsdysfori och hatbrott. Frågan är om rättigheterna ska stärkas ytterligare.", "pros": ["Mänskliga rättigheter ska gälla fullt ut för alla", "Minskar psykisk ohälsa i en utsatt grupp", "Sverige kan vara föregångsland när rättigheter backar i omvärlden"], "cons": ["Kritiker menar att lagstiftningen redan är stark", "Oenighet om t.ex. vård av minderåriga kräver försiktighet", "Fler lagar löser inte attityder"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": 2, "KD": -1, "M": 0, "SD": -1}}, {"id": "val-03", "dimension": "Värderingar (GAL–TAN)", "text": "Ett nationellt förbud mot tiggeri bör införas.", "info": {"explanation": "Tiggeri är i dag lagligt men flera kommuner har infört lokala förbud. Frågan gäller ett nationellt förbud mot att be om pengar på offentlig plats.", "pros": ["Kan minska utnyttjande av utsatta människor av kriminella nätverk", "Ordning i det offentliga rummet", "Tydlighet i stället för kommunalt lapptäcke"], "cons": ["Kriminaliserar fattigdom i stället för att bekämpa den", "Löser inte orsakerna — de utsatta finns kvar", "Svårt att förena med grundläggande fri- och rättigheter"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": -1, "KD": 1, "M": 2, "SD": 2}}, {"id": "val-04", "dimension": "Värderingar (GAL–TAN)", "text": "Public service (SVT och SR) bör få smalare uppdrag och minskade anslag.", "info": {"explanation": "Public service (SVT, SR, UR) finansieras via skatten och har ett brett uppdrag. Frågan är om uppdraget ska smalnas av och anslagen minskas.", "pros": ["Mindre kostnad för skattebetalarna", "Privata medier slipper konkurrera med skattefinansierat innehåll", "Smalare uppdrag kan öka fokus på kärnan: nyheter och samhälle"], "cons": ["Oberoende journalistik i hela landet försvagas", "Viktig beredskapsfunktion vid kris och krig", "Smalt innehåll som inte bär sig kommersiellt försvinner"]}, "partyPositions": {"V": -2, "MP": -2, "S": -2, "C": -1, "L": -1, "KD": 1, "M": 1, "SD": 2}}, {"id": "ene-01", "dimension": "Energi & landsbygd", "text": "Staten bör subventionera byggandet av ny kärnkraft.", "info": {"explanation": "Regeringen har öppnat för statliga subventioner och riskdelning för ny kärnkraft. Utan statligt stöd byggs sannolikt ingen ny kärnkraft — den är för dyr och riskabel för marknaden.", "pros": ["Planerbar fossilfri el när industrin ska elektrifieras", "Mindre beroende av väder och import", "Teknikutveckling och kompetens stannar i Sverige"], "cons": ["Mycket dyrt — skattebetalarna bär risken vid förseningar", "Tar 10–15 år; klimatomställningen behöver el nu", "Kan tränga ut billigare och snabbare förnybar el"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": -1, "L": 2, "KD": 2, "M": 2, "SD": 2}}, {"id": "ene-02", "dimension": "Energi & landsbygd", "text": "Utbyggnaden av havsbaserad vindkraft bör påskyndas.", "info": {"explanation": "Havsbaserad vindkraft kan ge stora mängder el men projekten är dyra, tar tid och har mött motstånd från Försvarsmakten. Frågan är om utbyggnaden ska påskyndas.", "pros": ["Stora mängder ny el relativt snabbt", "Havsvind blåser jämnare än landvind", "Skapar jobb längs kusterna"], "cons": ["Konflikter med försvarets radar och Nato-övervakning i Östersjön", "Påverkan på marint liv och fiske", "Kräver dyra elnätsanslutningar — vem betalar?"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": 0, "KD": -1, "M": -1, "SD": -2}}, {"id": "ene-03", "dimension": "Energi & landsbygd", "text": "Strandskyddet bör lättas för att göra det enklare att bygga på landsbygden.", "info": {"explanation": "Strandskyddet förbjuder byggande nära vatten (generellt 100 m) för att skydda allemansrätt och natur. Lättnader skulle göra det enklare att bygga sjönära, främst på landsbygden.", "pros": ["Attraktivt boende kan vända utvecklingen i avfolkningsbygder", "Markägare får bättre rätt att använda sin egen mark", "Stora delar av Sveriges stränder är helt obebyggda"], "cons": ["Allmänhetens tillgång till stränder minskar", "Strandnära natur är artrik och känslig", "Risk att attraktiva lägen privatiseras för alltid"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": 2, "L": 1, "KD": 1, "M": 1, "SD": 1}}, {"id": "ene-04", "dimension": "Energi & landsbygd", "text": "Kärnkraften bör avvecklas på sikt.", "info": {"explanation": "Den långsiktiga riktningsfrågan för energipolitiken: ska kärnkraften fasas ut när reaktorerna tjänat ut, till förmån för helt förnybar elproduktion?", "pros": ["Slipper olycksrisk och slutförvar av avfall i 100 000 år", "Förnybar el är i dag billigast att bygga ny", "Uran är en ändlig resurs som ofta importeras"], "cons": ["Planerbar elproduktion försvinner — risk för effektbrist vindstilla vinterdagar", "Elpriserna kan bli mer volatila", "Klimatmålen blir svårare om fossilfri el stängs i förtid"]}, "partyPositions": {"V": 0, "MP": 2, "S": -1, "C": -1, "L": -2, "KD": -2, "M": -2, "SD": -2}}];
+var QUESTIONS = [{"id": "eco-01", "dim": "economy", "dimension": "Ekonomi & skatter", "text": "Skatten på höga inkomster bör höjas.", "info": {"explanation": "Sverige har progressiv inkomstskatt: den som tjänar över brytpunkten betalar 20 % statlig skatt utöver kommunalskatten. Frågan gäller om höga inkomster ska beskattas hårdare än i dag.", "pros": ["Mer pengar till välfärd, skola och omsorg", "Minskar inkomstklyftorna", "De med störst marginaler bidrar mest"], "cons": ["Kan minska drivkraften att arbeta, utbilda sig och ta ansvar", "Risk att specialister och företagare flyttar utomlands", "Höga marginalskatter kan ge mindre intäkter än väntat"]}, "partyPositions": {"V": 2, "MP": 1, "S": 1, "C": -1, "L": -1, "KD": -2, "M": -2, "SD": -1}}, {"id": "eco-02", "dim": "economy", "dimension": "Ekonomi & skatter", "text": "Skattesänkningar på arbete är viktigare än höjda bidrag och ersättningar.", "info": {"explanation": "En klassisk höger–vänster-fråga: ska staten främst sänka skatten på arbete så att lönen räcker längre, eller höja bidrag och ersättningar för dem som inte arbetar?", "pros": ["Gör det mer lönsamt att arbeta", "Hushållen bestämmer själva över mer av sina pengar", "Kan öka sysselsättningen"], "cons": ["Mindre resurser till dem som inte kan arbeta", "Klyftan mellan arbetande och sjuka/arbetslösa växer", "Skyddsnätet försvagas vid kris"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 1}}, {"id": "eco-03", "dim": "economy", "dimension": "Ekonomi & skatter", "text": "Ett tak för hur mycket ett hushåll sammanlagt kan få i bidrag bör finnas.", "info": {"explanation": "Ett bidragstak innebär en gräns för hur mycket ett hushåll sammanlagt kan få i olika bidrag, så att summan aldrig närmar sig en arbetsinkomst.", "pros": ["Arbete lönar sig alltid mer än bidrag", "Tydliga drivkrafter mot egen försörjning", "Kan minska långvarigt bidragsberoende"], "cons": ["Barnfamiljer med många barn kan drabbas hårt", "Risk för ökad barnfattigdom", "Hjälper inte dem som faktiskt inte kan arbeta"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 0, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "eco-04", "dim": "economy", "dimension": "Ekonomi & skatter", "text": "Staten bör låna mer till stora offentliga investeringar även om statsskulden ökar.", "info": {"explanation": "Sverige har låg statsskuld internationellt sett. Frågan är om staten ska låna mer för stora investeringar i t.ex. järnväg, elnät, bostäder och klimatomställning.", "pros": ["Investeringar i infrastruktur kan göras nu i stället för att skjutas upp", "Kan öka tillväxt och sysselsättning", "Sverige har råd — skulden är låg jämfört med omvärlden"], "cons": ["Statsskuld och räntekostnader ökar", "Mindre marginaler vid nästa kris", "Notan skickas delvis till framtida generationer"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0}}, {"id": "mig-01", "dim": "migration", "dimension": "Migration & integration", "text": "Sverige bör ta emot fler flyktingar än i dag.", "info": {"explanation": "Sverige har sedan 2015 stramat åt asylpolitiken kraftigt och tar i dag emot få kvotflyktingar och asylsökande jämfört med tidigare. Frågan är om mottagandet ska öka igen.", "pros": ["Humanitärt ansvar när krig och förföljelse ökar i världen", "Invandring kan motverka arbetskraftsbrist och åldrande befolkning", "Stärker Sveriges internationella anseende"], "cons": ["Integrationen av tidigare mottagna är inte klar", "Kostnader för mottagande, bostäder och utbildning på kort sikt", "Risk för ökad segregation om etableringen misslyckas"]}, "partyPositions": {"V": 1, "MP": 2, "S": -1, "C": 1, "L": 0, "KD": -1, "M": -2, "SD": -2}}, {"id": "mig-02", "dim": "migration", "dimension": "Migration & integration", "text": "Staten bör aktivt arbeta för att fler invandrare som inte etablerat sig i Sverige återvänder till sina hemländer.", "info": {"explanation": "Återvandring betyder att personer med uppehållstillstånd eller medborgarskap frivilligt (eller genom påtryckningar) flyttar tillbaka till ursprungslandet, ofta med ekonomiskt stöd.", "pros": ["Kan minska utanförskap för dem som aldrig etablerat sig", "Frivillig återvandring med stöd kan gynna både individ och hemland", "Minskar belastningen på välfärdssystemen enligt förespråkare"], "cons": ["Riskerar att peka ut hela grupper som oönskade", "Kan skada integrationen — varför anstränga sig om man ändå förväntas åka?", "Arbetsgivare kan förlora arbetskraft"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "mig-03", "dim": "migration", "dimension": "Migration & integration", "text": "Arbetskraftsinvandring till lågkvalificerade yrken bör begränsas med ett högt lönekrav.", "info": {"explanation": "Arbetskraftsinvandrare utanför EU måste i dag tjäna en viss lön för att få tillstånd. Ett högt lönegolv stänger i praktiken ute lågkvalificerade yrken som städning och restaurang.", "pros": ["Motverkar lönedumpning och utnyttjande av utländsk arbetskraft", "Minskar fusk med arbetstillstånd", "Jobb med lägre löner går till arbetslösa som redan bor här"], "cons": ["Branscher med personalbrist får svårt att rekrytera", "Företag kan tvingas stänga eller flytta", "Individer som vill arbeta och göra rätt för sig stängs ute"]}, "partyPositions": {"V": 1, "MP": -2, "S": 1, "C": -2, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "mig-04", "dim": "migration", "dimension": "Migration & integration", "text": "Offentliganställda ska vara skyldiga att anmäla personer som vistas i Sverige utan tillstånd.", "info": {"explanation": "Den s.k. anmälningsplikten (informationsplikten) skulle kräva att offentliganställda, t.ex. lärare och vårdpersonal, rapporterar papperslösa personer de möter i tjänsten till myndigheterna.", "pros": ["Upprätthåller principen att ett nej i asylprocessen ska gälla", "Myndigheter får bättre kontroll över vilka som vistas i landet", "Kan minska skuggsamhället"], "cons": ["Sjuka och barn kan avstå vård och skola av rädsla", "Lärare, läkare och socialarbetare tvingas ange människor de ska hjälpa", "Kritiker kallar det ett angiverisamhälle som bryter mot yrkesetiken"]}, "partyPositions": {"V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 1, "M": 1, "SD": 2}}, {"id": "cli-01", "dim": "climate", "dimension": "Klimat & miljö", "text": "Sverige bör hålla fast vid målet om nettonollutsläpp till 2045 även om det kräver kostsamma åtgärder.", "info": {"explanation": "Sveriges klimatmål är nettonollutsläpp senast 2045. Att nå det kräver dyra åtgärder i industri, transporter och jordbruk. Frågan är om målet ska ligga fast oavsett kostnad.", "pros": ["Sverige tar sin del av ansvaret för Parisavtalet", "Tidig omställning kan ge svenska företag exportfördelar", "Skjuts målet upp blir omställningen dyrare senare"], "cons": ["Höga kostnader för hushåll och industri på kort sikt", "Marginell global effekt om stora utsläppsländer inte följer efter", "Risk att jobb flyttar till länder med lägre krav"]}, "partyPositions": {"V": 1, "MP": 2, "S": 1, "C": 1, "L": 1, "KD": 0, "M": 0, "SD": -2}}, {"id": "cli-02", "dim": "climate", "dimension": "Klimat & miljö", "text": "Skatten på bensin och diesel bör sänkas.", "info": {"explanation": "Skatten på bensin och diesel är både en inkomstkälla för staten och ett styrmedel för att minska utsläppen. Sänkningar gör det billigare att köra bil men ökar utsläppen.", "pros": ["Billigare vardag, särskilt på landsbygden där bilen är nödvändig", "Sänker kostnader för transporter och företag", "Minskar levnadskostnadskrisen för hushåll med små marginaler"], "cons": ["Utsläppen ökar och klimatmålen blir svårare att nå", "Mindre pengar till statskassan", "Gynnar även dem som lätt kunde valt alternativ"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": -1, "L": 0, "KD": 1, "M": 1, "SD": 2}}, {"id": "cli-03", "dim": "climate", "dimension": "Klimat & miljö", "text": "Det bör bli dyrare att flyga för att minska utsläppen.", "info": {"explanation": "Flyget står för en liten del av Sveriges utsläpp men är svårt att ställa om. Högre flygskatt eller krav på dyrare bränslen gör resor dyrare men styr mot tåg och färre resor.", "pros": ["Minskar utsläppen från en växande utsläppskälla", "Styr resande mot tåg där det är möjligt", "Den som smutsar ner betalar för sig"], "cons": ["Dyrare resor slår mot vanliga familjers semester", "Drabbar Norrland och öar där flyget saknar alternativ", "Svensk flygskatt har liten effekt på det globala flyget"]}, "partyPositions": {"V": 1, "MP": 2, "S": 0, "C": 0, "L": -1, "KD": -1, "M": -2, "SD": -2}}, {"id": "cli-04", "dim": "climate", "dimension": "Klimat & miljö", "text": "Skyddet av skog och naturområden bör utökas även om det begränsar skogsbruket.", "info": {"explanation": "Ungefär 70 % av Sverige är skog och skogsnäringen är en stor exportindustri. Frågan är om mer skog ska skyddas från avverkning för klimatets och artrikedomens skull.", "pros": ["Skyddar hotade arter och ekosystem", "Gammal skog binder stora mängder kol", "Bevarar natur för friluftsliv och kommande generationer"], "cons": ["Jobb och exportinkomster i skogslänen hotas", "Ingrepp i enskildas äganderätt kräver dyra ersättningar", "Mindre svensk skogsråvara kan ersättas av sämre alternativ"]}, "partyPositions": {"V": 1, "MP": 2, "S": 0, "C": -2, "L": 0, "KD": -1, "M": -1, "SD": -1}}, {"id": "sec-01", "dim": "security", "dimension": "Lag & ordning", "text": "Straffen för gängrelaterad brottslighet bör skärpas ytterligare.", "info": {"explanation": "Straffen för gängbrottslighet har skärpts kraftigt de senaste åren (dubbla straff för gängkriminella, visitationszoner m.m.). Frågan är om de ska skärpas ytterligare.", "pros": ["Farliga gängkriminella låses in längre och kan inte begå nya brott", "Tydlig signal om samhällets gränser", "Kan öka tryggheten i utsatta områden"], "cons": ["Forskning visar begränsad avskräckande effekt av längre straff", "Dyrt — fängelseplatser kostar och platsbrist råder redan", "Riskerar att unga rekryteras som ersättare ändå"]}, "partyPositions": {"V": -1, "MP": -1, "S": 1, "C": 1, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "sec-02", "dim": "security", "dimension": "Lag & ordning", "text": "Polisen ska kunna använda visitationszoner i områden med hög brottslighet.", "info": {"explanation": "I en visitationszon får polisen kroppsvisitera personer och söka igenom fordon utan konkret brottsmisstanke. Infördes i Sverige 2024 efter dansk förebild.", "pros": ["Vapen och sprängmedel kan hittas innan de används", "Verktyg mot gängens våldsvågor", "Kan verka avskräckande i akuta lägen"], "cons": ["Ingrepp i den personliga integriteten utan brottsmisstanke", "Risk för etnisk profilering och diskriminering", "Kan skada förtroendet för polisen i områden där det behövs mest"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": 1, "KD": 2, "M": 2, "SD": 2}}, {"id": "sec-03", "dim": "security", "dimension": "Lag & ordning", "text": "Förebyggande sociala insatser är viktigare för att minska brottsligheten än fler poliser och hårdare straff.", "info": {"explanation": "Frågan ställer två strategier mot varandra: tidiga sociala insatser (skola, socialtjänst, fritid, föräldrastöd) eller mer resurser till polis och straff.", "pros": ["Angriper orsakerna innan brotten begås", "Billigare på lång sikt än fängelse", "Forskningsstöd för att tidiga insatser minskar nyrekrytering"], "cons": ["Ger inte snabb effekt mot pågående våldsvåg", "Svårt att mäta och utvärdera", "Kan uppfattas som svaghet mot dem som redan begår brott"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": -1, "KD": -1, "M": -2, "SD": -2}}, {"id": "sec-04", "dim": "security", "dimension": "Lag & ordning", "text": "Kameraövervakningen på offentliga platser bör byggas ut kraftigt.", "info": {"explanation": "Kameraövervakning på gator och torg har byggts ut kraftigt. Frågan är om utbyggnaden ska fortsätta i stor skala, t.ex. med fler AI-analyserade kameror.", "pros": ["Hjälper polisen att klara upp brott", "Kan öka den upplevda tryggheten", "Avskräcker viss brottslighet på övervakade platser"], "cons": ["Alla medborgare övervakas, inte bara kriminella", "Brottsligheten kan flytta runt hörnet", "Risk för ändamålsglidning — data kan användas till annat"]}, "partyPositions": {"V": -1, "MP": -1, "S": 1, "C": -1, "L": 0, "KD": 1, "M": 2, "SD": 2}}, {"id": "wel-01", "dim": "welfare", "dimension": "Välfärdens organisation", "text": "Vinstuttag ur skattefinansierade friskolor bör förbjudas.", "info": {"explanation": "Sverige är ensamt i världen om att tillåta vinstuttag ur skattefinansierade friskolor. Frågan är om vinstuttag ska förbjudas (pengarna måste återinvesteras i skolan).", "pros": ["Skattepengar avsedda för undervisning stannar i skolan", "Minskar drivkraften till betygsinflation och elevsortering", "De flesta andra länder tillåter inte vinstuttag ur skolor"], "cons": ["Många friskolor kan tvingas stänga — färre alternativ", "Valfriheten minskar för familjer", "Seriösa aktörer som levererar kvalitet straffas också"]}, "partyPositions": {"V": 2, "MP": 1, "S": 2, "C": -1, "L": -1, "KD": -1, "M": -2, "SD": 0}}, {"id": "wel-02", "dim": "welfare", "dimension": "Välfärdens organisation", "text": "Rätten att välja privata utförare i vård och omsorg bör värnas.", "info": {"explanation": "Lagen om valfrihet låter patienter och brukare välja mellan offentliga och privata utförare i vård och omsorg, finansierat med skattepengar.", "pros": ["Individen bestämmer själv över sin vård och omsorg", "Konkurrens kan pressa köer och höja kvalitet", "Privata alternativ avlastar den offentliga vården"], "cons": ["Vinstintresse kan gå ut över kvalitet och bemanning", "Privata utförare kan välja lönsamma patienter (gräddskumning)", "Splittrar systemet och försvårar planering"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 2, "L": 2, "KD": 2, "M": 2, "SD": 1}}, {"id": "wel-03", "dim": "welfare", "dimension": "Välfärdens organisation", "text": "Staten bör ta över huvudansvaret för sjukvården från regionerna.", "info": {"explanation": "Sjukvården drivs i dag av 21 regioner med olika resurser och resultat. Förslaget innebär att staten tar över huvudansvaret för att vården ska bli likvärdig i hela landet.", "pros": ["Jämlik vård oavsett var du bor", "Stordriftsfördelar och nationell planering av t.ex. IT och läkemedel", "Slut på 21 parallella byråkratier"], "cons": ["Enorm omorganisation som tar år och kraft från vården", "Beslut flyttas längre från patienter och personal", "Ingen garanti att staten styr bättre än regionerna"]}, "partyPositions": {"V": 0, "MP": 0, "S": -1, "C": -2, "L": 1, "KD": 2, "M": 0, "SD": 1}}, {"id": "wel-04", "dim": "welfare", "dimension": "Välfärdens organisation", "text": "Fler välfärdstjänster bör drivas i offentlig regi även om utbudet av privata alternativ minskar.", "info": {"explanation": "Frågan gäller den principiella avvägningen: ska välfärdstjänster i första hand drivas av det offentliga, även om privata alternativ då blir färre?", "pros": ["Demokratisk styrning och insyn i verksamheten", "Inga skattepengar går till vinstuttag", "Sammanhållet system utan gräddskumning"], "cons": ["Mindre mångfald och färre alternativ att välja mellan", "Offentliga monopol kan bli ineffektiva utan konkurrens", "Innovationstakten kan minska"]}, "partyPositions": {"V": 2, "MP": 1, "S": 1, "C": -2, "L": -2, "KD": -1, "M": -2, "SD": -1}}, {"id": "eu-01", "dim": "eu", "dimension": "EU & internationellt", "text": "Sverige bör införa euron som valuta.", "info": {"explanation": "Sverige röstade nej till euron 2003 men är formellt förpliktigat att införa den någon gång. Genom Sverigelöftet planeras en ny folkomröstning på valdagen 2030.", "pros": ["Slipper växelkursrisk — enklare handel och resor", "Plats vid bordet när eurozonen fattar beslut", "Kronan är liten och sårbar vid oro"], "cons": ["Sverige förlorar egen penningpolitik och räntevapen", "Kronan har fungerat som stötdämpare i kriser", "Euroländernas problem kan bli våra"]}, "partyPositions": {"V": -2, "MP": -1, "S": -1, "C": 0, "L": 2, "KD": -1, "M": 0, "SD": -2}}, {"id": "eu-02", "dim": "eu", "dimension": "EU & internationellt", "text": "EU bör få mer beslutsmakt i gränsöverskridande frågor som klimat och migration, även om Sveriges självbestämmande minskar.", "info": {"explanation": "Klimat, migration och säkerhet stannar inte vid gränser. Frågan är om EU ska få mer beslutsmakt i sådana frågor, även när Sverige blir överkört i enskilda beslut.", "pros": ["Gränsöverskridande problem kräver gemensamma beslut", "Ett starkt EU står emot stormakter bättre än små länder var för sig", "Gemensamma regler ger företag en jämn spelplan"], "cons": ["Sveriges självbestämmande minskar", "Beslut flyttas längre från väljarna", "EU-kompromisser kan bli sämre än svenska lösningar"]}, "partyPositions": {"V": -1, "MP": 1, "S": 0, "C": 1, "L": 2, "KD": -1, "M": -1, "SD": -2}}, {"id": "eu-03", "dim": "eu", "dimension": "EU & internationellt", "text": "Sverige bör verka för att flytta tillbaka makt från EU till nationell nivå.", "info": {"explanation": "Motsatt riktning: ska Sverige aktivt arbeta för att flytta tillbaka beslutsmakt från Bryssel till riksdagen, t.ex. i arbetsmarknads- och skogsfrågor?", "pros": ["Beslut fattas närmare svenska väljare", "Regler kan anpassas till svenska förhållanden", "Minskar EU-byråkratin"], "cons": ["Försvagar EU-samarbetet när omvärlden är orolig", "Sverige förlorar inflytande över regler vi ändå påverkas av", "Svårare att lösa gemensamma problem som brottslighet och klimat"]}, "partyPositions": {"V": 1, "MP": -1, "S": 0, "C": -1, "L": -2, "KD": 1, "M": 0, "SD": 2}}, {"id": "eu-04", "dim": "eu", "dimension": "EU & internationellt", "text": "Sveriges bistånd till fattiga länder bör minskas.", "info": {"explanation": "Sverige har länge varit en av världens största biståndsgivare per invånare (målet var länge 1 % av BNI). Frågan är om biståndet ska minskas till förmån för inhemska behov.", "pros": ["Frigör miljarder till välfärd och försvar hemma", "Delar av biståndet har haft svårmätt effekt", "Andra rika länder ger betydligt mindre"], "cons": ["Drabbar världens fattigaste direkt", "Minskar Sveriges internationella inflytande och anseende", "Instabilitet och fattigdom i omvärlden kan öka migrationen på sikt"]}, "partyPositions": {"V": -2, "MP": -2, "S": -1, "C": -2, "L": -1, "KD": 0, "M": 1, "SD": 2}}, {"id": "val-01", "dim": "values", "dimension": "Värderingar (GAL–TAN)", "text": "Svenskt kulturarv och svenska traditioner bör få en större plats i skolan och det offentliga rummet.", "info": {"explanation": "En värderingsfråga om det offentligas roll: ska svenskt kulturarv, traditioner och historia få större utrymme i skolan, kulturpolitiken och det offentliga rummet?", "pros": ["Stärker gemensam identitet och sammanhållning", "Kulturarv riskerar annars att glömmas bort", "Ger nyanlända en tydlig bild av det samhälle de möter"], "cons": ["Vem definierar vad som är svensk kultur?", "Risk att människor med annan bakgrund pekas ut som mindre svenska", "Skolans timmar är begränsade — något annat får stryka på foten"]}, "partyPositions": {"V": -1, "MP": -1, "S": 0, "C": 0, "L": 0, "KD": 2, "M": 1, "SD": 2}}, {"id": "val-02", "dim": "values", "dimension": "Värderingar (GAL–TAN)", "text": "Hbtqi-personers rättigheter bör stärkas ytterligare.", "info": {"explanation": "Sverige rankas högt i hbtqi-rättigheter men debatt pågår om bl.a. juridiskt kön, vård för unga med könsdysfori och hatbrott. Frågan är om rättigheterna ska stärkas ytterligare.", "pros": ["Mänskliga rättigheter ska gälla fullt ut för alla", "Minskar psykisk ohälsa i en utsatt grupp", "Sverige kan vara föregångsland när rättigheter backar i omvärlden"], "cons": ["Kritiker menar att lagstiftningen redan är stark", "Oenighet om t.ex. vård av minderåriga kräver försiktighet", "Fler lagar löser inte attityder"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": 2, "KD": -1, "M": 0, "SD": -1}}, {"id": "val-03", "dim": "values", "dimension": "Värderingar (GAL–TAN)", "text": "Ett nationellt förbud mot tiggeri bör införas.", "info": {"explanation": "Tiggeri är i dag lagligt men flera kommuner har infört lokala förbud. Frågan gäller ett nationellt förbud mot att be om pengar på offentlig plats.", "pros": ["Kan minska utnyttjande av utsatta människor av kriminella nätverk", "Ordning i det offentliga rummet", "Tydlighet i stället för kommunalt lapptäcke"], "cons": ["Kriminaliserar fattigdom i stället för att bekämpa den", "Löser inte orsakerna — de utsatta finns kvar", "Svårt att förena med grundläggande fri- och rättigheter"]}, "partyPositions": {"V": -2, "MP": -2, "S": 0, "C": -1, "L": -1, "KD": 1, "M": 2, "SD": 2}}, {"id": "val-04", "dim": "values", "dimension": "Värderingar (GAL–TAN)", "text": "Public service (SVT och SR) bör få smalare uppdrag och minskade anslag.", "info": {"explanation": "Public service (SVT, SR, UR) finansieras via skatten och har ett brett uppdrag. Frågan är om uppdraget ska smalnas av och anslagen minskas.", "pros": ["Mindre kostnad för skattebetalarna", "Privata medier slipper konkurrera med skattefinansierat innehåll", "Smalare uppdrag kan öka fokus på kärnan: nyheter och samhälle"], "cons": ["Oberoende journalistik i hela landet försvagas", "Viktig beredskapsfunktion vid kris och krig", "Smalt innehåll som inte bär sig kommersiellt försvinner"]}, "partyPositions": {"V": -2, "MP": -2, "S": -2, "C": -1, "L": -1, "KD": 1, "M": 1, "SD": 2}}, {"id": "ene-01", "dim": "energy", "dimension": "Energi & landsbygd", "text": "Staten bör subventionera byggandet av ny kärnkraft.", "info": {"explanation": "Regeringen har öppnat för statliga subventioner och riskdelning för ny kärnkraft. Utan statligt stöd byggs sannolikt ingen ny kärnkraft — den är för dyr och riskabel för marknaden.", "pros": ["Planerbar fossilfri el när industrin ska elektrifieras", "Mindre beroende av väder och import", "Teknikutveckling och kompetens stannar i Sverige"], "cons": ["Mycket dyrt — skattebetalarna bär risken vid förseningar", "Tar 10–15 år; klimatomställningen behöver el nu", "Kan tränga ut billigare och snabbare förnybar el"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": -1, "L": 2, "KD": 2, "M": 2, "SD": 2}}, {"id": "ene-02", "dim": "energy", "dimension": "Energi & landsbygd", "text": "Utbyggnaden av havsbaserad vindkraft bör påskyndas.", "info": {"explanation": "Havsbaserad vindkraft kan ge stora mängder el men projekten är dyra, tar tid och har mött motstånd från Försvarsmakten. Frågan är om utbyggnaden ska påskyndas.", "pros": ["Stora mängder ny el relativt snabbt", "Havsvind blåser jämnare än landvind", "Skapar jobb längs kusterna"], "cons": ["Konflikter med försvarets radar och Nato-övervakning i Östersjön", "Påverkan på marint liv och fiske", "Kräver dyra elnätsanslutningar — vem betalar?"]}, "partyPositions": {"V": 2, "MP": 2, "S": 1, "C": 1, "L": 0, "KD": -1, "M": -1, "SD": -2}}, {"id": "ene-03", "dim": "energy", "dimension": "Energi & landsbygd", "text": "Strandskyddet bör lättas för att göra det enklare att bygga på landsbygden.", "info": {"explanation": "Strandskyddet förbjuder byggande nära vatten (generellt 100 m) för att skydda allemansrätt och natur. Lättnader skulle göra det enklare att bygga sjönära, främst på landsbygden.", "pros": ["Attraktivt boende kan vända utvecklingen i avfolkningsbygder", "Markägare får bättre rätt att använda sin egen mark", "Stora delar av Sveriges stränder är helt obebyggda"], "cons": ["Allmänhetens tillgång till stränder minskar", "Strandnära natur är artrik och känslig", "Risk att attraktiva lägen privatiseras för alltid"]}, "partyPositions": {"V": -1, "MP": -2, "S": 0, "C": 2, "L": 1, "KD": 1, "M": 1, "SD": 1}}, {"id": "ene-04", "dim": "energy", "dimension": "Energi & landsbygd", "text": "Kärnkraften bör avvecklas på sikt.", "info": {"explanation": "Den långsiktiga riktningsfrågan för energipolitiken: ska kärnkraften fasas ut när reaktorerna tjänat ut, till förmån för helt förnybar elproduktion?", "pros": ["Slipper olycksrisk och slutförvar av avfall i 100 000 år", "Förnybar el är i dag billigast att bygga ny", "Uran är en ändlig resurs som ofta importeras"], "cons": ["Planerbar elproduktion försvinner — risk för effektbrist vindstilla vinterdagar", "Elpriserna kan bli mer volatila", "Klimatmålen blir svårare om fossilfri el stängs i förtid"]}, "partyPositions": {"V": 0, "MP": 2, "S": -1, "C": -1, "L": -2, "KD": -2, "M": -2, "SD": -2}}];
+var DIMS = [{"id": "economy", "name": "Ekonomi & skatter"}, {"id": "migration", "name": "Migration & integration"}, {"id": "climate", "name": "Klimat & miljö"}, {"id": "security", "name": "Lag & ordning"}, {"id": "welfare", "name": "Välfärdens organisation"}, {"id": "eu", "name": "EU & internationellt"}, {"id": "values", "name": "Värderingar (GAL–TAN)"}, {"id": "energy", "name": "Energi & landsbygd"}];
 var LABELS = [[-2, 'Tar helt avstånd'], [-1, 'Tar delvis avstånd'], [0, 'Neutral / vet ej'],
               [1, 'Instämmer delvis'], [2, 'Instämmer helt']];
 var WEIGHTS = [[0.5, 'Mindre viktig'], [1, 'Normal'], [2, 'Extra viktig']];
 var KEY_A = 'vk_svar_v1', KEY_R = 'vk_resultat_v1', MIN = 15;
+var KEY_P = 'vk_prio_v1', KEY_O = 'vk_ordning_v1';
+var PRIO_BOOST = 1.5;
 var DARKTEXT = ['#DDDD00', '#52BDEC'];
+var PBYID = {};
+PARTIES.forEach(function (p) { PBYID[p.id] = p; });
+var QBYID = {};
+QUESTIONS.forEach(function (q) { QBYID[q.id] = q; });
 
 var answers = load(KEY_A) || {};
 var idx = 0;
 var hist = [];  // ångra-stack (per session): {qid, idx, prev}
+
+/* slumpad frågeordning inom varje område; sparas så numrering är stabil */
+function ensureOrder() {
+  var o = load(KEY_O);
+  if (o && o.length === QUESTIONS.length) return o;
+  o = [];
+  DIMS.forEach(function (d) {
+    var g = QUESTIONS.filter(function (q) { return q.dim === d.id; }).map(function (q) { return q.id; });
+    for (var i = g.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = g[i]; g[i] = g[j]; g[j] = t;
+    }
+    o = o.concat(g);
+  });
+  save(KEY_O, o);
+  return o;
+}
+var ORDER = ensureOrder();
+function getQ(i) { return QBYID[ORDER[i]]; }
+function prio() { return load(KEY_P) || []; }
 
 function load(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
 function save(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
@@ -321,31 +438,55 @@ function answeredCount() {
 function touchedCount() { return Object.keys(answers).length; }
 
 function show(view) {
-  ['v-start', 'v-quiz', 'v-result', 'v-review'].forEach(function (v) {
+  ['v-start', 'v-prio', 'v-quiz', 'v-result', 'v-review', 'v-compare'].forEach(function (v) {
     el(v).classList.toggle('hidden', v !== view);
   });
   window.scrollTo(0, 0);
 }
 
-/* ---- matchning: viktad L1 enligt docs/03 ---- */
-function computeScores() {
+/* ---- matchning: viktad L1 enligt docs/03, med områdesprioritering ---- */
+function effWeight(q, a) {
+  var w = a.w || 1;
+  if (prio().indexOf(q.dim) >= 0) w *= PRIO_BOOST;
+  return w;
+}
+function computeScores(dimId) {
   var rows = PARTIES.map(function (p) {
-    var num = 0, den = 0;
+    var num = 0, den = 0, n = 0;
     QUESTIONS.forEach(function (q) {
+      if (dimId && q.dim !== dimId) return;
       var a = answers[q.id];
       if (!a || a.v === null || a.v === undefined) return;
-      var w = a.w || 1;
+      var w = effWeight(q, a);
       num += w * Math.abs(a.v - q.partyPositions[p.id]);
       den += w * 4;
+      n++;
     });
-    return { id: p.id, name: p.name, color: p.color,
+    return { id: p.id, name: p.name, color: p.color, n: n,
              pct: den ? Math.round(100 * (1 - num / den)) : 0 };
   });
   rows.sort(function (a, b) { return b.pct - a.pct; });
   return rows;
 }
+/* överensstämmelse per parti: samma svar / nära / störst samsyn & skillnad */
+function agreeStats(pid) {
+  var same = 0, near = 0, n = 0, best = null, worst = null;
+  QUESTIONS.forEach(function (q) {
+    var a = answers[q.id];
+    if (!a || a.v === null || a.v === undefined) return;
+    n++;
+    var pv = q.partyPositions[pid];
+    var d = Math.abs(a.v - pv);
+    if (d === 0) {
+      same++;
+      if (!best || Math.abs(a.v) > Math.abs(best.v)) best = { q: q, v: a.v };
+    } else if (d === 1) near++;
+    if (!worst || d > worst.d) worst = { q: q, d: d, u: a.v, pv: pv };
+  });
+  return { same: same, near: near, n: n, best: best, worst: worst };
+}
 
-/* ---- startvy ---- */
+/* ---- startvy: visas bara för återvändande besökare med sparade svar ---- */
 function renderStart() {
   var box = el('start-buttons'); box.innerHTML = '';
   var res = load(KEY_R);
@@ -354,31 +495,59 @@ function renderStart() {
     var b = document.createElement('button'); b.type = 'button';
     b.className = cls; b.textContent = txt; b.addEventListener('click', fn); return b;
   }
-  if (touched === 0) {
-    box.appendChild(btn('Starta testet', 'cta', function () { idx = 0; show('v-quiz'); renderQ(); }));
-  } else {
-    var row = document.createElement('div'); row.className = 'startrow';
-    if (touched < QUESTIONS.length) {
-      row.appendChild(btn('Fortsätt (' + touched + ' av ' + QUESTIONS.length + ')', 'cta', function () {
-        idx = firstUnanswered(); show('v-quiz'); renderQ();
-      }));
-    }
-    if (res) row.appendChild(btn('Se resultat', 'btn', function () { renderResult(false); }));
-    row.appendChild(btn('Se dina svar', 'btn', function () { renderReview(); }));
-    row.appendChild(btn('Nollställ testet', 'btn', function () { restart(false); }));
-    box.appendChild(row);
+  var row = document.createElement('div'); row.className = 'startrow';
+  if (touched < QUESTIONS.length) {
+    row.appendChild(btn('Fortsätt (' + touched + ' av ' + QUESTIONS.length + ')', 'cta', function () {
+      idx = firstUnanswered(); show('v-quiz'); renderQ();
+    }));
   }
+  if (res) row.appendChild(btn('Se resultat', 'btn', function () { renderResult(false); }));
+  row.appendChild(btn('Se dina svar', 'btn', function () { renderReview(); }));
+  row.appendChild(btn('Nollställ testet', 'btn', function () { restart(false); }));
+  box.appendChild(row);
+  show('v-start');
 }
 function firstUnanswered() {
-  for (var i = 0; i < QUESTIONS.length; i++) if (!(QUESTIONS[i].id in answers)) return i;
+  for (var i = 0; i < ORDER.length; i++) if (!(ORDER[i] in answers)) return i;
   return 0;
 }
 function restart(force) {
   if (!force && touchedCount() > 0 &&
       !confirm('Detta nollställer testet: alla dina svar och ditt resultat raderas. Vill du fortsätta?')) return;
   localStorage.removeItem(KEY_A); localStorage.removeItem(KEY_R);
-  answers = {}; hist = []; idx = 0; show('v-quiz'); renderQ();
+  localStorage.removeItem(KEY_P); localStorage.removeItem(KEY_O);
+  answers = {}; hist = []; idx = 0;
+  ORDER = ensureOrder();
+  renderPrio();
 }
+
+/* ---- prioritering: första steget för nya besökare ---- */
+function renderPrio() {
+  var grid = el('prio-grid'); grid.innerHTML = '';
+  var sel = prio().slice();
+  DIMS.forEach(function (d) {
+    var b = document.createElement('button'); b.type = 'button';
+    b.textContent = d.name;
+    function refresh() {
+      b.classList.toggle('sel', sel.indexOf(d.id) >= 0);
+      b.disabled = sel.length >= 3 && sel.indexOf(d.id) < 0;
+    }
+    b.addEventListener('click', function () {
+      var i = sel.indexOf(d.id);
+      if (i >= 0) sel.splice(i, 1); else if (sel.length < 3) sel.push(d.id);
+      grid.querySelectorAll('button').forEach(function (btn2, k) {
+        btn2.classList.toggle('sel', sel.indexOf(DIMS[k].id) >= 0);
+        btn2.disabled = sel.length >= 3 && sel.indexOf(DIMS[k].id) < 0;
+      });
+    });
+    refresh();
+    grid.appendChild(b);
+  });
+  el('prio-done').onclick = function () { save(KEY_P, sel); startQuiz(); };
+  el('prio-skip').onclick = function () { save(KEY_P, []); startQuiz(); };
+  show('v-prio');
+}
+function startQuiz() { idx = firstUnanswered(); show('v-quiz'); renderQ(); }
 
 /* ---- ångra ---- */
 function snapshot(qid) {
@@ -401,7 +570,7 @@ el('q-reset').addEventListener('click', function () { restart(false); });
 
 /* ---- frågevy ---- */
 function renderQ() {
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   var a = answers[q.id] || {};
   el('q-step').textContent = 'Fråga ' + (idx + 1) + ' av ' + QUESTIONS.length;
   el('q-dim').textContent = q.dimension;
@@ -443,7 +612,7 @@ function renderQ() {
   el('q-undo').disabled = hist.length === 0;
 }
 function pick(v) {
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   pushHist(q.id);
   var cur = answers[q.id] || {};
   cur.v = v; if (!cur.w) cur.w = 1;
@@ -457,49 +626,226 @@ function next() {
 el('q-prev').addEventListener('click', function () { if (idx > 0) { idx--; renderQ(); } });
 el('q-next').addEventListener('click', next);
 el('q-skip').addEventListener('click', function () {
-  var q = QUESTIONS[idx];
+  var q = getQ(idx);
   pushHist(q.id);
   answers[q.id] = { v: null, w: answers[q.id] && answers[q.id].w || 1 };
   save(KEY_A, answers); next();
 });
 
 /* ---- resultatvy ---- */
-function renderResult(saveIt) {
-  var n = answeredCount();
-  var warn = el('r-warn'); warn.innerHTML = '';
-  if (n < MIN) {
-    warn.innerHTML = '<div class="warn">Du har besvarat ' + n + ' frågor. Det behövs minst ' +
-      MIN + ' för ett pålitligt resultat — <a href="#" id="warn-more">svara på fler frågor</a>.</div>';
-    el('r-list').innerHTML = '';
-    el('r-meta').textContent = '';
-    show('v-result');
-    el('warn-more').addEventListener('click', function (ev) {
-      ev.preventDefault(); idx = firstUnanswered(); show('v-quiz'); renderQ();
+function fgFor(color) { return DARKTEXT.indexOf(color) >= 0 ? '#1a1a1a' : '#fff'; }
+function scoreRowHtml(s) {
+  return '<span class="pid" style="background:' + s.color + ';color:' + fgFor(s.color) + '">' + s.id + '</span>' +
+    '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
+    '<span class="pct">' + s.pct + ' %</span>';
+}
+function partyDetailHtml(s) {
+  var st = agreeStats(s.id);
+  var html = '<p><strong>Samma svar i ' + st.same + ' av ' + st.n + '</strong> besvarade frågor, ' +
+    'ett steg ifrån i ' + st.near + '.</p>';
+  if (st.best) {
+    html += '<p>Störst samsyn: <span class="q-quote">”' + st.best.q.text + '”</span> — ni svarar båda <b>' +
+      labelFor(st.best.v).toLowerCase() + '</b>.</p>';
+  }
+  if (st.worst && st.worst.d >= 2) {
+    html += '<p>Störst skillnad: <span class="q-quote">”' + st.worst.q.text + '”</span> — du: <b>' +
+      labelFor(st.worst.u).toLowerCase() + '</b>, ' + s.id + ': <b>' + labelFor(st.worst.pv).toLowerCase() + '</b>.</p>';
+  }
+  return html;
+}
+function renderDims() {
+  var wrap = el('r-dims'); wrap.innerHTML = '';
+  DIMS.forEach(function (d) {
+    var rows = computeScores(d.id);
+    var nAns = rows[0] ? rows[0].n : 0;
+    var det = document.createElement('details'); det.className = 'dimsec';
+    var starred = prio().indexOf(d.id) >= 0 ? ' ★' : '';
+    if (nAns === 0) {
+      det.innerHTML = '<summary><span class="dimname">' + d.name + starred +
+        '</span><span class="dimn">inga besvarade frågor</span></summary>';
+      wrap.appendChild(det);
+      return;
+    }
+    var top = rows.slice(0, 3).map(function (s) { return s.id + ' ' + s.pct + ' %'; }).join(' · ');
+    det.innerHTML = '<summary><span class="dimname">' + d.name + starred + '</span>' +
+      '<span class="dimtop">' + top + '</span>' +
+      '<span class="dimn">' + nAns + ' av 4 frågor</span></summary>';
+    var body = document.createElement('div'); body.className = 'dimbody';
+    rows.forEach(function (s) {
+      var row = document.createElement('div'); row.className = 'score-row';
+      row.innerHTML = scoreRowHtml(s);
+      body.appendChild(row);
     });
-    return;
+    det.appendChild(body);
+    wrap.appendChild(det);
+  });
+}
+function encodeShare(res) {
+  var payload = { d: res.date, a: res.answered, t: res.total,
+                  s: res.scores.map(function (x) { return [x.id, x.pct]; }) };
+  return btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+function decodeShare(str) {
+  try {
+    var json = decodeURIComponent(escape(atob(str.replace(/-/g, '+').replace(/_/g, '/'))));
+    var p = JSON.parse(json);
+    return { date: p.d, answered: p.a, total: p.t,
+             scores: p.s.map(function (x) {
+               var party = PBYID[x[0]] || { name: x[0], color: '#888' };
+               return { id: x[0], name: party.name, color: party.color, pct: x[1] };
+             }) };
+  } catch (e) { return null; }
+}
+function renderResult(saveIt, shared) {
+  el('r-shared-note').innerHTML = '';
+  el('r-warn').innerHTML = '';
+  var scores, n, total;
+
+  if (shared) {
+    el('r-title').textContent = 'Delat resultat';
+    el('r-meta').textContent = 'Gjort ' + shared.date + ' · ' + shared.answered + ' av ' +
+      shared.total + ' frågor besvarade.';
+    el('r-shared-note').innerHTML = '<div class="shared-note">Det här är någon annans resultat, ' +
+      'delat via länk. <a href="test.html">Gör testet själv</a> så får du ditt eget.</div>';
+    el('r-own-actions').classList.add('hidden');
+    el('r-share-row').classList.add('hidden');
+    el('r-dims-wrap').classList.add('hidden');
+    el('r-hint').textContent = '';
+    scores = shared.scores;
+  } else {
+    el('r-title').textContent = 'Ditt resultat';
+    el('r-own-actions').classList.remove('hidden');
+    el('r-share-row').classList.remove('hidden');
+    el('r-dims-wrap').classList.remove('hidden');
+    n = answeredCount(); total = QUESTIONS.length;
+    if (n < MIN) {
+      el('r-warn').innerHTML = '<div class="warn">Du har besvarat ' + n + ' frågor. Det behövs minst ' +
+        MIN + ' för ett pålitligt resultat — <a href="#" id="warn-more">svara på fler frågor</a>.</div>';
+      el('r-list').innerHTML = ''; el('r-meta').textContent = '';
+      el('r-dims').innerHTML = ''; el('r-hint').textContent = '';
+      el('r-share-row').classList.add('hidden');
+      show('v-result');
+      el('warn-more').addEventListener('click', function (ev) {
+        ev.preventDefault(); idx = firstUnanswered(); show('v-quiz'); renderQ();
+      });
+      return;
+    }
+    scores = computeScores();
+    if (saveIt) {
+      save(KEY_R, { date: new Date().toISOString().slice(0, 10), answered: n,
+                    total: total, scores: scores });
+    }
+    var pnames = prio().map(function (id) {
+      var d = DIMS.filter(function (x) { return x.id === id; })[0];
+      return d ? d.name : id;
+    });
+    el('r-meta').textContent = n + ' av ' + total + ' frågor besvarade. ' +
+      'Högre procent = större samsyn med partiet i dina viktade svar.' +
+      (pnames.length ? ' Prioriterade områden (★): ' + pnames.join(', ') + '.' : '');
+    el('r-hint').textContent = 'Tryck på en partirad för detaljer: hur många frågor ni svarar lika på, och var ni skiljer er mest.';
   }
-  var scores = computeScores();
-  if (saveIt) {
-    save(KEY_R, { date: new Date().toISOString().slice(0, 10), answered: n,
-                  total: QUESTIONS.length, scores: scores });
-  }
-  el('r-meta').textContent = n + ' av ' + QUESTIONS.length + ' frågor besvarade. ' +
-    'Högre procent = större samsyn med partiet i dina viktade svar.';
+
   var list = el('r-list'); list.innerHTML = '';
   scores.forEach(function (s) {
-    var row = document.createElement('div'); row.className = 'score-row';
-    var fg = DARKTEXT.indexOf(s.color) >= 0 ? '#1a1a1a' : '#fff';
-    row.innerHTML = '<span class="pid" style="background:' + s.color + ';color:' + fg + '">' + s.id + '</span>' +
-      '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
-      '<span class="pct">' + s.pct + ' %</span>';
-    list.appendChild(row);
+    if (shared) {
+      var row = document.createElement('div'); row.className = 'score-row';
+      row.innerHTML = scoreRowHtml(s);
+      list.appendChild(row);
+      return;
+    }
+    var box = document.createElement('div'); box.className = 'party-result';
+    var head = document.createElement('button');
+    head.type = 'button'; head.className = 'prh'; head.setAttribute('aria-expanded', 'false');
+    head.innerHTML = scoreRowHtml(s) + '<span class="caret">▼</span>';
+    var detail = document.createElement('div'); detail.className = 'pr-detail hidden';
+    head.addEventListener('click', function () {
+      var nowHidden = detail.classList.toggle('hidden');
+      head.setAttribute('aria-expanded', String(!nowHidden));
+      if (!nowHidden && !detail.innerHTML) detail.innerHTML = partyDetailHtml(s);
+    });
+    box.appendChild(head); box.appendChild(detail);
+    list.appendChild(box);
   });
+
+  if (!shared) renderDims();
   show('v-result');
 }
+
+/* ---- dela resultat ---- */
+el('r-share').addEventListener('click', function () {
+  var res = load(KEY_R);
+  if (!res) return;
+  var url = location.origin + location.pathname + '#r=' + encodeShare(res);
+  var btn = el('r-share');
+  function done() {
+    btn.textContent = 'Länk kopierad ✓';
+    setTimeout(function () { btn.textContent = 'Kopiera resultatlänk'; }, 2500);
+  }
+  if (navigator.share) {
+    navigator.share({ title: 'Mitt valkompassresultat', url: url }).catch(function () {});
+  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done);
+  } else {
+    window.prompt('Kopiera länken:', url);
+  }
+});
+el('r-compare').addEventListener('click', function () { renderCompare(null, null); });
+
+/* ---- jämför två partier ---- */
+function fillCompareSelect(sel, chosen) {
+  sel.innerHTML = '';
+  PARTIES.forEach(function (p) {
+    var o = document.createElement('option');
+    o.value = p.id; o.textContent = p.name;
+    if (p.id === chosen) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+function renderCompare(aId, bId) {
+  var res = load(KEY_R);
+  if (!aId || !bId) {
+    if (res && res.scores.length >= 2) { aId = res.scores[0].id; bId = res.scores[1].id; }
+    else { aId = 'S'; bId = 'M'; }
+  }
+  fillCompareSelect(el('cmp-a'), aId);
+  fillCompareSelect(el('cmp-b'), bId);
+  el('cmp-a').onchange = el('cmp-b').onchange = function () {
+    renderCompare(el('cmp-a').value, el('cmp-b').value);
+  };
+  var A = PBYID[aId], B = PBYID[bId];
+  var same = 0, near = 0;
+  var list = el('cmp-list'); list.innerHTML = '';
+  QUESTIONS.forEach(function (q) {
+    var av = q.partyPositions[aId], bv = q.partyPositions[bId];
+    var d = Math.abs(av - bv);
+    if (d === 0) same++; else if (d === 1) near++;
+    var item = document.createElement('div');
+    item.className = 'cmp-item' + (d >= 2 ? ' diff-big' : '');
+    var chips = '<span class="cmp-chip" style="background:' + A.color + ';color:' + fgFor(A.color) + '">' +
+      aId + ': ' + labelFor(av) + '</span>' +
+      '<span class="cmp-chip" style="background:' + B.color + ';color:' + fgFor(B.color) + '">' +
+      bId + ': ' + labelFor(bv) + '</span>';
+    var ua = answers[q.id];
+    if (ua && ua.v !== null && ua.v !== undefined) {
+      chips += '<span class="cmp-chip du">Du: ' + labelFor(ua.v) + '</span>';
+    }
+    item.innerHTML = '<div class="rq">' + q.text + '</div><div class="cmp-chips">' + chips + '</div>';
+    list.appendChild(item);
+  });
+  el('cmp-sum').innerHTML =
+    '<span class="chip chip-ok">Samma svar i ' + same + ' av ' + QUESTIONS.length + '</span>' +
+    '<span class="chip chip-skip">Ett steg ifrån i ' + near + '</span>' +
+    '<span class="chip chip-none">Längre isär i ' + (QUESTIONS.length - same - near) + '</span>';
+  show('v-compare');
+}
+el('cmp-back').addEventListener('click', function () {
+  if (load(KEY_R)) renderResult(false); else if (touchedCount() > 0) renderStart(); else renderPrio();
+});
 el('r-redo').addEventListener('click', function () { restart(false); });
 el('r-review').addEventListener('click', renderReview);
 el('rev-back').addEventListener('click', function () {
-  if (load(KEY_R)) renderResult(false); else { show('v-start'); renderStart(); }
+  if (load(KEY_R)) renderResult(false); else renderStart();
 });
 
 /* ---- granska svar ---- */
@@ -521,7 +867,7 @@ function statusOf(q) {
 function goTo(i) { idx = i; show('v-quiz'); renderQ(); }
 function renderReview() {
   var counts = { answered: 0, skipped: 0, missing: 0 };
-  QUESTIONS.forEach(function (q) { counts[statusOf(q)]++; });
+  ORDER.forEach(function (qid) { counts[statusOf(QBYID[qid])]++; });
 
   el('rev-summary').innerHTML =
     '<span class="chip chip-ok">✓ ' + counts.answered + ' besvarade</span>' +
@@ -534,8 +880,8 @@ function renderReview() {
     b.type = 'button'; b.className = 'btn btn-go';
     b.textContent = 'Svara på nästa obesvarade fråga';
     b.addEventListener('click', function () {
-      for (var i = 0; i < QUESTIONS.length; i++) {
-        var st = statusOf(QUESTIONS[i]);
+      for (var i = 0; i < ORDER.length; i++) {
+        var st = statusOf(QBYID[ORDER[i]]);
         if (st === 'missing' || st === 'skipped') { goTo(i); return; }
       }
     });
@@ -544,7 +890,8 @@ function renderReview() {
 
   var STATUS_TXT = { answered: null, skipped: 'Hoppade över', missing: 'Obesvarad' };
   var list = el('rev-list'); list.innerHTML = '';
-  QUESTIONS.forEach(function (q, i) {
+  ORDER.forEach(function (qid, i) {
+    var q = QBYID[qid];
     var a = answers[q.id];
     var st = statusOf(q);
     var item = document.createElement('div');
@@ -603,13 +950,19 @@ function renderReview() {
   show('v-review');
 }
 
-/* ---- init: stöd direktlänkar från index ---- */
+/* ---- init: direktlänkar + val av första vy ---- */
 (function init() {
   var h = location.hash;
+  if (h.indexOf('#r=') === 0) {
+    var sharedRes = decodeShare(h.slice(3));
+    if (sharedRes) { renderResult(false, sharedRes); return; }
+  }
   if (h === '#resultat' && load(KEY_R)) { renderResult(false); return; }
   if (h === '#svar' && touchedCount() > 0) { renderReview(); return; }
+  if (h === '#jamfor') { renderCompare(null, null); return; }
   if (h === '#om') { restart(true); return; }
-  renderStart(); show('v-start');
+  if (touchedCount() === 0 && !load(KEY_R)) { renderPrio(); return; }
+  renderStart();
 })();
 </script>
 </body>
