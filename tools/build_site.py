@@ -430,7 +430,7 @@ def build_index(parties_by_id, texts):
   var list = document.getElementById('res-list');
   res.scores.slice(0, 3).forEach(function (s) {{
     var row = document.createElement('div'); row.className = 'score-row';
-    var dark = ['#DDDD00', '#52BDEC'].indexOf(s.color) >= 0;
+    var dark = ['#F8D800', '#52BDEC'].indexOf(s.color) >= 0;
     row.innerHTML = '<span class="pid" style="background:' + s.color + ';color:' +
       (dark ? '#1a1a1a' : '#fff') + '">' + s.id + '</span>' +
       '<span class="score-bar"><i style="width:' + s.pct + '%;background:' + s.color + '"></i></span>' +
@@ -583,7 +583,7 @@ var WEIGHTS = [[0.5, 'Mindre viktig'], [1, 'Normal'], [2, 'Extra viktig']];
 var KEY_A = '{STORE_ANSWERS}', KEY_R = '{STORE_RESULT}', MIN = {MIN_ANSWERED};
 var KEY_P = 'vk_prio_v1', KEY_O = 'vk_ordning_v1';
 var PRIO_BOOST = 1.5;
-var DARKTEXT = ['#DDDD00', '#52BDEC'];
+var DARKTEXT = ['#F8D800', '#52BDEC'];
 var PBYID = {{}};
 PARTIES.forEach(function (p) {{ PBYID[p.id] = p; }});
 var QBYID = {{}};
